@@ -15,3 +15,5 @@ seo-research/.Rhistory
 # Environment files
 .env
 .env.*
+!.env.example
+!site/.env.example
