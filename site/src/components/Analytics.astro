@@ -1,5 +1,7 @@
 ---
-const gaId = import.meta.env.PUBLIC_GA_ID;
+import { SITE } from '../consts';
+
+const gaId = import.meta.env.PUBLIC_GA_ID ?? SITE.googleAnalyticsId;
 ---
 
 {gaId && (

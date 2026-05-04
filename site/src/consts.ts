@@ -6,6 +6,7 @@ export const SITE = {
   url: 'https://insidejapanesehistory.com',
   substackUrl: 'https://insidejapanesehistory.substack.com',
   podcastFeedUrl: 'https://insidejapanesehistory.substack.com/feed/podcast',
+  googleAnalyticsId: 'G-2YRN7CF6WY',
   language: 'en-US',
   heroImages: [
     {
