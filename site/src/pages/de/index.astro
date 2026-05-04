@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSlideshow from '../../components/HeroSlideshow.astro';
+import PersonSchema from '../../components/PersonSchema.astro';
+import { SITE } from '../../consts';
+
+const armorImage = 'https://commons.wikimedia.org/wiki/Special:FilePath/SamuraiArmor.jpg?width=900';
+const ieyasuImage = 'https://commons.wikimedia.org/wiki/Special:FilePath/Tokugawa%20Ieyasu.jpg?width=900';
+const castleImage = SITE.heroImages[0].src;
+---
+
+<BaseLayout
+  title="Deutsch"
+  description="Japanische Geschichte und geschichtsorientierte Reiseideen: Samurai, Burgen, Shōgun, Bakumatsu, modernes Japan und Orte vor Ort."
+  lang="de"
+>
+  <PersonSchema slot="head" person="both" />
+
+  <HeroSlideshow
+    kicker="Japanische Geschichte aus japanischen Quellen"
+    title="Japanische Geschichte von innen gelesen."
+    description="Essays und geschichtsorientierte Reiseideen, aufgebaut aus japanischer Forschung, Quellen, Orten und Erinnerung."
+    primaryLabel="Auf Substack abonnieren"
+    primaryHref={SITE.substackUrl}
+    secondaryLabel="Themen ansehen"
+    secondaryHref="#themen"
+  />
+
+  <div class="trust-strip">
+    <p><strong>Japanische Quellen</strong>Forschung beginnt bei japanischen Arbeiten</p>
+    <p><strong>Gefragte Fragen</strong>Shōgun, Samurai, Burgen, Bakumatsu, Reisen</p>
+    <p><strong>Klare Einordnung</strong>Mythos, Drama und Geschichte getrennt</p>
+  </div>
+
+  <section class="authority-note" aria-label="Redaktionelle Autorität">
+    <p class="kicker">Redaktioneller Ansatz</p>
+    <h2>Japanisch geführte Geschichte, für internationale Leser aufbereitet.</h2>
+    <p>
+      Dieses Projekt entsteht aus japanischer Perspektive, beginnt mit
+      japanischen Büchern, Quellen und Fachdiskussionen und bereitet diese
+      Arbeit klar für Leser außerhalb Japans auf.
+    </p>
+  </section>
+
+  <section class="editorial-map">
+    <div>
+      <p class="kicker">Redaktionelle Richtung</p>
+      <h2>Wir beginnen mit Fragen, die Leser bereits haben, und antworten aus japanischen Quellen.</h2>
+    </div>
+    <p>
+      Die Seite verbindet stark nachgefragte Themen mit japanischer Forschung:
+      Shōgun, Samurai-Mythen, Sengoku-Kriegsherren, Bakumatsu, modernes Japan
+      und geschichtsorientierte Reiseziele. Die Texte bleiben lesbar, aber die
+      Grundlage ist nicht Popkultur, sondern japanische historische Einordnung.
+    </p>
+  </section>
+
+  <h2>Einstiegspunkte</h2>
+  <p>
+    Man muss japanische Geschichte nicht streng chronologisch lesen. Diese
+    Seite ist wie ein Magazin aufgebaut: Man kann mit der Epoche oder der Frage
+    beginnen, die einen gerade interessiert.
+  </p>
+
+  <div class="feature-grid">
+    <article class="feature-card">
+      <img src={armorImage} alt="Samurai-Rüstung in einem Museum" loading="lazy" />
+      <div class="body">
+        <p class="label">Samurai-Mythen</p>
+        <h3>Was Popkultur über Samurai oft vereinfacht</h3>
+        <p>
+          Schwerter, Feuerwaffen, Bushidō, Seppuku und der Abstand zwischen
+          Schlachtfeldgeschichte und späterer Romantisierung.
+        </p>
+      </div>
+    </article>
+    <div class="feature-list">
+      <article class="mini-feature">
+        <img src={ieyasuImage} alt="Porträt von Tokugawa Ieyasu" loading="lazy" />
+        <div>
+          <p class="label">Shōgun & echte Geschichte</p>
+          <h3>Die Politik hinter Toranaga</h3>
+          <p>Tokugawa Ieyasu, Sekigahara und was die Serie verdichtet.</p>
+        </div>
+      </article>
+      <article class="mini-feature">
+        <img src={castleImage} alt="Bergfried von Himeji Castle" loading="lazy" />
+        <div>
+          <p class="label">Burgen & Schlachtfelder</p>
+          <h3>Wie Gelände japanische Kriegsführung prägte</h3>
+          <p>Burgen, Belagerungen, Flusstäler und sichtbare Spuren vor Ort.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <h2 id="themen">Lesen nach Thema</h2>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h3><a href="/de/sengoku/">Sengoku</a></h3>
+      <p>Nobunaga, Hideyoshi, Ieyasu, Burgen, Feuerwaffen, Ninja und Mythen über das Schlachtfeld.</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/de/bakumatsu/">Bakumatsu</a></h3>
+      <p>Schwarze Schiffe, Ryōma, Shinsengumi, Bürgerkrieg und das Ende des Tokugawa-Shogunats.</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/de/modern/">Modernes Japan</a></h3>
+      <p>Meiji, Kaiserreich, Krieg, Besatzung, Wirtschaftswachstum und gesellschaftliche Gewohnheiten.</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/de/hidden-japan/">Hidden Japan</a></h3>
+      <p>Weniger ueberlaufene historische Orte fuer Reisende, die die offensichtliche Route vermeiden wollen.</p>
+    </div>
+  </div>
+
+  <h2>Geplante Artikelspuren</h2>
+  <div class="topic-rank">
+    <div>
+      <p class="label">Spur 1</p>
+      <h3>Starke Einstiegsthemen</h3>
+      <p>Shōgun, Samurai, Ninja, Burgen und Meiji-Restauration bringen neue Leser auf die Seite.</p>
+    </div>
+    <div>
+      <p class="label">Spur 2</p>
+      <h3>Japanische Grundlage</h3>
+      <p>Die Argumente werden mit japanischen Historikern, Quellen und Fachdebatten geprüft.</p>
+    </div>
+    <div>
+      <p class="label">Spur 3</p>
+      <h3>Hidden Japan Travel</h3>
+      <p>Weniger bekannte Burgen, Schlachtfeldgeografie, lokale Museen und ruhigere Routen mit sinnvollen Links erst nach dem Kontext.</p>
+    </div>
+  </div>
+</BaseLayout>

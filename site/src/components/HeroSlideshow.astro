@@ -1,0 +1,69 @@
+---
+import { SITE } from '../consts';
+
+interface Props {
+  kicker: string;
+  title: string;
+  description: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+}
+
+const {
+  kicker,
+  title,
+  description,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+
+const images = SITE.heroImages;
+---
+
+<section
+  class="visual-hero hero-slideshow"
+  data-hero-credits={JSON.stringify(images.map((image) => image.credit))}
+>
+  <div class="hero-slides" aria-hidden="true">
+    {images.map((image, index) => (
+      <div
+        class:list={['hero-slide', index === 0 && 'active']}
+        style={`background-image: url('${image.src}')`}
+      />
+    ))}
+  </div>
+  <div class="inner">
+    <div class="copy">
+      <p class="kicker">{kicker}</p>
+      <h1>{title}</h1>
+      <p class="dek">{description}</p>
+      <div class="hero-actions">
+        <a class="cta" href={primaryHref}>{primaryLabel}</a>
+        <a class="cta secondary" href={secondaryHref}>{secondaryLabel}</a>
+      </div>
+    </div>
+    <p class="image-credit">{images[0].credit}</p>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector<HTMLElement>('.hero-slideshow');
+  const slides = Array.from(hero?.querySelectorAll<HTMLElement>('.hero-slide') ?? []);
+  const credit = hero?.querySelector<HTMLElement>('.image-credit');
+
+  if (hero && credit && slides.length > 1) {
+    const credits = JSON.parse(hero.dataset.heroCredits ?? '[]') as string[];
+    let index = 0;
+
+    window.setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+      credit.textContent = credits[index] ?? '';
+    }, 7000);
+  }
+</script>

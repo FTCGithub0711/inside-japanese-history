@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleSchema from '../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../components/TravelAffiliateBox.astro';
+
+const PUB_DATE = '2026-05-04';
+const travelDestinations = [
+  {
+    name: 'Odawara Castle',
+    description: 'A major castle site for understanding the Hōjō, Toyotomi Hideyoshi, and the final stage of Sengoku unification.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Odawara%20Castle',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Odawara%2C%20Kanagawa%2C%20Japan',
+  },
+  {
+    name: 'Sekigahara Battlefield',
+    description: 'The battlefield most closely tied to Tokugawa Ieyasu and the political end of the Sengoku period.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Sekigahara%20Battlefield',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Sekigahara%2C%20Gifu%2C%20Japan',
+  },
+  {
+    name: 'Azuchi Castle ruins',
+    description: 'A strong travel link for Oda Nobunaga, castle innovation, and the transition toward national unification.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Azuchi%20Castle%20Ruins',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Omihachiman%2C%20Shiga%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="The Sengoku Period: Japan's Century of War"
+  description="A pillar guide to Japan's Sengoku period (1467–1603) — the warlords, the sieges, the unification, and the end of the samurai world's first chapter."
+  type="article"
+>
+  <ArticleSchema
+    slot="head"
+    headline="The Sengoku Period: Japan's Century of War"
+    description="A pillar guide to Japan's Sengoku period (1467–1603) — the warlords, the sieges, the unification, and the end of the samurai world's first chapter."
+    datePublished={PUB_DATE}
+  />
+
+  <h1>The Sengoku Period: Japan's Century of War</h1>
+
+  <p>
+    For roughly 150 years — from 1467 to 1603 — the Japanese archipelago was
+    ruled by no one. Warlords called <em>daimyō</em> fought, betrayed, and
+    married each other into a slow consolidation that ended with one man
+    holding the country: Tokugawa Ieyasu.
+  </p>
+
+  <p>
+    This pillar page is the entry point for our Sengoku coverage. Topics
+    expand into longer articles below.
+  </p>
+
+  <h2>Articles in this series</h2>
+  <p>(Coming soon — see the editorial calendar for publication dates.)</p>
+  <ul>
+    <li>The Sengoku Period Explained: Japan's Age of Warring States</li>
+    <li>Oda Nobunaga Explained: The Warlord Who Changed Japan</li>
+    <li>Toyotomi Hideyoshi Explained: From Foot Soldier to Ruler of Japan</li>
+    <li>Tokugawa Ieyasu and Sekigahara: The Battle That Made Tokugawa Japan</li>
+    <li>Did Samurai Really Use Guns? Sengoku's Forgotten Firearms</li>
+    <li>Were Ninjas Real? Shinobi Beyond the Black Costume</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    title="Travel links for Sengoku readers"
+    intro="For readers planning a history-focused trip, these places connect directly to major Sengoku castles, battlefields, and warlords."
+  />
+</BaseLayout>

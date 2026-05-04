@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import NewsletterCTA from '../../components/NewsletterCTA.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
+import { bookingSearch, googleMapsSearch, klookSearch } from '../../data/monetization';
+
+const PUB_DATE = '2026-05-05';
+const destinations = [
+  {
+    name: 'Burg Odawara',
+    description:
+      'Ein guter Einstieg in Sengoku-Geschichte vor Ort: Burgen, Hojo-Macht und Toyotomi Hideyoshi in einem Reiseziel.',
+    placeHref: googleMapsSearch('Odawara Castle'),
+    stayHref: bookingSearch('Odawara, Kanagawa, Japan'),
+    activityHref: klookSearch('Odawara Castle Japan'),
+  },
+  {
+    name: 'Schlachtfeld Sekigahara',
+    description:
+      'Passend fuer Leser, die Tokugawa Ieyasu, Gelaende und das politische Ende der Sengoku-Zeit verstehen wollen.',
+    placeHref: googleMapsSearch('Sekigahara Battlefield'),
+    stayHref: bookingSearch('Sekigahara, Gifu, Japan'),
+    activityHref: klookSearch('Sekigahara battlefield'),
+  },
+  {
+    name: 'Burgruine Hachigata',
+    description:
+      'Ein weniger bekannter Ort mit regionaler Geschichte, Gelaende, Belagerung und ruhigerem Reiseprofil.',
+    placeHref: googleMapsSearch('Hachigata Castle ruins'),
+    stayHref: bookingSearch('Yorii, Saitama, Japan'),
+  },
+];
+---
+
+<BaseLayout
+  title="Hidden Historic Japan"
+  description="Weniger bekannte historische Orte in Japan fuer Reisende, die Overtourism vermeiden und ein tieferes Japan verstehen wollen."
+  type="article"
+  lang="de-DE"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Hidden Historic Japan"
+    description="Weniger bekannte historische Orte in Japan fuer Reisende, die Overtourism vermeiden und ein tieferes Japan verstehen wollen."
+    datePublished={PUB_DATE}
+    inLanguage="de-DE"
+  />
+
+  <p class="kicker">Hidden Japan</p>
+  <h1>Hidden Historic Japan</h1>
+
+  <p class="dek">
+    Fuer Reisende, die mehr wollen als die uebliche Checkliste: Burgen,
+    Schlachtfelder, lokale Museen, Tempelstaedte und uebersehene Orte, an denen
+    japanische Geschichte noch sichtbar ist.
+  </p>
+
+  <section class="authority-note" aria-label="Redaktioneller Ansatz">
+    <p class="kicker">Jenseits von Overtourism</p>
+    <h2>Nicht noch eine Liste beruehmter Sehenswuerdigkeiten.</h2>
+    <p>
+      Diese Rubrik richtet sich an Leser, die Tokyo, Kyoto, Osaka und Mount Fuji
+      bereits kennen. Es geht um ruhigere, historisch dichte Orte: regionale
+      Macht, lokale Erinnerung, alte Wege, Burgruinen, kleine Museen und
+      Landschaften, die durch Konflikte gepraegt wurden.
+    </p>
+  </section>
+
+  <h2>Was hierher gehoert</h2>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h3>Weniger ueberlaufene historische Orte</h3>
+      <p>Orte, die erreichbar sind, aber nicht nur Teil der ueblichen Golden-Route-Checkliste.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Burgen jenseits der Postkarte</h3>
+      <p>Nicht nur beruehmte Burgtuerme, sondern Ruinen, Erdwerke, Clan-Gebiete, Belagerungsorte und Gelaende.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Lokale Museen und Erinnerung</h3>
+      <p>Kleine Museen, lokale Ausstellungen und regionale Geschichten, die selten in englischen Reisezusammenfassungen auftauchen.</p>
+    </div>
+  </div>
+
+  <TravelAffiliateBox
+    destinations={destinations}
+    title="Erste Ziele jenseits der offensichtlichen Route"
+    intro="Diese Beispiele zeigen, wie Hidden-Japan-Artikel Kontext, Karten, Unterkuenfte und Tourlinks verbinden koennen, ohne allgemeine Reisetexte zu werden."
+    lang="de"
+  />
+
+  <NewsletterCTA />
+</BaseLayout>

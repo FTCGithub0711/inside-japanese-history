@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import PersonSchema from '../components/PersonSchema.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { SITE } from '../consts';
+---
+
+<BaseLayout
+  title="About"
+  description={`About ${SITE.name}: Japanese-led history writing for international readers.`}
+>
+  <PersonSchema slot="head" person="both" />
+
+  <h1>About</h1>
+
+  <p>
+    <strong>{SITE.name}</strong> is an English-language Japanese history
+    publication for readers who want more than quick summaries, but less than
+    an academic monograph.
+  </p>
+
+  <h2>How the work is made</h2>
+  <p>
+    The work combines Japanese historical judgment with English-language
+    editing. Japanese-language books, articles, source materials, local memory,
+    and historical debates come first; the final essays are shaped for
+    international readers.
+  </p>
+
+  <h2>Historical review</h2>
+  <p>
+    {SITE.authorFather.bio}
+  </p>
+
+  <h2>Editing and translation</h2>
+  <p>
+    {SITE.authorSon.bio}
+  </p>
+
+  <h2>What "from inside Japan" means</h2>
+  <p>
+    It does not mean every Japanese person thinks the same way. It means the
+    project begins with Japanese-language memory, sources, places, and
+    historical instincts before being shaped for English readers.
+  </p>
+
+  <h2>Editorial promise</h2>
+  <p>
+    We aim to be clear, source-aware, and readable. When a story is uncertain,
+    legendary, or simplified in popular culture, we say so. The goal is not to
+    make Japan seem mysterious, but to make its history easier to understand.
+  </p>
+
+  <NewsletterCTA />
+
+  <SocialLinks />
+
+  <h2>Get in touch</h2>
+  <p>
+    Press, sponsorship, and collaboration: <a href={SITE.substackUrl}>via Substack</a>.
+  </p>
+</BaseLayout>

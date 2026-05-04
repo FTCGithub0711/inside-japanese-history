@@ -1,0 +1,157 @@
+---
+import AffiliateDisclosure from './AffiliateDisclosure.astro';
+
+interface TravelDestination {
+  name: string;
+  description: string;
+  stayHref: string;
+  placeHref?: string;
+  activityHref?: string;
+}
+
+interface Props {
+  title?: string;
+  intro?: string;
+  destinations: TravelDestination[];
+  lang?: 'en' | 'de';
+}
+
+const {
+  title,
+  intro,
+  destinations,
+  lang = 'en',
+} = Astro.props;
+
+const copy = lang === 'de'
+  ? {
+      title: title ?? 'Orte, die zu diesem Thema passen',
+      intro:
+        intro ??
+        'Diese Links führen zu passenden historischen Orten und Unterkunftssuchen in der Nähe.',
+      place: 'Ort ansehen',
+      stays: 'Unterkünfte suchen',
+      activity: 'Touren suchen',
+    }
+  : {
+      title: title ?? 'Places connected to this story',
+      intro:
+        intro ??
+        'Use these links to connect the history with real places and nearby accommodation searches.',
+      place: 'View the place',
+      stays: 'Find nearby stays',
+      activity: 'Find tours',
+    };
+---
+
+<aside class="travel-affiliate" aria-label={copy.title}>
+  <div class="travel-affiliate__header">
+    <p class="label">Travel links</p>
+    <h2>{copy.title}</h2>
+    <p>{copy.intro}</p>
+  </div>
+
+  <div class="travel-affiliate__grid">
+    {destinations.map((destination) => (
+      <article>
+        <h3>{destination.name}</h3>
+        <p>{destination.description}</p>
+        <div class="travel-affiliate__actions">
+          {destination.placeHref && (
+            <a href={destination.placeHref} target="_blank" rel="noopener noreferrer">
+              {copy.place}
+            </a>
+          )}
+          <a href={destination.stayHref} target="_blank" rel="sponsored noopener noreferrer">
+            {copy.stays}
+          </a>
+          {destination.activityHref && (
+            <a href={destination.activityHref} target="_blank" rel="sponsored noopener noreferrer">
+              {copy.activity}
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <AffiliateDisclosure lang={lang} />
+</aside>
+
+<style>
+  .travel-affiliate {
+    background: #fffdf8;
+    border: 1px solid #e4ded4;
+    border-radius: 8px;
+    margin: 2.2rem 0;
+    padding: 1.1rem;
+  }
+
+  .travel-affiliate__header {
+    border-bottom: 1px solid #e4ded4;
+    margin-bottom: 1rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .travel-affiliate .label {
+    color: #b8402a;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0 0 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .travel-affiliate h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .travel-affiliate h3 {
+    font-size: 1.02rem;
+    margin: 0 0 0.3rem;
+  }
+
+  .travel-affiliate p {
+    color: #66615a;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .travel-affiliate__grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .travel-affiliate article {
+    border: 1px solid #e4ded4;
+    border-radius: 7px;
+    padding: 0.9rem;
+  }
+
+  .travel-affiliate__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .travel-affiliate__actions a {
+    border: 1px solid #b8402a;
+    border-radius: 4px;
+    color: #b8402a;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 750;
+    padding: 0.45rem 0.6rem;
+    text-decoration: none;
+  }
+
+  .travel-affiliate__actions a:hover {
+    background: #b8402a;
+    color: white;
+  }
+
+</style>

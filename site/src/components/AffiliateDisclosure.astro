@@ -1,0 +1,26 @@
+---
+import { affiliateDisclosure } from '../data/monetization';
+
+interface Props {
+  lang?: 'en' | 'de';
+  text?: string;
+}
+
+const {
+  lang = 'en',
+  text = affiliateDisclosure[lang],
+} = Astro.props;
+---
+
+<p class="affiliate-disclosure">{text}</p>
+
+<style>
+  .affiliate-disclosure {
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.78rem;
+    margin: 1rem 0 0;
+    padding-top: 0.75rem;
+  }
+</style>

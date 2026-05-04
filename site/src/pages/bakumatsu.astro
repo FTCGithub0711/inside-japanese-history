@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleSchema from '../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../components/TravelAffiliateBox.astro';
+const PUB_DATE = '2026-05-04';
+const travelDestinations = [
+  {
+    name: 'Shimoda',
+    description: 'A key place for Perry, treaty-port history, and the opening of Japan.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Shimoda%20Japan%20Perry%20Road',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Shimoda%2C%20Shizuoka%2C%20Japan',
+  },
+  {
+    name: 'Kyoto Bakumatsu sites',
+    description: 'The strongest base for Shinsengumi, imperial court politics, and late Tokugawa conflict.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Kyoto%20Shinsengumi%20Mibu-dera',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kyoto%2C%20Japan',
+  },
+  {
+    name: 'Kagoshima',
+    description: 'A useful route into Satsuma, Saigō Takamori, and the forces that reshaped Meiji Japan.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Saigo%20Takamori%20Kagoshima',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kagoshima%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="Bakumatsu: The End of the Samurai Era"
+  description="A pillar guide to Bakumatsu (1853–1868) — Japan's collision with the West, the fall of the Tokugawa shogunate, and the men who chose between worlds."
+  type="article"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Bakumatsu: The End of the Samurai Era"
+    description="A pillar guide to Bakumatsu (1853–1868) — Japan's collision with the West, the fall of the Tokugawa shogunate, and the men who chose between worlds."
+    datePublished={PUB_DATE}
+  />
+
+  <h1>Bakumatsu: The End of the Samurai Era</h1>
+  <p>
+    Bakumatsu — literally "the end of the curtain" — names the fifteen years
+    between Commodore Perry's black ships (1853) and the Meiji Restoration
+    (1868). It is the period in which Japan stopped being one thing and
+    started being another.
+  </p>
+
+  <h2>Articles in this series</h2>
+  <ul>
+    <li>Why Did Japan Close Its Borders for 250 Years?</li>
+    <li>Why Sakamoto Ryōma Is Still Japan's Hero</li>
+    <li>The Black Ships: What Perry Did and What Japan Did Next</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    title="Travel links for Bakumatsu readers"
+    intro="For readers planning a history-focused trip, these places connect the late shogunate with treaty ports, Kyoto conflict, and Satsuma history."
+  />
+</BaseLayout>

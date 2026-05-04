@@ -1,0 +1,20 @@
+---
+import { SITE } from '../consts';
+
+const json = {
+  '@context': 'https://schema.org',
+  '@type': 'PodcastSeries',
+  name: SITE.name,
+  description: SITE.description,
+  url: SITE.url,
+  webFeed: SITE.podcastFeedUrl,
+  inLanguage: SITE.language,
+  author: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(json)} />

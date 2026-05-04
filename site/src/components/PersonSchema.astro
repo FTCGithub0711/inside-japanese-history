@@ -1,0 +1,28 @@
+---
+// Emits Organization schema.org JSON-LD without exposing personal names.
+import { SITE } from '../consts';
+
+interface Props {
+  person: 'father' | 'son' | 'both';
+}
+Astro.props as Props;
+
+const json = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  alternateName: SITE.tagline,
+  url: SITE.url,
+  description: SITE.description,
+  knowsAbout: [
+    'Japanese history',
+    'Sengoku period',
+    'Bakumatsu period',
+    'Samurai history',
+    'Japanese castles',
+    'Historic travel in Japan',
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(json)} />

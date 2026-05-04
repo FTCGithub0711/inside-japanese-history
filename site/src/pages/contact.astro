@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { SITE } from '../consts';
+---
+
+<BaseLayout
+  title="Contact"
+  description={`Contact ${SITE.name} for collaboration, sponsorship, press, and reader questions.`}
+>
+  <h1>Contact</h1>
+  <p class="dek">
+    For reader questions, sponsorship, collaboration, or press inquiries, use the
+    channels below.
+  </p>
+
+  <h2>Best Contact Route</h2>
+  <p>
+    The simplest route is through
+    <a href={SITE.substackUrl}>the Substack page</a>. This keeps messages tied
+    to the publication while the site is still being prepared for launch.
+  </p>
+
+  <h2>Collaboration</h2>
+  <p>
+    We are interested in historically relevant collaboration: travel routes,
+    museums, local history projects, books, and educational media connected to
+    Japanese history.
+  </p>
+
+  <NewsletterCTA />
+  <SocialLinks />
+</BaseLayout>

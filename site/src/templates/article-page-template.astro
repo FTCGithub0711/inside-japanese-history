@@ -1,0 +1,89 @@
+---
+// Copy this file into site/src/pages/articles/<slug>.astro when an article is ready.
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import { amazonSearch, bookingSearch, googleMapsSearch, klookSearch } from '../data/monetization';
+
+const toc = [
+  { id: 'opening-question', label: 'The question readers bring in' },
+  { id: 'historical-context', label: 'The historical context' },
+  { id: 'what-summaries-miss', label: 'What common summaries miss' },
+  { id: 'where-to-go', label: 'Where this history can still be seen' },
+];
+
+const sources = [
+  {
+    label: 'Author, Article or Book Title',
+    description: 'Short note on why this source matters for the article.',
+    type: 'Journal article',
+  },
+];
+
+const related = [
+  {
+    title: 'Related article title',
+    description: 'One-sentence reason this should be read next.',
+    href: '/sengoku/',
+    kicker: 'Sengoku',
+  },
+];
+
+const travelDestinations = [
+  {
+    name: 'Historical site name',
+    description: 'Why this site connects to the article.',
+    placeHref: googleMapsSearch('Historical site name Japan'),
+    stayHref: bookingSearch('City, Prefecture, Japan'),
+    activityHref: klookSearch('City Japan history tour'),
+  },
+];
+
+const bookRecommendations = [
+  {
+    title: 'Specific book title',
+    author: 'Author name',
+    description: 'Use only books that are directly relevant to the article argument.',
+    href: amazonSearch('Specific book title Japanese history'),
+    label: 'Further reading',
+  },
+];
+---
+
+<ArticleLayout
+  title="Article Title Goes Here"
+  description="A direct SEO description of the article in one sentence."
+  subtitle="A sharper editorial subtitle can go here."
+  kicker="Sengoku"
+  datePublished="2026-05-04"
+  readingTime="8 min read"
+  category="Japanese history"
+  toc={toc}
+  sources={sources}
+  related={related}
+  travelDestinations={travelDestinations}
+  travelTitle="Places connected to this story"
+  travelIntro="Use these links only when they naturally follow from the article."
+  bookRecommendations={bookRecommendations}
+  bookTitle="Books for deeper reading"
+  bookIntro="Keep this list short and tied to the article, not a generic bookstore section."
+>
+  <p>
+    Start with the reader's question, then answer it directly before adding
+    nuance. Keep the first three paragraphs concrete.
+  </p>
+
+  <h2 id="opening-question">The question readers bring in</h2>
+  <p>Explain why the topic is searched and what the simple answer gets wrong.</p>
+
+  <h2 id="historical-context">The historical context</h2>
+  <p>Use Japanese sources to build the context before correcting myths.</p>
+
+  <div class="article-callout">
+    <p><strong>Editorial note:</strong> Use callouts only for useful distinctions, not decoration.</p>
+  </div>
+
+  <h2 id="what-summaries-miss">What common summaries miss</h2>
+  <p>Show the gap between common English summaries and Japanese-language research.</p>
+
+  <h2 id="where-to-go">Where this history can still be seen</h2>
+  <p>Add travel links here only when a place is directly relevant.</p>
+</ArticleLayout>

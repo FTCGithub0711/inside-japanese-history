@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../consts';
+---
+
+<BaseLayout
+  title="Affiliate Disclosure"
+  description={`Affiliate disclosure for ${SITE.name}.`}
+>
+  <h1>Affiliate Disclosure</h1>
+  <p class="dek">Last updated: May 4, 2026</p>
+
+  <p>
+    Some links on {SITE.name} may be affiliate links. If you book a hotel, buy a
+    book, reserve a tour, or purchase another product through those links, this
+    publication may earn a commission at no extra cost to you.
+  </p>
+
+  <h2>How We Use Affiliate Links</h2>
+  <p>
+    Affiliate links should appear only when they are relevant to the article:
+    for example, a historical site connected to the topic, nearby lodging for a
+    history-focused trip, or a book that helps readers go deeper.
+  </p>
+
+  <h2>Editorial Independence</h2>
+  <p>
+    Affiliate relationships do not decide what we write. Historical judgment,
+    source quality, and reader usefulness come first.
+  </p>
+
+  <h2>Current Link Types</h2>
+  <ul>
+    <li>Accommodation search links</li>
+    <li>Book links</li>
+    <li>Tour or activity links</li>
+    <li>Map links to historical sites</li>
+  </ul>
+
+  <h2>Questions</h2>
+  <p>
+    For questions about sponsorship or affiliate links, contact us through
+    <a href={SITE.substackUrl}>Substack</a>.
+  </p>
+</BaseLayout>

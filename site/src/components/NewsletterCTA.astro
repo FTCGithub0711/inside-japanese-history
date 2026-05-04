@@ -1,0 +1,62 @@
+---
+import { SITE } from '../consts';
+
+interface Props {
+  variant?: 'compact' | 'full';
+}
+
+const { variant = 'full' } = Astro.props;
+---
+
+<aside class:list={['newsletter-cta', variant]}>
+  <p class="eyebrow">Free guide in progress</p>
+  <h2>Get 5 Samurai Myths Western Media Gets Wrong</h2>
+  <p>
+    Japanese history is often simplified in English. Join the newsletter for a
+    short guide to five common samurai myths, explained from inside Japan.
+  </p>
+  <a href={SITE.substackUrl}>Subscribe on Substack</a>
+</aside>
+
+<style>
+  .newsletter-cta {
+    border: 1px solid #e4ded4;
+    border-left: 4px solid #b8402a;
+    background: #faf8f3;
+    padding: 1.25rem;
+    margin: 2rem 0;
+    border-radius: 6px;
+  }
+
+  .newsletter-cta.compact {
+    margin: 1.5rem 0;
+  }
+
+  .newsletter-cta .eyebrow {
+    margin: 0 0 0.35rem;
+    color: #66615a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .newsletter-cta h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .newsletter-cta p {
+    margin: 0 0 1rem;
+  }
+
+  .newsletter-cta a {
+    display: inline-block;
+    background: #b8402a;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+</style>

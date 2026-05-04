@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://insidejapanesehistory.com/sitemap-index.xml

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleSchema from '../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../components/TravelAffiliateBox.astro';
+const PUB_DATE = '2026-05-04';
+const travelDestinations = [
+  {
+    name: 'Tokyo',
+    description: 'The center for Meiji state-building, imperial institutions, postwar reconstruction, and modern urban Japan.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Tokyo%20Station%20Imperial%20Palace',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Tokyo%2C%20Japan',
+  },
+  {
+    name: 'Hiroshima',
+    description: 'A necessary destination for modern Japanese history, war memory, reconstruction, and peace education.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Museum',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Hiroshima%2C%20Japan',
+  },
+  {
+    name: 'Yokohama',
+    description: 'A clear travel link for treaty-port history, Meiji internationalization, railways, and modern urban culture.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Yokohama%20Japan%20history',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Yokohama%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="Modern Japan: Meiji to Today"
+  description="How samurai-era values quietly shape modern Japan — punctuality, shame culture, work ethic, and the quiet logic of contemporary Japanese life."
+  type="article"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Modern Japan: Meiji to Today"
+    description="How samurai-era values quietly shape modern Japan — punctuality, shame culture, work ethic, and the quiet logic of contemporary Japanese life."
+    datePublished={PUB_DATE}
+  />
+
+  <h1>Modern Japan: Meiji to Today</h1>
+  <p>
+    The samurai class was abolished in 1871. But the values that drove it —
+    duty, restraint, deference, perfection — never went away. They moved
+    inward, into how Japanese people work, queue, bow, apologize, and run
+    companies.
+  </p>
+
+  <h2>Articles in this series</h2>
+  <ul>
+    <li>Why Japanese Are Always on Time</li>
+    <li>Where Did Japan's Shame Culture Come From?</li>
+    <li>Why Japanese Bow So Much</li>
+    <li>Is Bushido Still Real in Modern Japan?</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    title="Travel links for modern Japan readers"
+    intro="For readers planning a history-focused trip, these cities connect modern Japanese history with state-building, war memory, reconstruction, and everyday urban life."
+  />
+</BaseLayout>

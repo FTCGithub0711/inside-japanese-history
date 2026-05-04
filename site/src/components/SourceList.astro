@@ -1,0 +1,91 @@
+---
+interface SourceItem {
+  label: string;
+  description?: string;
+  href?: string;
+  type?: string;
+}
+
+interface Props {
+  sources?: SourceItem[];
+  title?: string;
+  intro?: string;
+}
+
+const {
+  sources = [],
+  title = 'Sources and further reading',
+  intro,
+} = Astro.props;
+---
+
+{sources.length > 0 && (
+  <section class="source-list" aria-labelledby="source-list-heading">
+    <h2 id="source-list-heading">{title}</h2>
+    {intro && <p class="source-list__intro">{intro}</p>}
+    <ol>
+      {sources.map((source) => (
+        <li>
+          <div>
+            <strong>
+              {source.href ? (
+                <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a>
+              ) : (
+                source.label
+              )}
+            </strong>
+            {source.type && <span>{source.type}</span>}
+          </div>
+          {source.description && <p>{source.description}</p>}
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+
+<style>
+  .source-list {
+    border-top: 1px solid var(--color-border);
+    margin-top: 2.8rem;
+    padding-top: 1.6rem;
+  }
+
+  .source-list h2 {
+    margin-top: 0;
+  }
+
+  .source-list__intro,
+  .source-list p {
+    color: var(--color-muted);
+  }
+
+  .source-list ol {
+    display: grid;
+    gap: 0.9rem;
+    padding-left: 1.35rem;
+  }
+
+  .source-list li div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.6rem;
+    align-items: baseline;
+  }
+
+  .source-list strong {
+    color: var(--color-ink);
+  }
+
+  .source-list span {
+    color: var(--color-accent);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .source-list li p {
+    font-size: 0.95rem;
+    margin: 0.2rem 0 0;
+  }
+</style>

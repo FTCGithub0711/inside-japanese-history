@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
+
+const PUB_DATE = '2026-05-04';
+const travelDestinations = [
+  {
+    name: 'Tokyo',
+    description: 'Zentrum von Meiji-Staatsbildung, kaiserlichen Institutionen, Wiederaufbau und modernem Stadtleben.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Tokyo%20Station%20Imperial%20Palace',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Tokyo%2C%20Japan',
+  },
+  {
+    name: 'Hiroshima',
+    description: 'Ein wichtiger Ort für Kriegserinnerung, Wiederaufbau und Friedenserziehung.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Museum',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Hiroshima%2C%20Japan',
+  },
+  {
+    name: 'Yokohama',
+    description: 'Ein klarer Bezugspunkt für Vertragshäfen, Meiji-Internationalisierung und moderne Stadtkultur.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Yokohama%20Japan%20history',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Yokohama%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="Modernes Japan: Von Meiji bis heute"
+  description="Wie ältere Werte aus Samurai- und Frühmoderne bis heute modernes Japan prägen: Pünktlichkeit, Schamkultur, Arbeitsethos und Alltag."
+  type="article"
+  lang="de"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Modernes Japan: Von Meiji bis heute"
+    description="Wie ältere Werte aus Samurai- und Frühmoderne bis heute modernes Japan prägen: Pünktlichkeit, Schamkultur, Arbeitsethos und Alltag."
+    datePublished={PUB_DATE}
+    inLanguage="de"
+  />
+
+  <p class="kicker">Modernes Japan</p>
+  <h1>Modernes Japan: Von Meiji bis heute</h1>
+
+  <p class="dek">
+    Die Samurai als Klasse wurden im 19. Jahrhundert abgeschafft. Viele
+    soziale Muster, die mit Pflicht, Zurückhaltung, Rangordnung und Scham zu
+    tun haben, verschwanden jedoch nicht einfach.
+  </p>
+
+  <p>
+    Moderne japanische Gewohnheiten lassen sich nicht auf Samurai-Kultur
+    reduzieren. Trotzdem hilft Geschichte dabei, bestimmte Alltagsformen
+    besser zu verstehen: Pünktlichkeit, Verbeugungen, Entschuldigungen,
+    Arbeitsethos und das Bedürfnis, soziale Reibung zu vermeiden.
+  </p>
+
+  <h2>Warum moderne Themen hier dazugehören</h2>
+  <p>
+    Wer nur die Schlachten kennt, versteht Japan nicht automatisch besser.
+    Ebenso wichtig ist die Frage, welche älteren Wertvorstellungen in neuen
+    Institutionen weiterleben und welche nur als spätere Erzählungen
+    romantisiert wurden.
+  </p>
+
+  <h2>Artikel in dieser Reihe</h2>
+  <ul>
+    <li>Warum Japaner oft so pünktlich sind</li>
+    <li>Woher Japans Schamkultur kommt</li>
+    <li>Warum sich Japaner so oft verbeugen</li>
+    <li>Ist Bushidō im modernen Japan noch real?</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    lang="de"
+    title="Reiselinks für modernes Japan"
+    intro="Für eine geschichtsorientierte Reise verbinden diese Städte moderne japanische Geschichte mit Staat, Kriegserinnerung, Wiederaufbau und Alltag."
+  />
+</BaseLayout>

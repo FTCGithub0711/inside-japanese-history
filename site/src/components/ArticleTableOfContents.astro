@@ -1,0 +1,61 @@
+---
+interface TocItem {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  items?: TocItem[];
+  title?: string;
+}
+
+const {
+  items = [],
+  title = 'In this article',
+} = Astro.props;
+---
+
+{items.length > 0 && (
+  <nav class="article-toc" aria-label={title}>
+    <p>{title}</p>
+    <ol>
+      {items.map((item) => (
+        <li><a href={`#${item.id}`}>{item.label}</a></li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<style>
+  .article-toc {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+
+  .article-toc p {
+    color: var(--color-accent);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .article-toc ol {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .article-toc a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .article-toc a:hover {
+    color: var(--color-accent);
+  }
+</style>

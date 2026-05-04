@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
+
+const PUB_DATE = '2026-05-04';
+const travelDestinations = [
+  {
+    name: 'Shimoda',
+    description: 'Ein zentraler Ort für Perry, Vertragshäfen und die Öffnung Japans.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Shimoda%20Japan%20Perry%20Road',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Shimoda%2C%20Shizuoka%2C%20Japan',
+  },
+  {
+    name: 'Kyoto und Shinsengumi-Orte',
+    description: 'Die stärkste Basis für Shinsengumi, Hofpolitik und Konflikte der späten Tokugawa-Zeit.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Kyoto%20Shinsengumi%20Mibu-dera',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kyoto%2C%20Japan',
+  },
+  {
+    name: 'Kagoshima',
+    description: 'Ein guter Einstieg in Satsuma, Saigō Takamori und die Kräfte hinter Meiji.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Saigo%20Takamori%20Kagoshima',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kagoshima%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="Bakumatsu: Das Ende der Samurai-Ära"
+  description="Ein Einstieg in Bakumatsu (1853-1868): Schwarze Schiffe, Tokugawa-Shogunat, Meiji-Restauration und Japans Entscheidung zwischen Welten."
+  type="article"
+  lang="de"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Bakumatsu: Das Ende der Samurai-Ära"
+    description="Ein Einstieg in Bakumatsu (1853-1868): Schwarze Schiffe, Tokugawa-Shogunat, Meiji-Restauration und Japans Entscheidung zwischen Welten."
+    datePublished={PUB_DATE}
+    inLanguage="de"
+  />
+
+  <p class="kicker">Bakumatsu</p>
+  <h1>Bakumatsu: Das Ende der Samurai-Ära</h1>
+
+  <p class="dek">
+    Bakumatsu bedeutet wörtlich das Ende des Vorhangs: die letzten Jahre des
+    Tokugawa-Shogunats zwischen der Ankunft von Commodore Perrys Schwarzen
+    Schiffen 1853 und der Meiji-Restauration 1868.
+  </p>
+
+  <p>
+    In dieser kurzen Zeit musste Japan entscheiden, wie es auf militärischen
+    und diplomatischen Druck aus dem Westen reagieren sollte. Das Ergebnis war
+    nicht nur ein Regierungswechsel, sondern eine Neudefinition dessen, was
+    Japan im modernen Zeitalter sein wollte.
+  </p>
+
+  <h2>Warum Bakumatsu ein eigener Einstieg ist</h2>
+  <p>
+    Bakumatsu liegt weit nach Sengoku, aber für viele Leser ist es der direkte
+    Weg zum modernen Japan. Hier treffen Samurai-Status, Außenpolitik,
+    Industrialisierung, Bürgerkrieg und nationale Identität aufeinander.
+  </p>
+
+  <h2>Artikel in dieser Reihe</h2>
+  <ul>
+    <li>Warum schloss Japan seine Grenzen für 250 Jahre?</li>
+    <li>Warum Sakamoto Ryōma in Japan bis heute geliebt wird</li>
+    <li>Die Schwarzen Schiffe: Was Perry tat und wie Japan reagierte</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    lang="de"
+    title="Reiselinks für Bakumatsu-Leser"
+    intro="Für eine geschichtsorientierte Reise verbinden diese Orte die späte Tokugawa-Politik mit Vertragshäfen, Kyoto-Konflikten und Satsuma-Geschichte."
+  />
+</BaseLayout>

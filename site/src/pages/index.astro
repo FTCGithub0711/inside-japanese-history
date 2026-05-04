@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSlideshow from '../components/HeroSlideshow.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import PersonSchema from '../components/PersonSchema.astro';
+import PodcastSchema from '../components/PodcastSchema.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { SITE } from '../consts';
+
+const armorImage = 'https://commons.wikimedia.org/wiki/Special:FilePath/SamuraiArmor.jpg?width=900';
+const ieyasuImage = 'https://commons.wikimedia.org/wiki/Special:FilePath/Tokugawa%20Ieyasu.jpg?width=900';
+const castleImage = SITE.heroImages[0].src;
+---
+
+<BaseLayout
+  title={SITE.name}
+  description={SITE.description}
+>
+  <PersonSchema slot="head" person="both" />
+  <PodcastSchema slot="head" />
+
+  <HeroSlideshow
+    kicker="Japanese history from Japanese sources"
+    title="Japanese history, read from the inside."
+    description="Essays and historically grounded travel ideas built from Japanese-language scholarship, primary sources, places, and memory."
+    primaryLabel="Subscribe on Substack"
+    primaryHref={SITE.substackUrl}
+    secondaryLabel="Explore topics"
+    secondaryHref="#topics"
+  />
+
+  <div class="trust-strip">
+    <p><strong>Japanese sources</strong>Research starts from Japanese scholarship</p>
+    <p><strong>Popular questions</strong>Shōgun, samurai, castles, Bakumatsu, travel</p>
+    <p><strong>Clear judgment</strong>Myths, drama, and history kept separate</p>
+  </div>
+
+  <section class="authority-note" aria-label="Editorial authority">
+    <p class="kicker">Editorial approach</p>
+    <h2>Japanese-led history, shaped for international readers.</h2>
+    <p>
+      This project is made from a Japanese perspective, beginning with Japanese
+      books, source materials, and historical debates before turning that work
+      into clear English for readers abroad.
+    </p>
+  </section>
+
+  <NewsletterCTA variant="compact" />
+
+  <section class="editorial-map">
+    <div>
+      <p class="kicker">Editorial direction</p>
+      <h2>Start with the question readers already have. Answer it from the Japanese record.</h2>
+    </div>
+    <p>
+      The site is organized around high-demand topics: Shōgun, samurai myths,
+      Sengoku warlords, Bakumatsu collapse, modern Japan, and history-led
+      travel. Each article is written for a broad reader, but the argument is
+      built from Japanese books, articles, places, and historical materials first.
+    </p>
+  </section>
+
+  <h2>Featured starting points</h2>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <img src={armorImage} alt="Samurai armor displayed at the British Museum" loading="lazy" />
+      <div class="body">
+        <p class="label">Samurai Myths</p>
+        <h3>Did samurai really live by the myths English pop culture repeats?</h3>
+        <p>
+          Start with weapons, bushido, seppuku, and the gap between battlefield
+          history and later romantic images.
+        </p>
+      </div>
+    </article>
+    <div class="feature-list">
+      <article class="mini-feature">
+        <img src={ieyasuImage} alt="Portrait of Tokugawa Ieyasu" loading="lazy" />
+        <div>
+          <p class="label">Shōgun & Real History</p>
+          <h3>The real politics behind Toranaga</h3>
+          <p>Tokugawa Ieyasu, Sekigahara, and what drama compresses.</p>
+        </div>
+      </article>
+      <article class="mini-feature">
+        <img src={castleImage} alt="Himeji Castle keep seen from the grounds" loading="lazy" />
+        <div>
+          <p class="label">Castles & Battlefields</p>
+          <h3>How terrain shaped Japanese warfare</h3>
+          <p>Castles, sieges, river valleys, and what survives today.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <h2 id="topics">Start anywhere</h2>
+  <p>
+    You do not need to read Japanese history in strict order. Each section is
+    an entry point: warlords and castles, the fall of the shogunate, modern
+    habits, or the real history behind popular culture.
+  </p>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h3><a href="/sengoku/">Sengoku</a></h3>
+      <p>Warring States Japan: Nobunaga, Hideyoshi, Ieyasu, castles, guns, ninja, and battlefield myths.</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/bakumatsu/">Bakumatsu</a></h3>
+      <p>The final years of the shogunate: black ships, Ryōma, Shinsengumi, civil war, and the Restoration.</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/modern/">Modern Japan</a></h3>
+      <p>Meiji to today: modernization, empire, defeat, occupation, economic growth, and social habits.</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/hidden-japan/">Hidden Japan</a></h3>
+      <p>Less-crowded historic places for travelers who want to avoid the obvious route and understand a deeper Japan.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Shōgun & Real History</h3>
+      <p>Character inspirations, historical accuracy, Tokugawa politics, and what the drama simplifies.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Samurai Myths</h3>
+      <p>Katana myths, bushido, seppuku, firearms, ninja, and the stories English pop culture repeats.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Castles & Battlefields</h3>
+      <p>Odawara, Sekigahara, Himeji, Azuchi, terrain, siege warfare, and what survives on the ground.</p>
+    </div>
+  </div>
+
+  <h2>Planned article tracks</h2>
+  <div class="topic-rank">
+    <div>
+      <p class="label">Track 1</p>
+      <h3>High-demand gateways</h3>
+      <p>Is Shōgun a true story? Were ninja real? Did samurai use guns? These are the questions that bring readers in.</p>
+    </div>
+    <div>
+      <p class="label">Track 2</p>
+      <h3>Japanese source depth</h3>
+      <p>Each piece is checked against Japanese-language historians, source collections, and period-specific debates.</p>
+    </div>
+    <div>
+      <p class="label">Track 3</p>
+      <h3>Hidden Japan travel</h3>
+      <p>Lesser-known castles, battlefield geography, local museums, and quieter routes where affiliate links can be useful after the context is clear.</p>
+    </div>
+  </div>
+
+  <h2>Why this exists</h2>
+  <p>
+    Japanese history online is often filtered through outside summaries, pop
+    culture, and familiar Western categories. That can make the story easy to
+    enter, but it also flattens the Japanese context.
+  </p>
+  <p>
+    This project adds another angle: <strong>Japanese historical judgment,
+    edited into clear prose.</strong> The point is not to make Japan seem
+    mysterious. The point is to make the context visible.
+  </p>
+
+  <div class="note-box">
+    <p>
+      The site can move from Sengoku to Bakumatsu to modern Japan because each
+      section answers a different reader question. The connection is not strict
+      chronology; it is how Japan's past still shapes what readers notice today.
+    </p>
+  </div>
+
+  <SocialLinks />
+</BaseLayout>

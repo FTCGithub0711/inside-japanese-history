@@ -1,0 +1,81 @@
+---
+interface RelatedItem {
+  title: string;
+  description: string;
+  href: string;
+  kicker?: string;
+}
+
+interface Props {
+  items?: RelatedItem[];
+  title?: string;
+}
+
+const {
+  items = [],
+  title = 'Read next',
+} = Astro.props;
+---
+
+{items.length > 0 && (
+  <section class="related-articles" aria-labelledby="related-articles-heading">
+    <h2 id="related-articles-heading">{title}</h2>
+    <div>
+      {items.map((item) => (
+        <article>
+          {item.kicker && <p class="label">{item.kicker}</p>}
+          <h3><a href={item.href}>{item.title}</a></h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-articles {
+    margin: 2.8rem 0;
+  }
+
+  .related-articles > div {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .related-articles article {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .related-articles .label {
+    color: var(--color-accent);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.74rem;
+    font-weight: 800;
+    margin: 0 0 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .related-articles h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .related-articles h3 a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .related-articles h3 a:hover {
+    color: var(--color-accent);
+  }
+
+  .related-articles article > p:last-child {
+    color: var(--color-muted);
+    font-size: 0.94rem;
+    margin: 0;
+  }
+</style>

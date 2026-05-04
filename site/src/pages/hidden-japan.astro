@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleSchema from '../components/ArticleSchema.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import TravelAffiliateBox from '../components/TravelAffiliateBox.astro';
+import { SITE } from '../consts';
+import { bookingSearch, googleMapsSearch, klookSearch } from '../data/monetization';
+
+const PUB_DATE = '2026-05-05';
+const destinations = [
+  {
+    name: 'Odawara Castle',
+    description:
+      'A strong first bridge between Sengoku history and travel: castles, Hojo power, and Toyotomi Hideyoshi in one visit.',
+    placeHref: googleMapsSearch('Odawara Castle'),
+    stayHref: bookingSearch('Odawara, Kanagawa, Japan'),
+    activityHref: klookSearch('Odawara Castle Japan'),
+  },
+  {
+    name: 'Sekigahara Battlefield',
+    description:
+      'Best for readers who want to understand Tokugawa Ieyasu, battlefield geography, and the political end of the Sengoku period.',
+    placeHref: googleMapsSearch('Sekigahara Battlefield'),
+    stayHref: bookingSearch('Sekigahara, Gifu, Japan'),
+    activityHref: klookSearch('Sekigahara battlefield'),
+  },
+  {
+    name: 'Hachigata Castle ruins',
+    description:
+      'A lesser-known castle site that fits the project well: regional history, terrain, siege warfare, and a quieter travel angle.',
+    placeHref: googleMapsSearch('Hachigata Castle ruins'),
+    stayHref: bookingSearch('Yorii, Saitama, Japan'),
+  },
+];
+---
+
+<BaseLayout
+  title="Hidden Historic Japan"
+  description="Lesser-known historic places in Japan for travelers who want to avoid overtourism, skip shallow sightseeing, and understand a deeper side of Japan."
+  type="article"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Hidden Historic Japan"
+    description="Lesser-known historic places in Japan for travelers who want to avoid overtourism, skip shallow sightseeing, and understand a deeper side of Japan."
+    datePublished={PUB_DATE}
+  />
+
+  <p class="kicker">Hidden Japan</p>
+  <h1>Hidden Historic Japan</h1>
+
+  <p class="dek">
+    For travelers who want to go beyond the crowded checklist: castles,
+    battlefields, local museums, temple towns, and overlooked places where
+    Japanese history is still visible if you know what to look for.
+  </p>
+
+  <section class="authority-note" aria-label="Editorial approach">
+    <p class="kicker">Beyond overtourism</p>
+    <h2>Not another list of famous places.</h2>
+    <p>
+      This section is for readers who already know Tokyo, Kyoto, Osaka, and
+      Mount Fuji are popular. The point is to find quieter, historically rich
+      places that reveal a more specific Japan: regional power, local memory,
+      old roads, castle ruins, small museums, and landscapes shaped by conflict.
+    </p>
+  </section>
+
+  <h2>What belongs here</h2>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h3>Less-crowded historic sites</h3>
+      <p>Places that still have enough access for travelers, but are not reduced to the usual Golden Route checklist.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Castles beyond the postcard</h3>
+      <p>Not only famous keeps, but ruins, earthworks, clan territories, siege sites, and the terrain around them.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Local museums and memory</h3>
+      <p>Small museums, local exhibitions, and regional stories that rarely make it into English travel summaries.</p>
+    </div>
+    <div class="pillar-card">
+      <h3>Core Japan, not surface Japan</h3>
+      <p>Routes for readers who want to understand what a place meant before turning it into a travel stop.</p>
+    </div>
+  </div>
+
+  <TravelAffiliateBox
+    destinations={destinations}
+    title="Starter destinations beyond the obvious route"
+    intro="These are examples of how hidden-history travel articles can connect context, maps, nearby stays, and tours without becoming generic sightseeing content."
+  />
+
+  <h2>Why this belongs here</h2>
+  <p>
+    Many readers first arrive through samurai, Shōgun, castles, or Japan travel
+    searches. This section serves the readers who are not satisfied with the
+    same famous stops, but also do not want random hidden-gem lists with no
+    historical judgment.
+  </p>
+
+  <p>
+    The rule is simple: a destination page should make the reader understand
+    what they are looking at before it asks them to book anything.
+  </p>
+
+  <NewsletterCTA />
+</BaseLayout>

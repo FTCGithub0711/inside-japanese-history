@@ -1,0 +1,17 @@
+.DS_Store
+**/.DS_Store
+
+# Local app dependencies and build output
+site/node_modules/
+site/dist/
+site/.astro/
+
+# Local session/history files
+*.log
+.Rhistory
+seo-research/.Rhistory
+.claude/
+
+# Environment files
+.env
+.env.*
