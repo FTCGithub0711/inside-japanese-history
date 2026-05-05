@@ -38,7 +38,7 @@
    記事から史跡・宿泊予約へつなげる旅行アフィリエイト導線。
 
 12. `15_hidden_historic_japan_strategy_ja.md`  
-   Hidden Japanカテゴリで、混雑回避・穴場史跡・コアな日本旅行を収益化につなげる方針。
+   Hidden Japan Travelカテゴリで、混雑回避・穴場史跡・コアな日本旅行を収益化につなげる方針。
 
 13. `03_content_calendar.md`  
    12週の公開カレンダーとKPI。

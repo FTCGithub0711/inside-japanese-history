@@ -1,10 +1,10 @@
-# Hidden Historic Japan 戦略
+# Hidden Japan Travel 戦略
 
 作成日: 2026-05-05
 
 ## 結論
 
-観光地情報は追加すべき。ただし、一般的な旅行ブログにはしない。`Places` では弱いので、カテゴリは `Hidden Japan`、ページ見出しは `Hidden Historic Japan` にする。
+観光地情報は追加すべき。ただし、一般的な旅行ブログにはしない。`Places` では弱く、`Hidden Japan` だけでも旅行意図が伝わりにくい。カテゴリは `Hidden Japan Travel`、ページ見出しは `Hidden Historic Places in Japan` にする。
 
 狙う感情は「有名観光地では物足りない」「overtourismを避けたい」「もっとコアな日本を知りたい」。
 
@@ -21,11 +21,11 @@
 
 新カテゴリ名:
 
-`Hidden Japan`
+`Hidden Japan Travel`
 
 ページ見出し:
 
-`Hidden Historic Japan`
+`Hidden Historic Places in Japan`
 
 URL:
 
@@ -136,8 +136,8 @@ URL:
 
 強い言い方:
 
-- `Hidden Japan`
-- `Hidden Historic Japan`
+- `Hidden Japan Travel`
+- `Hidden Historic Places in Japan`
 - `Japan Beyond the Crowds`
 - `Lesser-known historic places`
 - `Beyond the Golden Route`
