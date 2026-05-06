@@ -1,6 +1,7 @@
 ---
 import Analytics from '../components/Analytics.astro';
 import { SITE } from '../consts';
+import { localeFromLang, localizedHref, siteTemplate, t } from '../copy/siteTemplate';
 
 interface Props {
   title: string;
@@ -25,8 +26,8 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).toStri
 const ogImage = new URL(image, Astro.site).toString();
 const isGerman = lang.startsWith('de');
 const isJapanese = lang.startsWith('ja');
+const locale = localeFromLang(lang);
 const localePrefix = isGerman ? '/de' : isJapanese ? '/ja' : '';
-const localized = (path: string) => `${localePrefix}${path}`;
 const basePath = Astro.url.pathname
   .replace(/^\/de(?=\/|$)/, '')
   .replace(/^\/ja(?=\/|$)/, '') || '/';
@@ -48,40 +49,16 @@ const languageLinks = [
   { href: withLocale('/de'), label: 'Deutsch', flag: '🇩🇪', active: isGerman },
   { href: withLocale('/ja'), label: '日本語', flag: '🇯🇵', active: isJapanese },
 ];
-const navLinks = isGerman
-  ? [
-      { href: localized('/sengoku/'), label: 'Sengoku' },
-      { href: localized('/bakumatsu/'), label: 'Bakumatsu' },
-      { href: localized('/modern/'), label: 'Modernes Japan' },
-      { href: localized('/hidden-japan/'), label: 'Hidden Japan Travel' },
-      { href: localized('/about/'), label: 'About' },
-    ]
-  : isJapanese
-    ? [
-        { href: localized('/sengoku/'), label: '戦国' },
-        { href: localized('/bakumatsu/'), label: '幕末' },
-        { href: localized('/modern/'), label: '近代・現代' },
-        { href: localized('/hidden-japan/'), label: '歴史旅' },
-        { href: localized('/about/'), label: 'About' },
-      ]
-    : [
-        { href: '/sengoku/', label: 'Sengoku' },
-        { href: '/bakumatsu/', label: 'Bakumatsu' },
-        { href: '/modern/', label: 'Modern' },
-        { href: '/hidden-japan/', label: 'Hidden Japan Travel' },
-        { href: '/about/', label: 'About' },
-      ];
-const subscribeLabel = isGerman ? 'Abonnieren' : isJapanese ? '購読' : 'Subscribe';
-const footerText = isGerman
-  ? `Japanische Geschichte, klar erzählt.`
-  : isJapanese
-    ? `日本史を、資料と文脈からわかりやすく。`
-    : `Japanese history, clearly told.`;
-const legalLinks = [
-  { href: '/contact/', label: isGerman ? 'Kontakt' : isJapanese ? 'お問い合わせ' : 'Contact' },
-  { href: '/privacy/', label: isGerman ? 'Datenschutz' : isJapanese ? 'プライバシー' : 'Privacy' },
-  { href: '/affiliate-disclosure/', label: isGerman ? 'Affiliate-Hinweis' : isJapanese ? 'アフィリエイト開示' : 'Affiliate Disclosure' },
-];
+const navLinks = Object.values(siteTemplate.header.nav).map((link) => ({
+  href: localizedHref(link.href, locale),
+  label: t(link, locale),
+}));
+const subscribeLabel = t(siteTemplate.header.subscribe, locale);
+const footerText = t(siteTemplate.footer.text, locale);
+const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
+  href: link.href,
+  label: t(link, locale),
+}));
 ---
 
 <!doctype html>

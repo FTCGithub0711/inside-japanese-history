@@ -4,76 +4,61 @@ import HeroSlideshow from '../../components/HeroSlideshow.astro';
 import PersonSchema from '../../components/PersonSchema.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import { SITE } from '../../consts';
+import { localizedHref, siteTemplate, t } from '../../copy/siteTemplate';
+
+const locale = 'ja';
 ---
 
 <BaseLayout
-  title="日本語"
-  description="日本語の資料と現地の視点から、日本史と歴史旅を読み直すページです。"
+  title={t(siteTemplate.home.meta.title, locale)}
+  description={t(siteTemplate.home.meta.description, locale)}
   lang="ja"
 >
   <PersonSchema slot="head" person="both" />
 
   <HeroSlideshow
-    kicker="日本語で読み直す日本史"
-    title="知っているようで、まだ読めていない日本史。"
-    description="城、合戦、人物、町の記憶。日本語の資料と現地に残る手がかりから、日本史をもう一度たどります。"
-    primaryLabel="Substackを見る"
+    kicker={t(siteTemplate.home.hero.kicker, locale)}
+    title={t(siteTemplate.home.hero.title, locale)}
+    description={t(siteTemplate.home.hero.description, locale)}
+    primaryLabel={t(siteTemplate.home.hero.primaryLabel, locale)}
     primaryHref={SITE.substackUrl}
-    secondaryLabel="テーマを見る"
+    secondaryLabel={t(siteTemplate.home.hero.secondaryLabel, locale)}
     secondaryHref="#topics"
   />
 
   <div class="trust-strip">
-    <p><strong>資料を読む</strong>日本語の本、史料、現地情報を確認</p>
-    <p><strong>現地を見る</strong>城跡、古戦場、城下町、資料館を歩く</p>
-    <p><strong>話をほどく</strong>伝説、ドラマ、史実を分けて考える</p>
+    {siteTemplate.home.trustStrip.map((item) => (
+      <p><strong>{t(item.strong, locale)}</strong>{t(item.text, locale)}</p>
+    ))}
   </div>
 
   <section class="authority-note" aria-label="編集方針">
-    <p class="kicker">編集方針</p>
-    <h2>派手な物語にする前に、資料と場所に戻る。</h2>
-    <p>
-      海外でよく読まれている日本史は、わかりやすい一方で、細かな文脈が落ちてしまうことがあります。
-      このサイトでは、まず日本語の資料と現地の見え方を確認し、そこから読者に届く形へ整えます。
-    </p>
+    <p class="kicker">{t(siteTemplate.home.authority.kicker, locale)}</p>
+    <h2>{t(siteTemplate.home.authority.title, locale)}</h2>
+    <p>{t(siteTemplate.home.authority.text, locale)}</p>
   </section>
 
   <section class="editorial-map">
     <div>
-      <p class="kicker">サイトの方向性</p>
-      <h2>入口はわかりやすく。中身は薄めない。</h2>
+      <p class="kicker">{t(siteTemplate.home.direction.kicker, locale)}</p>
+      <h2>{t(siteTemplate.home.direction.title, locale)}</h2>
     </div>
-    <p>
-      戦国、幕末、近代、武士のイメージ、城や古戦場、歴史をたどる旅を扱います。
-      海外の読者が入りやすい問いから始めながら、日本語で読んでも雑に感じない内容を目指します。
-    </p>
+    <p>{t(siteTemplate.home.direction.text, locale)}</p>
   </section>
 
-  <h2 id="topics">テーマから読む</h2>
+  <h2 id="topics">{t(siteTemplate.home.topicIntro.heading, locale)}</h2>
+  <p>{t(siteTemplate.home.topicIntro.text, locale)}</p>
   <div class="pillar-grid">
-    <div class="pillar-card">
-      <h3><a href="/ja/sengoku/">戦国</a></h3>
-      <p>信長、秀吉、家康だけでなく、城、鉄砲、忍者、合戦の地形まで見ます。</p>
-    </div>
-    <div class="pillar-card">
-      <h3><a href="/ja/bakumatsu/">幕末</a></h3>
-      <p>黒船、坂本龍馬、新選組、内戦、そして明治維新への流れを追います。</p>
-    </div>
-    <div class="pillar-card">
-      <h3><a href="/ja/modern/">近代・現代</a></h3>
-      <p>明治以降の国家づくり、戦争、占領、経済成長、暮らしの変化を扱います。</p>
-    </div>
-    <div class="pillar-card">
-      <h3><a href="/ja/hidden-japan/">歴史旅</a></h3>
-      <p>城跡、古戦場、城下町、地方資料館を、歴史の文脈から訪ねます。</p>
-    </div>
+    {siteTemplate.home.pillars.map((pillar) => (
+      <div class="pillar-card">
+        <h3><a href={localizedHref(pillar.href, locale)}>{t(pillar.title, locale)}</a></h3>
+        <p>{t(pillar.text, locale)}</p>
+      </div>
+    ))}
   </div>
 
-  <h2>日本語版について</h2>
-  <p>
-    日本語版は、英語版・ドイツ語版と同じテーマを、日本語でも読めるように整えていきます。
-    史実の確認、写真の選定、現地の見方も、ここに反映していきます。
-  </p>
+  <h2>{t(siteTemplate.home.jaNote.heading, locale)}</h2>
+  <p>{t(siteTemplate.home.jaNote.text, locale)}</p>
 
   <SocialLinks />
 </BaseLayout>
