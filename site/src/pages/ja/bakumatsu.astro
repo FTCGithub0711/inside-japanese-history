@@ -6,20 +6,20 @@ import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
 const PUB_DATE = '2026-05-06';
 const travelDestinations = [
   {
-    name: 'Shimoda',
-    description: '黒船、条約、開国の現場を考える入口です。',
+    name: '下田',
+    description: '黒船と条約の記憶が残る、開国を現地で考えやすい町です。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Shimoda%20Japan%20Perry%20Road',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Shimoda%2C%20Shizuoka%2C%20Japan',
   },
   {
-    name: 'Kyoto Bakumatsu sites',
-    description: '新選組、朝廷政治、幕末の緊張を現地で追いやすい拠点です。',
+    name: '京都の幕末史跡',
+    description: '新選組、朝廷、諸藩の動きが重なった幕末政治の中心地です。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Kyoto%20Shinsengumi%20Mibu-dera',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Kyoto%2C%20Japan',
   },
   {
-    name: 'Kagoshima',
-    description: '薩摩、西郷隆盛、明治国家への流れを考える場所です。',
+    name: '鹿児島',
+    description: '薩摩と西郷隆盛を通じて、明治国家への流れを考えられます。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Saigo%20Takamori%20Kagoshima',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Kagoshima%2C%20Japan',
   },
@@ -28,37 +28,36 @@ const travelDestinations = [
 
 <BaseLayout
   title="幕末"
-  description="黒船、開国、尊王攘夷、新選組、内戦、明治維新を日本語資料から整理します。"
+  description="黒船、開国、尊王攘夷、新選組、内戦、明治維新を、単純な近代化物語にせず読みます。"
   type="article"
   lang="ja"
 >
   <ArticleSchema
     slot="head"
     headline="幕末"
-    description="黒船、開国、尊王攘夷、新選組、内戦、明治維新を日本語資料から整理します。"
+    description="黒船、開国、尊王攘夷、新選組、内戦、明治維新を、単純な近代化物語にせず読みます。"
     datePublished={PUB_DATE}
     inLanguage="ja"
   />
 
   <p class="kicker">Bakumatsu</p>
-  <h1>幕末: 徳川の終わりと近代への転換</h1>
+  <h1>幕末は、きれいな近代化の物語ではない。</h1>
 
   <p class="dek">
-    幕末は、開国だけでなく、徳川秩序、外圧、内戦、地域勢力、近代国家の成立が重なる時代です。
+    開国、尊王攘夷、新選組、薩長、内戦、明治維新。幕末は、いくつもの立場と記憶がぶつかった時代です。
   </p>
 
-  <h2>扱う主な問い</h2>
+  <h2>ここで扱うこと</h2>
   <ul>
     <li>なぜ日本は開国へ向かったのか</li>
-    <li>坂本龍馬や新選組はどのように記憶されたのか</li>
-    <li>明治維新はなぜ単純な近代化物語ではないのか</li>
+    <li>坂本龍馬や新選組は、なぜ今も語られるのか</li>
+    <li>明治維新の前後で、何が失われ、何が残ったのか</li>
   </ul>
 
   <TravelAffiliateBox
     destinations={travelDestinations}
     lang="ja"
-    title="幕末を現地で理解する場所"
-    intro="条約港、京都の動乱、薩摩の歴史など、記事と現地をつなげるための候補です。"
+    title="幕末を歩いて考える場所"
+    intro="条約港、京都の町、薩摩の記憶。現地を歩くと、年表だけでは見えない距離感が出てきます。"
   />
 </BaseLayout>
-

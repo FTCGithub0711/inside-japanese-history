@@ -6,20 +6,20 @@ import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
 const PUB_DATE = '2026-05-06';
 const travelDestinations = [
   {
-    name: 'Odawara Castle',
-    description: '後北条氏、豊臣秀吉、小田原合戦をつなげて理解しやすい城です。',
+    name: '小田原城',
+    description: '後北条氏の本拠。秀吉の小田原攻めを考えるうえでも重要な城です。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Odawara%20Castle',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Odawara%2C%20Kanagawa%2C%20Japan',
   },
   {
-    name: 'Sekigahara Battlefield',
-    description: '徳川家康と戦国の終わりを、地形と布陣から理解する古戦場です。',
+    name: '関ヶ原古戦場',
+    description: '徳川家康の勝利だけでなく、布陣と地形から戦後の秩序まで見えてきます。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Sekigahara%20Battlefield',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Sekigahara%2C%20Gifu%2C%20Japan',
   },
   {
-    name: 'Azuchi Castle ruins',
-    description: '織田信長と近世城郭への転換を考える入口になります。',
+    name: '安土城跡',
+    description: '建物は残っていませんが、信長の権力の見せ方を考えるには欠かせません。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Azuchi%20Castle%20Ruins',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Omihachiman%2C%20Shiga%2C%20Japan',
   },
@@ -28,38 +28,37 @@ const travelDestinations = [
 
 <BaseLayout
   title="戦国"
-  description="戦国時代の人物、城、合戦、鉄砲、忍者、統一過程を日本語資料から整理します。"
+  description="信長、秀吉、家康だけでなく、城、合戦、鉄砲、忍者、地域権力から戦国を読みます。"
   type="article"
   lang="ja"
 >
   <ArticleSchema
     slot="head"
     headline="戦国"
-    description="戦国時代の人物、城、合戦、鉄砲、忍者、統一過程を日本語資料から整理します。"
+    description="信長、秀吉、家康だけでなく、城、合戦、鉄砲、忍者、地域権力から戦国を読みます。"
     datePublished={PUB_DATE}
     inLanguage="ja"
   />
 
   <p class="kicker">Sengoku</p>
-  <h1>戦国: 城、合戦、統一への道</h1>
+  <h1>戦国を、人物だけで終わらせない。</h1>
 
   <p class="dek">
-    戦国時代は、信長・秀吉・家康だけでなく、城、地形、鉄砲、同盟、裏切り、地域権力を読む時代です。
+    信長、秀吉、家康はもちろん重要です。ただ、戦国の面白さは、城の構え、土地の形、同盟、裏切り、地域ごとの判断にもあります。
   </p>
 
-  <h2>扱う主な問い</h2>
+  <h2>ここで扱うこと</h2>
   <ul>
-    <li>戦国時代とは何だったのか</li>
-    <li>信長・秀吉・家康は何を変えたのか</li>
-    <li>城と地形は合戦をどう左右したのか</li>
-    <li>武士・忍者・鉄砲のイメージはどこまで史実なのか</li>
+    <li>戦国時代は、なぜ長く続いたのか</li>
+    <li>信長、秀吉、家康は何を変えたのか</li>
+    <li>城と地形は、合戦をどう左右したのか</li>
+    <li>武士、忍者、鉄砲のイメージは、どこまで史実なのか</li>
   </ul>
 
   <TravelAffiliateBox
     destinations={travelDestinations}
     lang="ja"
-    title="戦国を現地で理解する場所"
-    intro="戦国の記事から、実際に訪ねられる城・古戦場・宿泊拠点へつなげる導線です。"
+    title="戦国を歩いて考える場所"
+    intro="城や古戦場は、名前を知るだけでは見えてきません。現地で地形や距離を見ると、理解が変わります。"
   />
 </BaseLayout>
-

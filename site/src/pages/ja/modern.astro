@@ -6,20 +6,20 @@ import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
 const PUB_DATE = '2026-05-06';
 const travelDestinations = [
   {
-    name: 'Tokyo',
-    description: '明治国家、皇居、東京駅、戦後復興、現代都市を考える拠点です。',
+    name: '東京',
+    description: '江戸から東京へ。国家づくり、復興、現代都市が重なって見える場所です。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Tokyo%20Station%20Imperial%20Palace',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Tokyo%2C%20Japan',
   },
   {
-    name: 'Hiroshima',
-    description: '戦争記憶、復興、平和教育を考えるうえで避けられない場所です。',
+    name: '広島',
+    description: '戦争の記憶、復興、平和教育を考えるうえで避けて通れない場所です。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Museum',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Hiroshima%2C%20Japan',
   },
   {
-    name: 'Yokohama',
-    description: '条約港、鉄道、国際化、近代都市文化を説明しやすい場所です。',
+    name: '横浜',
+    description: '条約港、鉄道、国際化、都市文化。近代日本の入口として読みやすい町です。',
     placeHref: 'https://www.google.com/maps/search/?api=1&query=Yokohama%20Japan%20history',
     stayHref: 'https://www.booking.com/searchresults.html?ss=Yokohama%2C%20Japan',
   },
@@ -28,37 +28,36 @@ const travelDestinations = [
 
 <BaseLayout
   title="近代・現代"
-  description="明治から現代まで、国家形成、戦争、占領、経済成長、社会習慣を日本語資料から整理します。"
+  description="明治から現代まで、国家づくり、戦争、占領、復興、暮らしの変化をたどります。"
   type="article"
   lang="ja"
 >
   <ArticleSchema
     slot="head"
     headline="近代・現代"
-    description="明治から現代まで、国家形成、戦争、占領、経済成長、社会習慣を日本語資料から整理します。"
+    description="明治から現代まで、国家づくり、戦争、占領、復興、暮らしの変化をたどります。"
     datePublished={PUB_DATE}
     inLanguage="ja"
   />
 
   <p class="kicker">Modern Japan</p>
-  <h1>近代・現代: 明治から今日まで</h1>
+  <h1>明治から今日まで、日本は何を変えたのか。</h1>
 
   <p class="dek">
-    近代日本は、明治維新、帝国、戦争、占領、復興、経済成長、そして現代の生活習慣まで続く長い変化として扱います。
+    明治維新、帝国、戦争、占領、復興、経済成長。近代日本は、制度だけでなく、暮らし方や記憶の変化としても残っています。
   </p>
 
-  <h2>扱う主な問い</h2>
+  <h2>ここで扱うこと</h2>
   <ul>
     <li>明治国家はどのように作られたのか</li>
-    <li>戦争と占領は日本社会をどう変えたのか</li>
-    <li>現代日本の習慣はどこから来たのか</li>
+    <li>戦争と占領は、日本社会をどう変えたのか</li>
+    <li>現代日本の習慣や空気は、どこから来たのか</li>
   </ul>
 
   <TravelAffiliateBox
     destinations={travelDestinations}
     lang="ja"
-    title="近代・現代を現地で理解する場所"
-    intro="国家形成、戦争記憶、復興、都市文化を現地で考えるための候補です。"
+    title="近代・現代を歩いて考える場所"
+    intro="東京、広島、横浜は、近代化や戦後復興を抽象論ではなく場所として考える入口になります。"
   />
 </BaseLayout>
-
