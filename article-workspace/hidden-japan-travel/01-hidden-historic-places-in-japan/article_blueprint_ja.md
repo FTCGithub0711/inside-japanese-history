@@ -6,7 +6,7 @@
 
 `Hidden Japan Travel` カテゴリの親記事。単独の観光地紹介ではなく、「有名観光地では物足りない」「overtourismを避けたい」「もっとコアな日本を知りたい」読者に、歴史起点で訪れるべき場所の考え方と入口を提示する。
 
-この記事から、後で個別記事へ内部リンクする。
+この記事から、後で個別記事へ内部リンクする。たとえば本文中に `Odawara Castle` が出てきたら、読者はそこをクリックして小田原城の詳しい歴史・観光方法・食事・ホテル情報を読む。
 
 - Odawara Castle
 - Sekigahara Battlefield
@@ -235,6 +235,12 @@ URL:
 
 ## 10. 内部リンク計画
 
+基本構造:
+
+- 親記事: 複数の候補地を紹介し、興味を持った読者を個別記事へ送る
+- 個別記事: 1つの場所について、歴史・観光・食事・宿泊まで詳しく扱う
+- カテゴリページ: `Hidden Japan Travel` 全体の入口として親記事と個別記事を束ねる
+
 親ページからリンク:
 
 - `/hidden-japan/`
@@ -257,6 +263,21 @@ URL:
 - `/articles/aizu-wakamatsu-history-travel/`
 - `/articles/hagi-castle-town/`
 - `/articles/nagasaki-christian-heritage-history/`
+
+個別記事に入れる標準項目:
+
+1. Why this place matters historically
+2. The detailed history
+3. What to see on site
+4. How to visit
+5. What to eat nearby
+6. Where to stay
+7. Photo slots
+8. Sources and related articles
+
+注意:
+
+食事どころ・ホテルは最新性が必要なので、本文作成時に必ず再調査する。親記事では食事・ホテルを細かく書きすぎず、個別記事への内部リンクで受ける。
 
 ## 11. 参考資料の集め方
 
