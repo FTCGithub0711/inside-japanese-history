@@ -40,13 +40,16 @@
 12. `15_hidden_historic_japan_strategy_ja.md`  
    Hidden Japan Travelカテゴリで、混雑回避・穴場史跡・コアな日本旅行を収益化につなげる方針。
 
-13. `03_content_calendar.md`  
+13. `16_site_and_content_blueprint_ja.md`  
+   トップページ、カテゴリ、初期記事、Hidden Japan Travel、アフィリエイト導線を統合した現行設計書。
+
+14. `03_content_calendar.md`  
    12週の公開カレンダーとKPI。
 
-14. `02_keyword_research.md`  
+15. `02_keyword_research.md`  
    記事テーマと検索需要の調査。
 
-15. `01_hachigata_serp_analysis.md`  
+16. `01_hachigata_serp_analysis.md`  
    初回本命記事「Hachigata Castle 1590」のSERP分析。
 
 ## 運用ルール
