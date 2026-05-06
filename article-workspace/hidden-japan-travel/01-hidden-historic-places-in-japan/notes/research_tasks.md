@@ -15,6 +15,10 @@
 
 ## Drafting
 
+- [x] 日本語アウトラインを `Eiji_check/` に作る
+- [x] Eijiさん確認用docxを `Eiji_check/` に作る
+- [ ] Eijiさん確認済みファイルを `translate/` に入れる
+- [ ] `translate/` の確認済み原稿をもとに英語記事の構成を作る
 - [ ] 英語記事の構成を `drafts/outline_en.md` に作る
 - [ ] ドイツ語版の方針を `drafts/outline_de.md` に作る
 - [ ] `/hidden-japan/` ページからの内部リンク位置を決める
