@@ -2,15 +2,15 @@
 
 ## Before Drafting
 
-- [ ] Odawara Castleの公式情報を保存する
-- [ ] Sekigahara Battlefieldの公式情報を保存する
-- [ ] Hachigata Castle ruinsの公式情報を保存する
-- [ ] Azuchi Castle ruinsの公式情報を保存する
-- [ ] Aizu-Wakamatsu / Tsuruga Castleの公式情報を保存する
-- [ ] Hagi castle townの公式情報を保存する
-- [ ] Nagasaki Christian heritageの公式情報を保存する
-- [ ] 各候補地のGoogle Maps URLを記録する
-- [ ] 各候補地の宿泊拠点を決める
+- [x] Odawara Castleの公式情報を保存する
+- [x] Sekigahara Battlefieldの公式情報を保存する
+- [x] Hachigata Castle ruinsの公式情報を保存する
+- [x] Azuchi Castle ruinsの公式情報を保存する
+- [x] Aizu-Wakamatsu / Tsuruga Castleの公式情報を保存する
+- [x] Hagi castle townの公式情報を保存する
+- [x] Nagasaki Christian heritageの公式情報を保存する
+- [x] 各候補地のGoogle Maps URLを記録する
+- [x] 各候補地の宿泊拠点を決める
 - [ ] 写真候補を `assets/` に入れる
 
 ## Drafting
