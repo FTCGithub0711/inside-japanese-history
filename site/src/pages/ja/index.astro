@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSlideshow from '../../components/HeroSlideshow.astro';
+import PersonSchema from '../../components/PersonSchema.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
+import { SITE } from '../../consts';
+---
+
+<BaseLayout
+  title="日本語"
+  description="日本語資料を起点に、日本史と歴史旅を英語・ドイツ語へ展開するための日本語ページです。"
+  lang="ja"
+>
+  <PersonSchema slot="head" person="both" />
+
+  <HeroSlideshow
+    kicker="日本語資料から読む日本史"
+    title="日本史を、内側の資料から読む。"
+    description="日本語の書籍、史料、現地の記憶、史跡を起点に、海外読者にも届く形で日本史を整理していきます。"
+    primaryLabel="Substackを見る"
+    primaryHref={SITE.substackUrl}
+    secondaryLabel="テーマを見る"
+    secondaryHref="#topics"
+  />
+
+  <div class="trust-strip">
+    <p><strong>日本語資料</strong>日本語の書籍・史料・研究から出発</p>
+    <p><strong>人気テーマ</strong>Shōgun、武士、城、幕末、歴史旅</p>
+    <p><strong>編集方針</strong>神話、ドラマ、史実を分けて説明</p>
+  </div>
+
+  <section class="authority-note" aria-label="編集方針">
+    <p class="kicker">編集方針</p>
+    <h2>日本語で確認し、海外向けに整理する。</h2>
+    <p>
+      この日本語版は、父チェックや日本人読者の確認にも使える入口です。
+      公開記事は英語・ドイツ語へ展開しつつ、重要な判断は日本語資料と現地感を起点にします。
+    </p>
+  </section>
+
+  <section class="editorial-map">
+    <div>
+      <p class="kicker">サイトの方向性</p>
+      <h2>検索される疑問から入り、日本語資料で答える。</h2>
+    </div>
+    <p>
+      戦国、幕末、近代、武士のイメージ、城や古戦場、混雑を避ける歴史旅を扱います。
+      日本語版は、内容確認と国内読者向けの導線として英語版と同期していきます。
+    </p>
+  </section>
+
+  <h2 id="topics">テーマから読む</h2>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h3><a href="/ja/sengoku/">戦国</a></h3>
+      <p>信長、秀吉、家康、城、鉄砲、忍者、合戦の地形を扱います。</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/ja/bakumatsu/">幕末</a></h3>
+      <p>黒船、坂本龍馬、新選組、内戦、明治維新への移行を扱います。</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/ja/modern/">近代・現代</a></h3>
+      <p>明治以降、戦争、占領、経済成長、現代日本の習慣を扱います。</p>
+    </div>
+    <div class="pillar-card">
+      <h3><a href="/ja/hidden-japan/">歴史旅</a></h3>
+      <p>混雑を避け、城跡、古戦場、城下町、地方資料館を歴史の文脈で訪ねます。</p>
+    </div>
+  </div>
+
+  <h2>日本語版の使い方</h2>
+  <p>
+    日本語ページは、英語記事を作る前の確認にも使います。父チェック済みの内容、
+    写真候補、史実の違和感、現地の見方をここから英語・ドイツ語版へ反映します。
+  </p>
+
+  <SocialLinks />
+</BaseLayout>
+

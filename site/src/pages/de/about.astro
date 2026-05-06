@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PersonSchema from '../../components/PersonSchema.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Redaktioneller Ansatz von Inside Japanese History."
+  lang="de"
+>
+  <PersonSchema slot="head" person="both" />
+
+  <p class="kicker">About</p>
+  <h1>Über Inside Japanese History</h1>
+
+  <p class="dek">
+    Diese Seite erklärt japanische Geschichte aus japanischen Quellen für Leser außerhalb Japans.
+  </p>
+
+  <h2>Redaktioneller Ansatz</h2>
+  <p>
+    Wir beginnen mit Fragen, die internationale Leser bereits stellen, prüfen
+    sie aber gegen japanische Bücher, Quellen, Orte und Fachdebatten.
+  </p>
+
+  <h2>Warum es diese Seite gibt</h2>
+  <p>
+    Viele englische und deutsche Zusammenfassungen vereinfachen japanische
+    Geschichte stark. Dieses Projekt ergänzt diese Einstiege durch Kontext aus
+    japanischer Perspektive.
+  </p>
+</BaseLayout>
+

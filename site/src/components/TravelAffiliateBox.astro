@@ -13,7 +13,7 @@ interface Props {
   title?: string;
   intro?: string;
   destinations: TravelDestination[];
-  lang?: 'en' | 'de';
+  lang?: 'en' | 'de' | 'ja';
 }
 
 const {
@@ -32,7 +32,19 @@ const copy = lang === 'de'
       place: 'Ort ansehen',
       stays: 'Unterkünfte suchen',
       activity: 'Touren suchen',
+      label: 'Reiselinks',
     }
+  : lang === 'ja'
+    ? {
+        title: title ?? 'このテーマに関連する場所',
+        intro:
+          intro ??
+          '歴史の説明から、実際に訪ねる場所や周辺宿泊の検討へつなげるためのリンクです。',
+        place: '場所を見る',
+        stays: '宿泊を探す',
+        activity: 'ツアーを探す',
+        label: '旅行リンク',
+      }
   : {
       title: title ?? 'Places connected to this story',
       intro:
@@ -41,12 +53,13 @@ const copy = lang === 'de'
       place: 'View the place',
       stays: 'Find nearby stays',
       activity: 'Find tours',
+      label: 'Travel links',
     };
 ---
 
 <aside class="travel-affiliate" aria-label={copy.title}>
   <div class="travel-affiliate__header">
-    <p class="label">Travel links</p>
+    <p class="label">{copy.label}</p>
     <h2>{copy.title}</h2>
     <p>{copy.intro}</p>
   </div>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PersonSchema from '../../components/PersonSchema.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Inside Japanese Historyの編集方針と日本語版の役割。"
+  lang="ja"
+>
+  <PersonSchema slot="head" person="both" />
+
+  <p class="kicker">About</p>
+  <h1>Inside Japanese Historyについて</h1>
+
+  <p class="dek">
+    このサイトは、日本語資料を起点に、日本史を英語・ドイツ語の読者へ届けるためのメディアです。
+  </p>
+
+  <h2>編集方針</h2>
+  <p>
+    英語圏で検索されている疑問から入りつつ、説明の根拠は日本語の書籍、論文、史料、
+    史跡、現地の記憶に置きます。ドラマや海外の要約だけで日本史を説明しないことを重視します。
+  </p>
+
+  <h2>日本語版の役割</h2>
+  <p>
+    日本語版は、日本人読者の入口であると同時に、父チェックや史実確認のための同期ページとして使います。
+    ここで確認した内容を、英語・ドイツ語の記事へ反映します。
+  </p>
+</BaseLayout>
+

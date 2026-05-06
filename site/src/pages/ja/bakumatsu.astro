@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
+
+const PUB_DATE = '2026-05-06';
+const travelDestinations = [
+  {
+    name: 'Shimoda',
+    description: '黒船、条約、開国の現場を考える入口です。',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Shimoda%20Japan%20Perry%20Road',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Shimoda%2C%20Shizuoka%2C%20Japan',
+  },
+  {
+    name: 'Kyoto Bakumatsu sites',
+    description: '新選組、朝廷政治、幕末の緊張を現地で追いやすい拠点です。',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Kyoto%20Shinsengumi%20Mibu-dera',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kyoto%2C%20Japan',
+  },
+  {
+    name: 'Kagoshima',
+    description: '薩摩、西郷隆盛、明治国家への流れを考える場所です。',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Saigo%20Takamori%20Kagoshima',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kagoshima%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="幕末"
+  description="黒船、開国、尊王攘夷、新選組、内戦、明治維新を日本語資料から整理します。"
+  type="article"
+  lang="ja"
+>
+  <ArticleSchema
+    slot="head"
+    headline="幕末"
+    description="黒船、開国、尊王攘夷、新選組、内戦、明治維新を日本語資料から整理します。"
+    datePublished={PUB_DATE}
+    inLanguage="ja"
+  />
+
+  <p class="kicker">Bakumatsu</p>
+  <h1>幕末: 徳川の終わりと近代への転換</h1>
+
+  <p class="dek">
+    幕末は、開国だけでなく、徳川秩序、外圧、内戦、地域勢力、近代国家の成立が重なる時代です。
+  </p>
+
+  <h2>扱う主な問い</h2>
+  <ul>
+    <li>なぜ日本は開国へ向かったのか</li>
+    <li>坂本龍馬や新選組はどのように記憶されたのか</li>
+    <li>明治維新はなぜ単純な近代化物語ではないのか</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    lang="ja"
+    title="幕末を現地で理解する場所"
+    intro="条約港、京都の動乱、薩摩の歴史など、記事と現地をつなげるための候補です。"
+  />
+</BaseLayout>
+

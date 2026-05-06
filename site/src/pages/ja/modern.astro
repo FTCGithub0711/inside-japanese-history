@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
+
+const PUB_DATE = '2026-05-06';
+const travelDestinations = [
+  {
+    name: 'Tokyo',
+    description: '明治国家、皇居、東京駅、戦後復興、現代都市を考える拠点です。',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Tokyo%20Station%20Imperial%20Palace',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Tokyo%2C%20Japan',
+  },
+  {
+    name: 'Hiroshima',
+    description: '戦争記憶、復興、平和教育を考えるうえで避けられない場所です。',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Museum',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Hiroshima%2C%20Japan',
+  },
+  {
+    name: 'Yokohama',
+    description: '条約港、鉄道、国際化、近代都市文化を説明しやすい場所です。',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Yokohama%20Japan%20history',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Yokohama%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="近代・現代"
+  description="明治から現代まで、国家形成、戦争、占領、経済成長、社会習慣を日本語資料から整理します。"
+  type="article"
+  lang="ja"
+>
+  <ArticleSchema
+    slot="head"
+    headline="近代・現代"
+    description="明治から現代まで、国家形成、戦争、占領、経済成長、社会習慣を日本語資料から整理します。"
+    datePublished={PUB_DATE}
+    inLanguage="ja"
+  />
+
+  <p class="kicker">Modern Japan</p>
+  <h1>近代・現代: 明治から今日まで</h1>
+
+  <p class="dek">
+    近代日本は、明治維新、帝国、戦争、占領、復興、経済成長、そして現代の生活習慣まで続く長い変化として扱います。
+  </p>
+
+  <h2>扱う主な問い</h2>
+  <ul>
+    <li>明治国家はどのように作られたのか</li>
+    <li>戦争と占領は日本社会をどう変えたのか</li>
+    <li>現代日本の習慣はどこから来たのか</li>
+  </ul>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    lang="ja"
+    title="近代・現代を現地で理解する場所"
+    intro="国家形成、戦争記憶、復興、都市文化を現地で考えるための候補です。"
+  />
+</BaseLayout>
+

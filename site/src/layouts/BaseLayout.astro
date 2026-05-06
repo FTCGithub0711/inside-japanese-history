@@ -24,31 +24,63 @@ const fullTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL(image, Astro.site).toString();
 const isGerman = lang.startsWith('de');
+const isJapanese = lang.startsWith('ja');
+const localePrefix = isGerman ? '/de' : isJapanese ? '/ja' : '';
+const localized = (path: string) => `${localePrefix}${path}`;
+const basePath = Astro.url.pathname
+  .replace(/^\/de(?=\/|$)/, '')
+  .replace(/^\/ja(?=\/|$)/, '') || '/';
+const localizedPaths = new Set([
+  '/',
+  '/about/',
+  '/sengoku/',
+  '/bakumatsu/',
+  '/modern/',
+  '/hidden-japan/',
+]);
+const withLocale = (prefix: '' | '/de' | '/ja') => {
+  const targetPath = localizedPaths.has(basePath) ? basePath : '/';
+  if (targetPath === '/') return `${prefix}/`;
+  return `${prefix}${targetPath}`;
+};
+const languageLinks = [
+  { href: withLocale(''), label: 'English', flag: '🇺🇸', active: !isGerman && !isJapanese },
+  { href: withLocale('/de'), label: 'Deutsch', flag: '🇩🇪', active: isGerman },
+  { href: withLocale('/ja'), label: '日本語', flag: '🇯🇵', active: isJapanese },
+];
 const navLinks = isGerman
   ? [
-      { href: '/de/sengoku/', label: 'Sengoku' },
-      { href: '/de/bakumatsu/', label: 'Bakumatsu' },
-      { href: '/de/modern/', label: 'Modernes Japan' },
-      { href: '/de/hidden-japan/', label: 'Hidden Japan Travel' },
-      { href: '/about/', label: 'About' },
-      { href: '/', label: 'English' },
+      { href: localized('/sengoku/'), label: 'Sengoku' },
+      { href: localized('/bakumatsu/'), label: 'Bakumatsu' },
+      { href: localized('/modern/'), label: 'Modernes Japan' },
+      { href: localized('/hidden-japan/'), label: 'Hidden Japan Travel' },
+      { href: localized('/about/'), label: 'About' },
     ]
-  : [
-      { href: '/sengoku/', label: 'Sengoku' },
-      { href: '/bakumatsu/', label: 'Bakumatsu' },
-      { href: '/modern/', label: 'Modern' },
-      { href: '/hidden-japan/', label: 'Hidden Japan Travel' },
-      { href: '/about/', label: 'About' },
-      { href: '/de/', label: 'Deutsch' },
-    ];
-const subscribeLabel = isGerman ? 'Abonnieren' : 'Subscribe';
+  : isJapanese
+    ? [
+        { href: localized('/sengoku/'), label: '戦国' },
+        { href: localized('/bakumatsu/'), label: '幕末' },
+        { href: localized('/modern/'), label: '近代・現代' },
+        { href: localized('/hidden-japan/'), label: '歴史旅' },
+        { href: localized('/about/'), label: 'About' },
+      ]
+    : [
+        { href: '/sengoku/', label: 'Sengoku' },
+        { href: '/bakumatsu/', label: 'Bakumatsu' },
+        { href: '/modern/', label: 'Modern' },
+        { href: '/hidden-japan/', label: 'Hidden Japan Travel' },
+        { href: '/about/', label: 'About' },
+      ];
+const subscribeLabel = isGerman ? 'Abonnieren' : isJapanese ? '購読' : 'Subscribe';
 const footerText = isGerman
   ? `Japanische Geschichte, klar erzählt.`
-  : `Japanese history, clearly told.`;
+  : isJapanese
+    ? `日本史を、資料と文脈からわかりやすく。`
+    : `Japanese history, clearly told.`;
 const legalLinks = [
-  { href: '/contact/', label: isGerman ? 'Kontakt' : 'Contact' },
-  { href: '/privacy/', label: isGerman ? 'Datenschutz' : 'Privacy' },
-  { href: '/affiliate-disclosure/', label: isGerman ? 'Affiliate-Hinweis' : 'Affiliate Disclosure' },
+  { href: '/contact/', label: isGerman ? 'Kontakt' : isJapanese ? 'お問い合わせ' : 'Contact' },
+  { href: '/privacy/', label: isGerman ? 'Datenschutz' : isJapanese ? 'プライバシー' : 'Privacy' },
+  { href: '/affiliate-disclosure/', label: isGerman ? 'Affiliate-Hinweis' : isJapanese ? 'アフィリエイト開示' : 'Affiliate Disclosure' },
 ];
 ---
 
@@ -88,6 +120,10 @@ const legalLinks = [
       title={`${SITE.name} — Podcast`}
       href={SITE.podcastFeedUrl}
     />
+    {languageLinks.map((link) => (
+      <link rel="alternate" hreflang={link.label === 'Deutsch' ? 'de' : link.label === '日本語' ? 'ja' : 'en'} href={new URL(link.href, Astro.site).toString()} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(withLocale(''), Astro.site).toString()} />
 
     <slot name="head" />
     <Analytics />
@@ -117,6 +153,11 @@ const legalLinks = [
       header.site .links a { color: var(--color-ink); font-size: 0.9rem; font-weight: 650; text-decoration: none; }
       header.site .links a:hover { color: var(--color-accent); }
       header.site .links a.subscribe-link { border: 1px solid var(--color-accent); border-radius: 999px; color: var(--color-accent); padding: 0.45rem 0.75rem; }
+      header.site .language-switcher { align-items: center; border-left: 1px solid var(--color-border); display: flex; gap: 0.15rem; margin-left: 0.15rem; padding-left: 0.65rem; }
+      header.site .language-switcher a { align-items: center; border: 1px solid transparent; border-radius: 999px; display: inline-flex; font-size: 1.05rem; justify-content: center; line-height: 1; min-height: 2rem; min-width: 2rem; text-decoration: none; }
+      header.site .language-switcher a:hover,
+      header.site .language-switcher a.active { background: var(--color-surface); border-color: var(--color-border); color: var(--color-accent); }
+      .sr-only { border: 0; clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px; }
       footer.site { background: var(--color-indigo); color: #f8f1e6; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif; font-size: 0.9rem; }
       footer.site .footer-inner { max-width: var(--wide-width); margin: 0 auto; padding: 2rem 1.25rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr); }
       footer.site a { color: #f8f1e6; }
@@ -199,13 +240,21 @@ const legalLinks = [
   <body>
     <header class="site">
       <nav>
-        <a class="brand" href={isGerman ? '/de/' : '/'}>
+        <a class="brand" href={isGerman ? '/de/' : isJapanese ? '/ja/' : '/'}>
           {SITE.name}
           <small>{SITE.tagline}</small>
         </a>
         <div class="links">
           {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
           <a class="subscribe-link" href={SITE.substackUrl}>{subscribeLabel}</a>
+          <div class="language-switcher" aria-label="Language">
+            {languageLinks.map((link) => (
+              <a class:list={[{ active: link.active }]} href={link.href} aria-label={link.label} title={link.label}>
+                <span aria-hidden="true">{link.flag}</span>
+                <span class="sr-only">{link.label}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
     </header>

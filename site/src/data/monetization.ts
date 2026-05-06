@@ -63,6 +63,8 @@ export const affiliateDisclosure = {
     'Some links in this section may be affiliate links. If you book or buy through them, this publication may earn a commission at no extra cost to you.',
   de:
     'Einige Links in diesem Abschnitt koennen Affiliate-Links sein. Wenn Sie darueber buchen oder kaufen, kann diese Publikation eine Provision erhalten, ohne Mehrkosten fuer Sie.',
+  ja:
+    'このセクションにはアフィリエイトリンクが含まれる場合があります。リンク経由で予約・購入された場合、追加費用なしで当サイトが手数料を受け取ることがあります。',
 };
 
 export const sampleSengokuTravel: TravelDestination[] = [

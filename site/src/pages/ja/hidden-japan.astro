@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import NewsletterCTA from '../../components/NewsletterCTA.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
+import { bookingSearch, googleMapsSearch, klookSearch } from '../../data/monetization';
+
+const PUB_DATE = '2026-05-06';
+const destinations = [
+  {
+    name: 'Odawara Castle',
+    description: '戦国史と旅行導線の最初の橋渡し。後北条氏、秀吉、小田原合戦を一度に扱えます。',
+    placeHref: googleMapsSearch('Odawara Castle'),
+    stayHref: bookingSearch('Odawara, Kanagawa, Japan'),
+    activityHref: klookSearch('Odawara Castle Japan'),
+  },
+  {
+    name: 'Sekigahara Battlefield',
+    description: '徳川家康、合戦の地形、戦国の政治的終わりを理解したい読者に向いています。',
+    placeHref: googleMapsSearch('Sekigahara Battlefield'),
+    stayHref: bookingSearch('Sekigahara, Gifu, Japan'),
+    activityHref: klookSearch('Sekigahara battlefield'),
+  },
+  {
+    name: 'Hachigata Castle ruins',
+    description: '後北条氏、地形、籠城戦、東京近郊の静かな歴史旅として深掘りしやすい場所です。',
+    placeHref: googleMapsSearch('Hachigata Castle ruins'),
+    stayHref: bookingSearch('Yorii, Saitama, Japan'),
+  },
+];
+---
+
+<BaseLayout
+  title="歴史旅"
+  description="混雑を避けながら、日本史の文脈で城跡、古戦場、城下町、地方資料館を訪ねるための日本語ページです。"
+  type="article"
+  lang="ja"
+>
+  <ArticleSchema
+    slot="head"
+    headline="歴史旅"
+    description="混雑を避けながら、日本史の文脈で城跡、古戦場、城下町、地方資料館を訪ねるための日本語ページです。"
+    datePublished={PUB_DATE}
+    inLanguage="ja"
+  />
+
+  <p class="kicker">Hidden Japan Travel</p>
+  <h1>混雑を避けて訪ねる日本の歴史旅</h1>
+
+  <p class="dek">
+    有名観光地だけでは見えにくい日本史を、城跡、古戦場、城下町、地方資料館、宗教遺産から読み直します。
+  </p>
+
+  <section class="authority-note" aria-label="編集方針">
+    <p class="kicker">歴史を先に、旅行は後で</p>
+    <h2>普通の穴場観光リストにはしない。</h2>
+    <p>
+      ここで扱う場所は、人が少ないから選ぶのではありません。地形、城下町、地域の記憶、
+      小さな資料館を通じて、日本史の文脈が見える場所を選びます。
+    </p>
+  </section>
+
+  <h2>このカテゴリで扱うもの</h2>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h3>混雑しにくい史跡</h3>
+      <p>旅行者が行ける範囲で、定番ルートだけでは見えない歴史を持つ場所。</p>
+    </div>
+    <div class="pillar-card">
+      <h3>城と古戦場</h3>
+      <p>天守だけでなく、土塁、堀、山、川、街道、城下町まで読む。</p>
+    </div>
+    <div class="pillar-card">
+      <h3>地方資料館と記憶</h3>
+      <p>英語情報が少ない地域の記憶を、日本語資料から拾い上げる。</p>
+    </div>
+    <div class="pillar-card">
+      <h3>詳細記事への導線</h3>
+      <p>小田原城などのスポット名から、歴史・観光・食事・ホテルの個別記事へつなげる。</p>
+    </div>
+  </div>
+
+  <TravelAffiliateBox
+    destinations={destinations}
+    lang="ja"
+    title="最初に扱う歴史旅の候補"
+    intro="親記事では入口を作り、各スポット名から詳しい歴史・観光・食事・宿泊の記事へ進める構成にします。"
+  />
+
+  <h2>記事の作り方</h2>
+  <p>
+    親記事で全体像を見せ、`Odawara Castle` などのスポット名から詳細記事へリンクします。
+    詳細記事では、歴史、具体的な歩き方、食事どころ、ホテル、写真を扱います。
+  </p>
+
+  <NewsletterCTA />
+</BaseLayout>
+
