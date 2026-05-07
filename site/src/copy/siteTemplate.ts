@@ -56,16 +56,16 @@ export const siteTemplate = {
       },
     },
     subscribe: {
-      ja: '購読',
+      ja: '定期購読',
       en: 'Subscribe',
       de: 'Abonnieren',
     },
   },
   footer: {
     text: {
-      ja: '日本史を、資料と文脈からわかりやすく。',
-      en: 'Japanese history, clearly told.',
-      de: 'Japanische Geschichte, klar erzählt.',
+      ja: '通説の奥へ。日本史を旅する。',
+      en: 'Go beyond the familiar story. Travel deeper into Japanese history.',
+      de: 'Jenseits der vertrauten Erzählung. Tiefer in Japans Geschichte.',
     },
     legal: {
       contact: {
