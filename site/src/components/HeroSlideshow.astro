@@ -39,7 +39,7 @@ const images = SITE.heroImages;
   <div class="inner">
     <div class="copy">
       <p class="kicker">{kicker}</p>
-      <h1>{title}</h1>
+      <h1>{title.split('\n').map((line) => <span>{line}</span>)}</h1>
       <p class="dek">{description}</p>
       <div class="hero-actions">
         <a class="cta" href={primaryHref}>{primaryLabel}</a>

@@ -109,7 +109,7 @@ export const siteTemplate = {
       },
       title: {
         ja: '知っているようで、まだ読めていない日本史。',
-        en: 'Japanese history, read from the inside.',
+        en: 'Japanese history\nread from the inside.',
         de: 'Japanische Geschichte von innen gelesen.',
       },
       description: {
