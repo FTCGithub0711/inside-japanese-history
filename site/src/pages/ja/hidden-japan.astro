@@ -44,41 +44,32 @@ const destinations = [
     inLanguage="ja"
   />
 
-  <p class="kicker">Hidden Japan Travel</p>
-  <h1>有名観光地の先にある、日本の歴史旅。</h1>
-
-  <p class="dek">
-    城跡、古戦場、城下町、地方資料館、宗教遺産。人が少ないからではなく、そこに残る文脈が面白い場所を選びます。
-  </p>
-
-  <section class="authority-note" aria-label="編集方針">
-    <p class="kicker">歴史を先に読む</p>
-    <h2>ただの穴場紹介では終わらせない。</h2>
-    <p>
-      ここで扱うのは、写真を撮って終わる場所ではありません。地形、町割り、展示、石碑、
-      その土地に残る記憶から、歴史の見え方が変わる場所です。
+  <section class="category-hero">
+    <p class="kicker">Hidden Japan Travel</p>
+    <h1>有名観光地の先にある、日本の歴史旅。</h1>
+    <p class="dek">
+      城跡、古戦場、城下町、地方資料館、宗教遺産。人が少ないからではなく、そこに残る文脈が面白い場所を選びます。
     </p>
+    <div class="category-hero__meta"><span>定番ルートの先へ</span><span>歴史から選ぶ旅</span><span>個別記事へ展開</span></div>
   </section>
 
-  <h2>扱う場所の考え方</h2>
-  <div class="pillar-grid">
-    <div class="pillar-card">
-      <h3>混雑しにくい史跡</h3>
-      <p>定番ルートから少し外れていても、歴史を読む手がかりが残っている場所。</p>
+  <section class="category-feature">
+    <div class="category-feature__mark"><strong>歴史旅</strong><span>Travel with context</span></div>
+    <div class="category-feature__body">
+      <p class="kicker">編集方針</p>
+      <h2>ただの穴場紹介では終わらせない。</h2>
+      <p>写真を撮って終わる場所ではなく、地形、町割り、展示、石碑、その土地に残る記憶から、歴史の見え方が変わる場所を扱います。</p>
     </div>
-    <div class="pillar-card">
-      <h3>城と古戦場</h3>
-      <p>天守だけでなく、土塁、堀、山、川、街道、城下町まで含めて見る。</p>
+  </section>
+
+  <section class="category-questions">
+    <h2>扱う場所の考え方</h2>
+    <div class="question-grid">
+      <article class="question-card"><p class="label">史跡</p><h3>混雑しにくい歴史の場所</h3><p>定番ルートから少し外れていても、歴史を読む手がかりが残っている場所。</p></article>
+      <article class="question-card"><p class="label">地形</p><h3>城と古戦場</h3><p>天守だけでなく、土塁、堀、山、川、街道、城下町まで含めて見る。</p></article>
+      <article class="question-card"><p class="label">記憶</p><h3>地方資料館と地域の話</h3><p>大きな博物館には出にくい地域の記憶を、日本語の資料から拾います。</p></article>
     </div>
-    <div class="pillar-card">
-      <h3>地方資料館と記憶</h3>
-      <p>大きな博物館には出にくい地域の記憶を、日本語の資料から拾う。</p>
-    </div>
-    <div class="pillar-card">
-      <h3>詳しく読む</h3>
-      <p>各スポットから、歴史、歩き方、食事、宿泊まで扱う個別記事へ進める。</p>
-    </div>
-  </div>
+  </section>
 
   <TravelAffiliateBox
     destinations={destinations}

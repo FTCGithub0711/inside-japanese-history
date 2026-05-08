@@ -46,45 +46,58 @@ const destinations = [
     datePublished={PUB_DATE}
   />
 
-  <p class="kicker">Hidden Japan Travel</p>
-  <h1>Hidden Historic Places in Japan</h1>
-
-  <p class="dek">
-    Travel beyond the crowds with lesser-known castles, battlefields, local
-    museums, temple towns, and overlooked places where Japanese history is
-    still visible if you know what to look for.
-  </p>
-
-  <section class="authority-note" aria-label="Editorial approach">
-    <p class="kicker">Beyond overtourism</p>
-    <h2>Not another list of famous places.</h2>
-    <p>
-      This section is for readers who already know Tokyo, Kyoto, Osaka, and
-      Mount Fuji are popular. The point is to find quieter, historically rich
-      places that reveal a more specific Japan: regional power, local memory,
-      old roads, castle ruins, small museums, and landscapes shaped by conflict.
+  <section class="category-hero">
+    <p class="kicker">Hidden Japan Travel</p>
+    <h1>Historic places in Japan chosen for what they reveal.</h1>
+    <p class="dek">
+      This is not a list of random hidden gems. These are castles,
+      battlefields, castle towns, museums, and communities where Japanese
+      history is still visible if you know what to look for.
     </p>
+    <div class="category-hero__meta">
+      <span>Beyond the obvious route</span>
+      <span>History-led travel</span>
+      <span>Affiliate-ready later</span>
+    </div>
   </section>
 
-  <h2>What belongs here</h2>
-  <div class="pillar-grid">
-    <div class="pillar-card">
-      <h3>Less-crowded historic sites</h3>
-      <p>Places that still have enough access for travelers, but are not reduced to the usual Golden Route checklist.</p>
+  <section class="category-feature">
+    <div class="category-feature__mark">
+      <strong>歴史旅</strong>
+      <span>Travel with context</span>
     </div>
-    <div class="pillar-card">
-      <h3>Castles beyond the postcard</h3>
-      <p>Not only famous keeps, but ruins, earthworks, clan territories, siege sites, and the terrain around them.</p>
+    <div class="category-feature__body">
+      <p class="kicker">The rule for this section</p>
+      <h2>Understand what you are looking at before booking anything.</h2>
+      <p>
+        A castle ruin, battlefield, or local museum should not become travel
+        content just because it is quiet. It belongs here only when the place
+        changes how a reader understands Japan: regional power, memory, roads,
+        religious life, local museums, or landscapes shaped by conflict.
+      </p>
     </div>
-    <div class="pillar-card">
-      <h3>Local museums and memory</h3>
-      <p>Small museums, local exhibitions, and regional stories that rarely make it into English travel summaries.</p>
+  </section>
+
+  <section class="category-questions">
+    <h2>What belongs here</h2>
+    <div class="question-grid">
+      <article class="question-card">
+        <p class="label">Places</p>
+        <h3>Less-crowded historic sites</h3>
+        <p>Accessible places that are not reduced to the usual Golden Route checklist.</p>
+      </article>
+      <article class="question-card">
+        <p class="label">Castles</p>
+        <h3>Beyond the postcard keep</h3>
+        <p>Ruins, earthworks, clan territories, siege sites, and the terrain around them.</p>
+      </article>
+      <article class="question-card">
+        <p class="label">Memory</p>
+        <h3>Local museums and regional stories</h3>
+        <p>Small exhibitions and local records that rarely appear in English travel summaries.</p>
+      </article>
     </div>
-    <div class="pillar-card">
-      <h3>Core Japan, not surface Japan</h3>
-      <p>Routes for readers who want to understand what a place meant before turning it into a travel stop.</p>
-    </div>
-  </div>
+  </section>
 
   <TravelAffiliateBox
     destinations={destinations}
@@ -92,18 +105,14 @@ const destinations = [
     intro="These are examples of how hidden-history travel articles can connect context, maps, nearby stays, and tours without becoming generic sightseeing content."
   />
 
-  <h2>Why this belongs here</h2>
-  <p>
+  <section class="category-note">
+    <p>
     Many readers first arrive through samurai, Shōgun, castles, or Japan travel
     searches. This section serves the readers who are not satisfied with the
     same famous stops, but also do not want random hidden-gem lists with no
     historical judgment.
-  </p>
-
-  <p>
-    The rule is simple: a destination page should make the reader understand
-    what they are looking at before it asks them to book anything.
-  </p>
+    </p>
+  </section>
 
   <NewsletterCTA />
 </BaseLayout>
