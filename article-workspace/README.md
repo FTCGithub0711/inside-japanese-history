@@ -5,7 +5,16 @@
 ## フォルダ構成
 
 - `top-topics/` — まず整える人気トピック記事10本
+- `origins-to-heian/` — 原始〜平安シリーズ。1本目の記事と分割予定記事
 - `hidden-japan-travel/` — 混雑回避・穴場史跡・歴史起点旅行の記事
+
+## まず見るファイル
+
+- `../DOCUMENT_INDEX.md` — プロジェクト全体の文書索引
+- `../task/current_status_ja.md` — 現在地と次にやる候補
+- `origins-to-heian/README.md` — 原始〜平安シリーズの構成
+- `top-topics/topic_index.md` — 人気SEO記事10本の一覧
+- `hidden-japan-travel/README.md` — 歴史旅記事の座組
 
 ## 基本ルール
 

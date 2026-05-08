@@ -16,6 +16,8 @@
 
 ## よく使う場所
 
+- 文書全体の索引を見る: `DOCUMENT_INDEX.md`
+- 今の作業状況を見る: `task/current_status_ja.md`
 - トップページやデザインを直す: `site/src/pages/`、`site/src/components/`
 - 写真を追加する: `site/public/images/hero/`
 - 人気記事の資料を入れる: `article-workspace/top-topics/<記事フォルダ>/references/`
