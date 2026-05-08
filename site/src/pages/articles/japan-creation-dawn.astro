@@ -1,0 +1,437 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { bookingSearch, googleMapsSearch, klookSearch } from '../../data/monetization';
+
+const toc = [
+  { id: 'before-samurai', label: 'Before the samurai story' },
+  { id: 'rice', label: 'Rice changed society' },
+  { id: 'himiko', label: 'Himiko and Yamatai' },
+  { id: 'kofun', label: 'Kofun and Yamato' },
+  { id: 'buddhism', label: 'Buddhism and statecraft' },
+  { id: 'taika', label: 'Taika and ritsuryo' },
+  { id: 'nara-heian', label: 'Nara to Heian' },
+  { id: 'warriors', label: 'The road to warriors' },
+];
+
+const sources = [
+  {
+    label: 'NAKATA UNIVERSITY, “Primitive to Heian Period: The Dawn of Japanese Creation and Transformation”',
+    description:
+      'Used as the narrative starting point for this introductory overview. Historical claims are treated as points for source checking, not as final authority.',
+    href: 'https://www.youtube.com/watch?v=pGroc3O2V4Y',
+    type: 'Video reference',
+  },
+  {
+    label: 'Agency for Cultural Affairs, “Monuments”',
+    description:
+      'Official overview of how Japan protects historic sites, including ancient tombs and archaeological sites.',
+    href: 'https://www.bunka.go.jp/english/policy/cultural_properties/introduction/monuments/',
+    type: 'Official reference',
+  },
+  {
+    label: 'UNESCO World Heritage Centre, “Buddhist Monuments in the Horyu-ji Area”',
+    description:
+      'Context for early Buddhist architecture in Japan and the transmission of Buddhism through the Korean peninsula and China.',
+    href: 'https://whc.unesco.org/en/list/660/',
+    type: 'World Heritage reference',
+  },
+  {
+    label: 'Agency for Cultural Affairs, “List of World Heritage sites in Japan”',
+    description:
+      'Official reference for Horyu-ji, Ancient Nara, Ancient Kyoto, and other places linked to this historical arc.',
+    href: 'https://www.bunka.go.jp/english/policy/cultural_properties/introduction/world_heritage/list/',
+    type: 'Official reference',
+  },
+];
+
+const related = [
+  {
+    title: 'Origins to Heian',
+    description:
+      'The category page for early Japanese history before the warrior age dominates the story.',
+    href: '/ancient-heian/',
+    kicker: 'Origins',
+  },
+  {
+    title: 'Sengoku',
+    description:
+      'After the foundations are in place, follow the later age of warlords, castles, and unification.',
+    href: '/sengoku/',
+    kicker: 'Warrior age',
+  },
+  {
+    title: 'Hidden Spots',
+    description:
+      'Historical places for travelers who want more than the standard first-time Japan route.',
+    href: '/hidden-japan/',
+    kicker: 'Travel',
+  },
+];
+
+const travelDestinations = [
+  {
+    name: 'Nara',
+    description:
+      'The best practical base for early Buddhism, ancient capitals, Todai-ji, and the political world before Kyoto.',
+    placeHref: googleMapsSearch('Nara Japan ancient history'),
+    stayHref: bookingSearch('Nara, Japan'),
+    activityHref: klookSearch('Nara Japan history tour'),
+  },
+  {
+    name: 'Asuka',
+    description:
+      'A compact landscape of early court politics, burial mounds, Buddhist beginnings, and the pre-Nara state.',
+    placeHref: googleMapsSearch('Asuka Nara Japan history'),
+    stayHref: bookingSearch('Asuka, Nara, Japan'),
+  },
+  {
+    name: 'Horyu-ji and Ikaruga',
+    description:
+      'A clear place to connect Buddhism, early architecture, Prince Shotoku memory, and the Asuka-Nara transition.',
+    placeHref: googleMapsSearch('Horyu-ji Ikaruga Nara Japan'),
+    stayHref: bookingSearch('Ikaruga, Nara, Japan'),
+  },
+  {
+    name: 'Kyoto',
+    description:
+      'The natural entry point for Heian court culture, later aristocratic memory, temples, literature, and imperial ritual.',
+    placeHref: googleMapsSearch('Kyoto Heian history'),
+    stayHref: bookingSearch('Kyoto, Japan'),
+    activityHref: klookSearch('Kyoto history tour'),
+  },
+];
+---
+
+<ArticleLayout
+  title="The Dawn of Japan: How a Country Took Shape Before the Samurai"
+  description="A clear guide to early Japanese history for readers who know samurai and castles, but not how Japan first became a state."
+  subtitle="Before castles, warlords, and the samurai image, Japan was shaped by rice, ritual, tombs, Buddhism, law, capitals, and the slow rise of warrior power."
+  kicker="Origins to Heian"
+  datePublished="2026-05-08"
+  readingTime="11 min read"
+  category="Early Japanese history"
+  toc={toc}
+  sources={sources}
+  related={related}
+  travelDestinations={travelDestinations}
+  travelTitle="Places connected to early Japanese history"
+  travelIntro="These links fit the article naturally: Nara, Asuka, Horyu-ji, and Kyoto are practical places to see the transition from early state formation to classical court culture."
+>
+  <h2 id="before-samurai">Before the samurai story</h2>
+
+  <p>
+    For many international readers, Japanese history begins with samurai,
+    castles, ninja, or the old streets of Kyoto. Films, games, and historical
+    dramas often enter Japan through the age of warriors.
+  </p>
+
+  <p>
+    But the story of Japan begins much earlier.
+  </p>
+
+  <p>
+    Japan was not always the single country people imagine today. The idea of a
+    Japan stretching naturally from Hokkaido to Okinawa belongs to a much later
+    historical world. In ancient times, the archipelago was home to many
+    communities, regional powers, ritual centers, and competing elites. Over
+    centuries, they absorbed ideas from the Asian continent, fought over land
+    and authority, built capitals, wrote origin stories, and slowly assembled a
+    larger political order.
+  </p>
+
+  <div class="article-callout">
+    <p>
+      <strong>Reader's map:</strong> This article follows Japan before the
+      samurai became the main historical image: from rice farming and Queen
+      Himiko to burial mounds, Buddhism, law, Nara, Heian Kyoto, and the first
+      signs of warrior power.
+    </p>
+  </div>
+
+  <p>
+    Ancient Japan was not a quiet preface. It was the first great transformation:
+    the long process by which Japan began to become Japan.
+  </p>
+
+  <h2 id="rice">Rice changed society</h2>
+
+  <p>
+    The first major turning point was the shift from Jomon to Yayoi. Jomon
+    communities lived through hunting, gathering, fishing, and the use of
+    pottery. They formed settlements and developed a rich material culture.
+    It is too simple to call Jomon society a peaceful paradise, but it was not
+    yet a rice-based political world built around stored harvests, irrigation,
+    and organized hierarchy.
+  </p>
+
+  <p>
+    Yayoi society changed that. Wet-rice agriculture spread, and rice required
+    land, water, timing, and cooperation. A field had to be managed. Water had
+    to be shared or controlled. Harvests could be stored. Once something can be
+    stored, differences appear: rich land and poor land, those who hold surplus
+    and those who do not, those who protect stores and those who try to take
+    them.
+  </p>
+
+  <p>
+    A change in food changed settlement. A change in settlement changed power.
+    The path from village to state begins here.
+  </p>
+
+  <h2 id="himiko">Himiko and Yamatai: the first great mystery</h2>
+
+  <p>
+    In the third century, China was divided among Wei, Wu, and Shu, the world
+    later remembered through the <em>Romance of the Three Kingdoms</em>. In
+    Chinese records from that world, a queen appears in the Japanese
+    archipelago: Himiko.
+  </p>
+
+  <p>
+    In 239, Himiko is said to have sent envoys to Wei and received the title
+    “Queen of Wa friendly to Wei.” The important point is not only her name.
+    It is that early Japan is first seen through outside records. The
+    archipelago itself did not yet leave the kind of written historical record
+    that later states would produce.
+  </p>
+
+  <p>
+    Himiko is described as a ruler with religious or shamanic authority. In this
+    early world, politics and ritual were not cleanly separated. To govern was
+    also to read signs, perform rites, and stand between people and the unseen.
+  </p>
+
+  <p>
+    The major problem is Yamatai, the polity Himiko ruled. Was it in Kyushu, in
+    western Japan closer to the continent? Or was it in the Kinai region, near
+    the later center of Yamato power? This is not just a map puzzle. The location
+    of Yamatai changes how we imagine the birth of political centrality in Japan.
+  </p>
+
+  <p>
+    At the entrance to Japanese history, there is not a neat answer. There is a
+    fog. That is part of what makes ancient Japan worth reading.
+  </p>
+
+  <h2 id="kofun">Kofun and Yamato: power written in tombs</h2>
+
+  <p>
+    After Yamatai, the written record becomes harder to follow. But something
+    else becomes visible: huge burial mounds.
+  </p>
+
+  <p>
+    The Kofun period is named for these tombs. The most famous form is the
+    keyhole-shaped mound, or <em>zenpo-koen-fun</em>. To build one required labor,
+    planning, tools, and authority. A tomb of that scale is not only a grave. It
+    is a statement that someone had the power to mobilize a community.
+  </p>
+
+  <p>
+    As similar tomb forms spread, they suggest that regional elites were being
+    drawn into a shared political culture. This is where the outline of the
+    Yamato polity becomes clearer.
+  </p>
+
+  <p>
+    But Yamato should not be imagined too quickly as a modern-style state. It
+    was not born as a fully centralized government ruling the entire archipelago
+    from day one. It is better to begin with a coalition of powerful elites:
+    local leaders bound together by rank, ritual, marriage, force, and exchange.
+  </p>
+
+  <p>
+    Japan's beginning was not a single straight line. It was a gradual process
+    in which many powers were pulled into a larger order.
+  </p>
+
+  <h2 id="buddhism">Buddhism was religion, culture, and statecraft</h2>
+
+  <p>
+    In the mid-sixth century, Buddhism was transmitted to Japan from Baekje, one
+    of the Korean kingdoms. Traditional accounts give 538 or 552 as the date of
+    its official introduction.
+  </p>
+
+  <p>
+    To modern readers, Buddhism may sound like a question of temples and belief.
+    For ancient rulers, it was much more. Buddhist images, scriptures, temple
+    architecture, scholarship, calendars, writing, and court culture arrived as
+    part of a wider continental package.
+  </p>
+
+  <p>
+    Accepting Buddhism was not simply a matter of liking a new religion. It was
+    tied to the question of whether Japan would adopt a more continental style
+    of state formation.
+  </p>
+
+  <p>
+    This is why the conflict between the Soga and Mononobe clans matters. The
+    Soga supported Buddhism. The Mononobe are remembered as defenders of older
+    ritual practices tied to native deities and clan authority. In 587, Soga no
+    Umako defeated Mononobe no Moriya, and the Buddhist side won.
+  </p>
+
+  <p>
+    The age of Empress Suiko, Prince Umayado, later remembered as Prince
+    Shotoku, and Soga no Umako became a moment when Japan faced the continent
+    directly. Envoys were sent to Sui China. Institutions, rank, writing, and
+    Buddhist culture became tools for imagining a more organized state.
+  </p>
+
+  <p>
+    This does not mean every later legend about Shotoku should be read literally.
+    Ancient history often tells us two stories at once: what may have happened,
+    and what later generations needed to remember.
+  </p>
+
+  <h2 id="taika">Taika and ritsuryo: trying to become a state</h2>
+
+  <p>
+    In 645, Prince Naka no Oe and Nakatomi no Kamatari overthrew Soga no Iruka.
+    The event is known as the Isshi Incident, and it opened the way to what is
+    traditionally called the Taika Reform.
+  </p>
+
+  <p>
+    This was not just palace drama. It was an attempt to pull power away from
+    dominant clan elites and move toward a more emperor-centered state.
+  </p>
+
+  <p>
+    The era name “Taika” matters. To create an era name is to claim authority
+    over time itself. In East Asia, calendars and era names were political. They
+    showed who defined the order of the world. By setting its own era name, the
+    Japanese court was making a statement: this polity would define its own
+    time.
+  </p>
+
+  <p>
+    The reform ideal was known as public land and public people. Land and
+    population were to be grasped by the state, rather than left entirely under
+    private clan control. Later ritsuryo law, inspired by Chinese models, aimed
+    to organize offices, ranks, provinces, registers, taxes, and military
+    obligations.
+  </p>
+
+  <p>
+    But state formation did not move in a straight line. In 672, the Jinshin War
+    broke out over succession after Emperor Tenji. The victor, Emperor Tenmu,
+    strengthened the court and is often associated with the shaping of the names
+    “Japan” and “emperor.” The compilation of the <em>Kojiki</em> and
+    <em>Nihon Shoki</em> also belongs to this broader project of state memory.
+  </p>
+
+  <p>
+    A new state needs laws. It also needs a story about where it came from.
+  </p>
+
+  <h2 id="nara-heian">From Nara to Heian: the light and shadow of Buddhist rule</h2>
+
+  <p>
+    In 710, the capital moved to Heijo-kyo, today associated with Nara. This was
+    the age in which the ritsuryo state took visible form: offices, provinces,
+    registers, taxes, and great Buddhist institutions.
+  </p>
+
+  <p>
+    Emperor Shomu tried to protect the realm through Buddhism. In 752, the Great
+    Buddha of Todai-ji was consecrated. The statue was not only a religious
+    object. It was also a political symbol: a massive attempt to answer crisis
+    through Buddhist power.
+  </p>
+
+  <p>
+    Yet Buddhism's closeness to government created a problem. If Buddhist
+    institutions could protect the state, could Buddhist figures also dominate
+    the state? The monk Dokyo, favored by Empress Shotoku in the eighth century,
+    became the clearest warning sign. His rise suggested that religious
+    authority might move dangerously close to imperial authority.
+  </p>
+
+  <p>
+    In 794, Emperor Kanmu moved the capital to Heian-kyo, the city later known
+    as Kyoto. This was not just a change of address. It was an attempt to step
+    away from the political weight of Nara Buddhism and renew court rule in a
+    new capital.
+  </p>
+
+  <p>
+    The Heian period also reminds us that “Japan” was still being made at its
+    edges. In the northeast, there were peoples not fully under court control.
+    The campaigns involving Sakanoue no Tamuramaro and the Emishi leader Aterui
+    show that the ancient court's authority was expanding, contested, and
+    incomplete.
+  </p>
+
+  <h2 id="warriors">The elegance of Heian, and the road to warriors</h2>
+
+  <p>
+    Heian Japan is famous for courtly elegance: poetry, rank, ceremony, Fujiwara
+    no Michinaga, Murasaki Shikibu, and <em>The Tale of Genji</em>. That image is
+    real, but it is not the whole story.
+  </p>
+
+  <p>
+    Under the surface, the land system was changing. The ideal of public land
+    weakened. Private estates, known as <em>shoen</em>, expanded. Aristocrats and
+    temples held land in the provinces, and land needed protection. Armed men
+    who guarded estates gradually gained importance. These men were part of the
+    world from which samurai power emerged.
+  </p>
+
+  <p>
+    In 939, Taira no Masakado rebelled in the Kanto region and called himself a
+    “new emperor.” The rebellion failed, but it revealed something important:
+    far from Kyoto, armed regional power could imagine a political order of its
+    own.
+  </p>
+
+  <p>
+    Fujiwara power reached a peak in the eleventh century, but it too changed.
+    From 1086, retired emperors such as Shirakawa ruled through insei, or
+    cloistered government. Around them stood armed guards such as the Hokumen no
+    Bushi, the northern-face warriors.
+  </p>
+
+  <p>
+    By the twelfth century, warrior families were no longer background figures.
+    The Hogen and Heiji disturbances opened the way for Taira no Kiyomori, who
+    became Grand Minister of State in 1167. Politics was no longer only the world
+    of court nobles.
+  </p>
+
+  <p>
+    The age of warriors did not appear from nowhere. It grew out of the Heian
+    world: land disputes, estate protection, regional military power, court
+    politics, and the weakening of older systems.
+  </p>
+
+  <h2 id="japan-took-shape">Japan took shape by changing again and again</h2>
+
+  <p>
+    The story from Jomon to Heian is not a preface to the “real” history of
+    samurai and castles. It is the foundation.
+  </p>
+
+  <p>
+    Hunting and gathering gave way to rice agriculture. Small communities became
+    regional powers. Yamatai gave way to the mystery of Yamato. Burial mounds
+    made power visible. Buddhism brought continental statecraft. Ritsuryo law
+    tried to organize land and people. Nara built a Buddhist state. Heian Kyoto
+    refined court culture while warriors grew beneath the surface.
+  </p>
+
+  <p>
+    Japan was not born as a finished country. It took shape by absorbing outside
+    ideas, resisting them, moving capitals, writing myths, building laws,
+    fighting over land, and expanding the reach of the court.
+  </p>
+
+  <p>
+    The samurai age is fascinating. But the deepest entrance to Japanese history
+    lies earlier, before the sword becomes the main symbol. It begins with the
+    long, difficult dawn of Japan itself.
+  </p>
+</ArticleLayout>
