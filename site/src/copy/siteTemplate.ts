@@ -16,14 +16,20 @@ export function localeFromLang(lang: string): SiteLocale {
   4. 公開文には「父チェック」「AI」「同期」など制作側の言葉を出さない。
 
   例:
-  header.nav.hiddenJapan.ja = '歴史旅'
-  header.nav.hiddenJapan.en = 'Hidden Japan Travel'
-  header.nav.hiddenJapan.de = 'Hidden Japan Travel'
+  header.nav.ancientHeian.ja = '原始〜平安'
+  header.nav.ancientHeian.en = 'Origins to Heian'
+  header.nav.ancientHeian.de = 'Ursprünge bis Heian'
 */
 
 export const siteTemplate = {
   header: {
     nav: {
+      ancientHeian: {
+        href: '/ancient-heian/',
+        ja: '原始〜平安',
+        en: 'Origins to Heian',
+        de: 'Ursprünge bis Heian',
+      },
       sengoku: {
         href: '/sengoku/',
         ja: '戦国',
@@ -32,21 +38,21 @@ export const siteTemplate = {
       },
       bakumatsu: {
         href: '/bakumatsu/',
-        ja: '幕末',
-        en: 'Bakumatsu',
-        de: 'Bakumatsu',
+        ja: '江戸〜幕末',
+        en: 'Edo to Bakumatsu',
+        de: 'Edo bis Bakumatsu',
       },
       modern: {
         href: '/modern/',
-        ja: '近代・現代',
-        en: 'Modern',
+        ja: '近現代',
+        en: 'Modern Japan',
         de: 'Modernes Japan',
       },
       hiddenJapan: {
         href: '/hidden-japan/',
         ja: '歴史旅',
-        en: 'Hidden Japan Travel',
-        de: 'Hidden Japan Travel',
+        en: 'Hidden Spots',
+        de: 'Hidden Spots',
       },
       about: {
         href: '/about/',
@@ -195,9 +201,9 @@ export const siteTemplate = {
         de: 'Wir beginnen mit Fragen, die Leser bereits haben, und antworten aus japanischen Quellen.',
       },
       text: {
-        ja: '戦国、幕末、近代、武士のイメージ、城や古戦場、歴史をたどる旅を扱います。海外の読者が入りやすい問いから始めながら、日本語で読んでも雑に感じない内容を目指します。',
-        en: 'The site is organized around high-demand topics: Shōgun, samurai myths, Sengoku warlords, Bakumatsu collapse, modern Japan, and history-led travel. The argument is built from Japanese books, articles, places, and historical materials first.',
-        de: 'Die Seite verbindet stark nachgefragte Themen mit japanischer Forschung: Shōgun, Samurai-Mythen, Sengoku-Kriegsherren, Bakumatsu, modernes Japan und geschichtsorientierte Reiseziele.',
+        ja: '原始から平安、戦国、江戸から幕末、近現代、そして歴史旅を扱います。海外の読者が入りやすい問いから始めながら、日本語で読んでも雑に感じない内容を目指します。',
+        en: 'The site is organized around historical routes: origins to Heian, Sengoku warlords, Edo to Bakumatsu collapse, and modern Japan. The argument is built from Japanese books, articles, places, and historical materials first.',
+        de: 'Die Seite folgt historischen Routen: Ursprünge bis Heian, Sengoku, Edo bis Bakumatsu und modernes Japan.',
       },
     },
     topicIntro: {
@@ -214,6 +220,19 @@ export const siteTemplate = {
     },
     pillars: [
       {
+        href: '/ancient-heian/',
+        title: {
+          ja: '原始〜平安',
+          en: 'Origins to Heian',
+          de: 'Ursprünge bis Heian',
+        },
+        text: {
+          ja: '縄文、弥生、古墳、奈良、平安。国家、信仰、都、貴族文化の入口を作ります。',
+          en: 'Jōmon, Yayoi, Kofun, Nara, and Heian: early communities, state formation, belief, capitals, and court culture.',
+          de: 'Jōmon, Yayoi, Kofun, Nara und Heian: frühe Gesellschaften, Staatsbildung, Religion, Hauptstädte und Hofkultur.',
+        },
+      },
+      {
         href: '/sengoku/',
         title: {
           ja: '戦国',
@@ -229,14 +248,14 @@ export const siteTemplate = {
       {
         href: '/bakumatsu/',
         title: {
-          ja: '幕末',
-          en: 'Bakumatsu',
-          de: 'Bakumatsu',
+          ja: '江戸〜幕末',
+          en: 'Edo to Bakumatsu',
+          de: 'Edo bis Bakumatsu',
         },
         text: {
-          ja: '黒船、坂本龍馬、新選組、内戦、そして明治維新への流れを追います。',
-          en: 'The final years of the shogunate: black ships, Ryōma, Shinsengumi, civil war, and the Restoration.',
-          de: 'Schwarze Schiffe, Ryōma, Shinsengumi, Bürgerkrieg und das Ende des Tokugawa-Shogunats.',
+          ja: '江戸の秩序、町人文化、開国、新選組、内戦、明治維新への流れを追います。',
+          en: 'Tokugawa order, Edo urban culture, foreign pressure, Shinsengumi, civil war, and the Restoration.',
+          de: 'Tokugawa-Ordnung, Edo-Stadtkultur, Außenpolitik, Shinsengumi, Bürgerkrieg und Restauration.',
         },
       },
       {
@@ -250,19 +269,6 @@ export const siteTemplate = {
           ja: '明治以降の国家づくり、戦争、占領、経済成長、暮らしの変化を扱います。',
           en: 'Meiji to today: modernization, empire, defeat, occupation, economic growth, and social habits.',
           de: 'Meiji, Kaiserreich, Krieg, Besatzung, Wirtschaftswachstum und gesellschaftliche Gewohnheiten.',
-        },
-      },
-      {
-        href: '/hidden-japan/',
-        title: {
-          ja: '歴史旅',
-          en: 'Hidden Japan Travel',
-          de: 'Hidden Japan Travel',
-        },
-        text: {
-          ja: '城跡、古戦場、城下町、地方資料館を、歴史の文脈から訪ねます。',
-          en: 'Lesser-known historic places in Japan for travelers who want to avoid the obvious route and understand a deeper Japan.',
-          de: 'Weniger bekannte historische Orte in Japan für Reisende, die die offensichtliche Route vermeiden wollen.',
         },
       },
     ],

@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleSchema from '../components/ArticleSchema.astro';
+import TravelAffiliateBox from '../components/TravelAffiliateBox.astro';
+
+const PUB_DATE = '2026-05-08';
+const travelDestinations = [
+  {
+    name: 'Nara',
+    description: 'A strong base for early state formation, Buddhism, imperial capitals, and the institutions that shaped classical Japan.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Nara%20Japan%20history',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Nara%2C%20Japan',
+  },
+  {
+    name: 'Asuka',
+    description: 'A compact landscape for early Buddhism, court politics, burial mounds, and the roots of Japan as a state.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Asuka%20Nara%20Japan',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Asuka%2C%20Nara%2C%20Japan',
+  },
+  {
+    name: 'Kyoto',
+    description: 'The most accessible entry into Heian court culture, aristocratic memory, temples, shrines, and later reinterpretations.',
+    placeHref: 'https://www.google.com/maps/search/?api=1&query=Kyoto%20Heian%20history',
+    stayHref: 'https://www.booking.com/searchresults.html?ss=Kyoto%2C%20Japan',
+  },
+];
+---
+
+<BaseLayout
+  title="Origins to Heian: Before the Samurai Story"
+  description="A guide to early Japanese history: Jōmon, Yayoi, Kofun, Asuka, Nara, and Heian, from early communities to court culture."
+  type="article"
+>
+  <ArticleSchema
+    slot="head"
+    headline="Origins to Heian: Before the Samurai Story"
+    description="A guide to early Japanese history: Jōmon, Yayoi, Kofun, Asuka, Nara, and Heian, from early communities to court culture."
+    datePublished={PUB_DATE}
+  />
+
+  <section class="category-hero">
+    <p class="kicker">Origins to Heian</p>
+    <h1>Before the samurai story, Japan was already taking shape.</h1>
+    <p class="dek">
+      Long before castles and warlords, Japan was formed through settlements,
+      rice agriculture, burial mounds, imported writing, Buddhism, capitals,
+      court rank, poetry, ritual, and aristocratic memory.
+    </p>
+    <div class="category-hero__meta">
+      <span>Jōmon to Heian</span>
+      <span>State formation</span>
+      <span>Belief</span>
+      <span>Court culture</span>
+    </div>
+  </section>
+
+  <section class="category-feature">
+    <div class="category-feature__mark">
+      <strong>平安</strong>
+      <span>Before the warrior age</span>
+    </div>
+    <div class="category-feature__body">
+      <p class="kicker">How to read this period</p>
+      <h2>Do not treat early Japan as a quiet preface.</h2>
+      <p>
+        The categories later readers take for granted, emperor, capital,
+        shrine, temple, clan, court, and province, were assembled over time.
+        This archive follows that formation before the warrior age takes over
+        the popular imagination.
+      </p>
+    </div>
+  </section>
+
+  <section class="category-questions">
+    <h2>Questions this archive will answer</h2>
+    <div class="question-grid">
+      <article class="question-card">
+        <p class="label">Origins</p>
+        <h3>What changed from Jōmon to Yayoi?</h3>
+        <p>Food, settlement, agriculture, ritual, and social difference reshape the earliest story.</p>
+      </article>
+      <article class="question-card">
+        <p class="label">State</p>
+        <h3>How did court government take form?</h3>
+        <p>Asuka and Nara make imported institutions visible in law, temples, capitals, and tombs.</p>
+      </article>
+      <article class="question-card">
+        <p class="label">Culture</p>
+        <h3>Why does Heian still define “classical Japan”?</h3>
+        <p>Kyoto, court rank, literature, ritual, and aesthetics become a long afterlife.</p>
+      </article>
+    </div>
+  </section>
+
+  <TravelAffiliateBox
+    destinations={travelDestinations}
+    title="Places to begin early Japanese history"
+    intro="These places connect early state formation, Buddhist institutions, capitals, and Heian court culture with routes travelers can actually follow."
+  />
+</BaseLayout>
+

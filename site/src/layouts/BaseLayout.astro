@@ -34,6 +34,7 @@ const basePath = Astro.url.pathname
 const localizedPaths = new Set([
   '/',
   '/about/',
+  '/ancient-heian/',
   '/sengoku/',
   '/bakumatsu/',
   '/modern/',
@@ -207,7 +208,7 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
       .section-heading p:not(.kicker) { color: var(--color-muted); font-size: 1.08rem; margin-top: 0; }
       .pillar-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 1.5rem 0 2rem; }
       .pillar-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 7px; padding: 1.2rem; }
-      .pillar-grid.polished { gap: 1.15rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .pillar-grid.polished { gap: 1.15rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .pillar-grid.polished .pillar-card { background: rgba(255,253,248,0.86); border-color: #dacdbc; box-shadow: 0 14px 35px rgba(65, 45, 26, 0.06); min-height: 175px; }
       .pillar-card h3 { margin-top: 0; }
       .pillar-card p { color: var(--color-muted); font-size: 0.96rem; }
