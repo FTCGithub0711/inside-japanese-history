@@ -9,6 +9,8 @@ YouTubeベース詳細稿 `01-japan-creation-and-dawn-of-transformation` を、S
 1. `01-japan-creation-and-dawn-of-transformation`
    - 親記事: 日本創生と変革の夜明け
    - 役割: 原始〜平安の全体像を見せ、各個別記事へ内部リンクする入口
+   - 推奨ドラフト: `drafts/japan_creation_dawn_parent_ja_v2_foreign_reader.docx`
+   - 方針: 外国人読者が信長・幕末などを知らない前提で、侍以前の日本を説明する。
 
 2. `02-jomon-to-yayoi-rice-changed-japan`
    - 縄文から弥生へ: 米づくりが日本を変えた
