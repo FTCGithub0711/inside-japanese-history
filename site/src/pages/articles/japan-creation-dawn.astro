@@ -23,7 +23,16 @@ const articleImages = imageFiles.map((file) => {
     alt: label ? `Article photo: ${label}` : 'Article photo',
   };
 });
-const photo = (index: number) => articleImages[index];
+const extensionPriority = (src: string) => {
+  if (src.endsWith('.webp')) return 0;
+  if (src.endsWith('.jpg')) return 1;
+  if (src.endsWith('.jpeg')) return 2;
+  return 3;
+};
+const photoByKeyword = (...keywords: string[]) =>
+  articleImages
+    .filter((image) => keywords.some((keyword) => image.src.toLowerCase().includes(keyword)))
+    .sort((a, b) => extensionPriority(a.src) - extensionPriority(b.src))[0];
 
 const toc = [
   { id: 'before-samurai', label: 'Before the samurai story' },
@@ -60,6 +69,57 @@ const related = [
   },
 ];
 
+const earlyTravelDestinations = [
+  {
+    name: 'Sannai Maruyama Site, Aomori',
+    description:
+      'A strong place to connect the Jomon world with real settlement remains before rice agriculture reshaped society.',
+    placeHref: googleMapsSearch('Sannai Maruyama Site Aomori Japan'),
+    stayHref: bookingSearch('Aomori, Japan'),
+  },
+  {
+    name: 'Yoshinogari Historical Park, Saga',
+    description:
+      'One of the clearest places for seeing Yayoi settlement, rice agriculture, moats, storage, and social hierarchy.',
+    placeHref: googleMapsSearch('Yoshinogari Historical Park Saga Japan'),
+    stayHref: bookingSearch('Saga, Japan'),
+  },
+];
+
+const yamataiTravelDestinations = [
+  {
+    name: 'Yoshinogari, Saga',
+    description:
+      'Often useful for imagining large Yayoi settlements and the Kyushu side of the Yamatai debate.',
+    placeHref: googleMapsSearch('Yoshinogari Historical Park Saga Japan'),
+    stayHref: bookingSearch('Saga, Japan'),
+  },
+  {
+    name: 'Makimuku and Sakurai, Nara',
+    description:
+      'A key area for readers following the Kinai side of the Yamatai and early Yamato discussion.',
+    placeHref: googleMapsSearch('Makimuku ruins Sakurai Nara Japan'),
+    stayHref: bookingSearch('Sakurai, Nara, Japan'),
+  },
+];
+
+const kofunTravelDestinations = [
+  {
+    name: 'Mozu-Furuichi Kofun Group, Osaka',
+    description:
+      'The most powerful travel link for understanding how giant tombs made ancient authority visible.',
+    placeHref: googleMapsSearch('Mozu-Furuichi Kofun Group Osaka Japan'),
+    stayHref: bookingSearch('Sakai, Osaka, Japan'),
+  },
+  {
+    name: 'Asuka, Nara',
+    description:
+      'A compact route linking burial mounds, early court politics, Buddhism, and the pre-Nara state.',
+    placeHref: googleMapsSearch('Asuka Nara Japan history'),
+    stayHref: bookingSearch('Asuka, Nara, Japan'),
+  },
+];
+
 const asukaTravelDestinations = [
   {
     name: 'Asuka',
@@ -74,6 +134,24 @@ const asukaTravelDestinations = [
       'A clear place to connect Buddhism, early architecture, Prince Shotoku memory, and the Asuka-Nara transition.',
     placeHref: googleMapsSearch('Horyu-ji Ikaruga Nara Japan'),
     stayHref: bookingSearch('Ikaruga, Nara, Japan'),
+  },
+];
+
+const warriorTravelDestinations = [
+  {
+    name: 'Masakado Kubizuka, Tokyo',
+    description:
+      'A compact stop near Otemachi for readers interested in Taira no Masakado and the early signs of regional warrior power.',
+    placeHref: googleMapsSearch('Taira no Masakado Kubizuka Otemachi Tokyo'),
+    stayHref: bookingSearch('Tokyo Station, Tokyo, Japan'),
+  },
+  {
+    name: 'Kamakura',
+    description:
+      'The natural next destination after this article, where warrior government becomes a durable political order.',
+    placeHref: googleMapsSearch('Kamakura Japan samurai history'),
+    stayHref: bookingSearch('Kamakura, Kanagawa, Japan'),
+    activityHref: klookSearch('Kamakura samurai history tour'),
   },
 ];
 
@@ -144,12 +222,6 @@ const capitalTravelDestinations = [
     the long process by which Japan began to become Japan.
   </p>
 
-  {photo(0) && (
-    <figure class="article-photo">
-      <img src={photo(0)?.src} alt={photo(0)?.alt} loading="lazy" />
-    </figure>
-  )}
-
   <h2 id="rice">Rice changed society</h2>
 
   <p>
@@ -175,11 +247,21 @@ const capitalTravelDestinations = [
     The path from village to state begins here.
   </p>
 
-  {photo(1) && (
+  {photoByKeyword('jomon', 'yayoi', 'rice') && (
     <figure class="article-photo">
-      <img src={photo(1)?.src} alt={photo(1)?.alt} loading="lazy" />
+      <img
+        src={photoByKeyword('jomon', 'yayoi', 'rice')?.src}
+        alt={photoByKeyword('jomon', 'yayoi', 'rice')?.alt}
+        loading="lazy"
+      />
     </figure>
   )}
+
+  <TravelAffiliateBox
+    destinations={earlyTravelDestinations}
+    title="See the shift from Jomon to Yayoi"
+    intro="These places fit this section naturally: one shows the Jomon settlement world, the other makes Yayoi rice agriculture and social hierarchy easier to picture."
+  />
 
   <h2 id="himiko">Himiko and Yamatai: the first great mystery</h2>
 
@@ -216,11 +298,21 @@ const capitalTravelDestinations = [
     fog. That is part of what makes ancient Japan worth reading.
   </p>
 
-  {photo(2) && (
+  {photoByKeyword('himiko', 'yamatai', 'yoshinogari') && (
     <figure class="article-photo">
-      <img src={photo(2)?.src} alt={photo(2)?.alt} loading="lazy" />
+      <img
+        src={photoByKeyword('himiko', 'yamatai', 'yoshinogari')?.src}
+        alt={photoByKeyword('himiko', 'yamatai', 'yoshinogari')?.alt}
+        loading="lazy"
+      />
     </figure>
   )}
+
+  <TravelAffiliateBox
+    destinations={yamataiTravelDestinations}
+    title="Places tied to the Yamatai debate"
+    intro="Yamatai is still debated, so these links are not presented as answers. They help readers compare the Kyushu and Kinai ways of imagining early political power."
+  />
 
   <h2 id="kofun">Kofun and Yamato: power written in tombs</h2>
 
@@ -254,11 +346,21 @@ const capitalTravelDestinations = [
     in which many powers were pulled into a larger order.
   </p>
 
-  {photo(3) && (
+  {photoByKeyword('kofun', 'kohun', 'tomb') && (
     <figure class="article-photo">
-      <img src={photo(3)?.src} alt={photo(3)?.alt} loading="lazy" />
+      <img
+        src={photoByKeyword('kofun', 'kohun', 'tomb')?.src}
+        alt={photoByKeyword('kofun', 'kohun', 'tomb')?.alt}
+        loading="lazy"
+      />
     </figure>
   )}
+
+  <TravelAffiliateBox
+    destinations={kofunTravelDestinations}
+    title="Where tombs turn power into landscape"
+    intro="Kofun history is unusually visual. These places help readers connect giant tombs, regional elites, and the emergence of Yamato authority."
+  />
 
   <h2 id="buddhism">Buddhism was religion, culture, and statecraft</h2>
 
@@ -301,9 +403,13 @@ const capitalTravelDestinations = [
     and what later generations needed to remember.
   </p>
 
-  {photo(4) && (
+  {photoByKeyword('horyuji', 'horyu', 'asuka') && (
     <figure class="article-photo">
-      <img src={photo(4)?.src} alt={photo(4)?.alt} loading="lazy" />
+      <img
+        src={photoByKeyword('horyuji', 'horyu', 'asuka')?.src}
+        alt={photoByKeyword('horyuji', 'horyu', 'asuka')?.alt}
+        loading="lazy"
+      />
     </figure>
   )}
 
@@ -354,6 +460,16 @@ const capitalTravelDestinations = [
     A new state needs laws. It also needs a story about where it came from.
   </p>
 
+  {photoByKeyword('asuka', 'fujiwara') && (
+    <figure class="article-photo">
+      <img
+        src={photoByKeyword('asuka', 'fujiwara')?.src}
+        alt={photoByKeyword('asuka', 'fujiwara')?.alt}
+        loading="lazy"
+      />
+    </figure>
+  )}
+
   <h2 id="nara-heian">From Nara to Heian: the light and shadow of Buddhist rule</h2>
 
   <p>
@@ -392,9 +508,13 @@ const capitalTravelDestinations = [
     incomplete.
   </p>
 
-  {photo(5) && (
+  {photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo') && (
     <figure class="article-photo">
-      <img src={photo(5)?.src} alt={photo(5)?.alt} loading="lazy" />
+      <img
+        src={photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo')?.src}
+        alt={photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo')?.alt}
+        loading="lazy"
+      />
     </figure>
   )}
 
@@ -447,11 +567,21 @@ const capitalTravelDestinations = [
     politics, and the weakening of older systems.
   </p>
 
-  {photo(6) && (
+  {photoByKeyword('masakado', 'samurai', 'warrior') && (
     <figure class="article-photo">
-      <img src={photo(6)?.src} alt={photo(6)?.alt} loading="lazy" />
+      <img
+        src={photoByKeyword('masakado', 'samurai', 'warrior')?.src}
+        alt={photoByKeyword('masakado', 'samurai', 'warrior')?.alt}
+        loading="lazy"
+      />
     </figure>
   )}
+
+  <TravelAffiliateBox
+    destinations={warriorTravelDestinations}
+    title="Follow the first signs of warrior power"
+    intro="These links belong near the end of the article, where the story turns from court culture toward armed regional power and the road to Kamakura."
+  />
 
   <h2 id="japan-took-shape">Japan took shape by changing again and again</h2>
 

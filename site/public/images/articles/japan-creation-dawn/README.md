@@ -12,6 +12,9 @@ Recommended naming:
 - `06-nara-or-todaiji.jpg`
 - `07-kyoto-or-heian.jpg`
 
-The article page reads image files from this folder at build time and inserts
-them in filename order. Supported extensions: `.jpg`, `.jpeg`, `.png`, `.webp`.
+The article page reads image files from this folder at build time. It places
+images near matching sections when filenames include clear keywords such as
+`jomon`, `yayoi`, `himiko`, `kofun`, `horyuji`, `asuka`, `nara`, `todaiji`,
+`kyoto`, or `heiankyo`.
 
+Supported extensions: `.jpg`, `.jpeg`, `.png`, `.webp`.
