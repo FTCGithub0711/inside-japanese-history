@@ -108,9 +108,9 @@ export const siteTemplate = {
         de: 'Japanische Geschichte aus japanischen Quellen',
       },
       title: {
-        ja: '知っているようで、まだ読めていない日本史。',
+        ja: '知っているようで\nまだ読めていない日本史。',
         en: 'Japanese history\nread from the inside.',
-        de: 'Japanische Geschichte von innen gelesen.',
+        de: 'Japanische Geschichte\nvon innen gelesen.',
       },
       description: {
         ja: '城、合戦、人物、町の記憶。日本語の資料と現地に残る手がかりから、日本史をもう一度たどります。',
