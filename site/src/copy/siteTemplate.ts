@@ -101,17 +101,17 @@ export const siteTemplate = {
         en: 'Inside Japanese History',
         de: 'Deutsch',
       },
-    description: {
-        ja: '日本史の謎、論争、人物、現地に残る手がかりを、日本語の文脈から読み解くページです。',
-        en: 'Japanese history told through mysteries, arguments, people, places, and Japanese context.',
-        de: 'Japanische Geschichte erzählt über Rätsel, Debatten, Menschen, Orte und japanischen Kontext.',
+      description: {
+        ja: '日本史の謎、人物、事件、現地に残る手がかりを、日本語の文脈から読み解くページです。',
+        en: 'Japanese history told through mysteries, people, turning points, places, and Japanese context.',
+        de: 'Japanische Geschichte erzählt über Rätsel, Menschen, Wendepunkte, Orte und japanischen Kontext.',
       },
     },
     hero: {
       kicker: {
         ja: '謎と現地から読む日本史',
-        en: 'Japanese history, told through its arguments',
-        de: 'Japanische Geschichte über ihre Streitfragen gelesen',
+        en: 'Japanese history, told as a story',
+        de: 'Japanische Geschichte als erzählte Geschichte',
       },
       title: {
         ja: 'その日本史は、\n本当にそうだったのか。',
@@ -196,20 +196,20 @@ export const siteTemplate = {
         de: 'Redaktionelle Richtung',
       },
       title: {
-        ja: '面白い問いから入る。答えは雑にしない。',
-        en: 'Start with the gripping version. Keep the argument honest.',
-        de: 'Mit der fesselnden Version beginnen. Die Einordnung ehrlich halten.',
+        ja: '面白い筋から入る。史実の足場は崩さない。',
+        en: 'Lead with the gripping version. Keep the history grounded.',
+        de: 'Mit der fesselnden Version beginnen. Historisch geerdet bleiben.',
       },
       text: {
-        ja: '原始から平安、戦国、江戸から幕末、近現代、歴史旅を扱います。論争があるところは、読者を引き込む側から入り、最後は資料と現地の手がかりで締めます。',
-        en: 'The site is organized around dramatic historical routes: origins to Heian, Sengoku warlords, Edo to Bakumatsu collapse, modern Japan, and history-led travel. When the record is uncertain, the story leads with the strongest question and then grounds it in Japanese context.',
-        de: 'Die Seite folgt dramatischen historischen Routen: Ursprünge bis Heian, Sengoku, Edo bis Bakumatsu, modernes Japan und Reisen zu historischen Orten. Wo die Quellen unsicher sind, beginnt die Erzählung mit der stärksten Frage und verankert sie dann im japanischen Kontext.',
+        ja: '原始から平安、戦国、江戸から幕末、近現代、歴史旅を扱います。複数の見方があるところでは、読者を引き込む筋を選び、最後は資料と現地の手がかりで支えます。',
+        en: 'The site follows dramatic historical routes: origins to Heian, Sengoku warlords, Edo to Bakumatsu collapse, modern Japan, and history-led travel. When several readings are possible, the article chooses the most compelling path and keeps it anchored in Japanese context.',
+        de: 'Die Seite folgt dramatischen historischen Routen: Ursprünge bis Heian, Sengoku, Edo bis Bakumatsu, modernes Japan und Reisen zu historischen Orten. Wenn mehrere Lesarten möglich sind, wählt der Artikel den fesselndsten Weg und verankert ihn im japanischen Kontext.',
       },
     },
     topicIntro: {
       heading: {
         ja: 'テーマから読む',
-        en: 'Choose the argument',
+        en: 'Choose the story',
         de: 'Lesen nach Thema',
       },
       text: {
