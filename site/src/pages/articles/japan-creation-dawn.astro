@@ -1,6 +1,29 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import TravelAffiliateBox from '../../components/TravelAffiliateBox.astro';
 import { bookingSearch, googleMapsSearch, klookSearch } from '../../data/monetization';
+import { existsSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+const imageDir = resolve(process.cwd(), 'public/images/articles/japan-creation-dawn');
+const imageFiles = existsSync(imageDir)
+  ? readdirSync(imageDir)
+      .filter((file) => /\.(jpe?g|png|webp)$/i.test(file))
+      .sort((a, b) => a.localeCompare(b))
+  : [];
+const articleImages = imageFiles.map((file) => {
+  const label = file
+    .replace(/\.[^.]+$/, '')
+    .replace(/^\d+[-_\s]*/, '')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+
+  return {
+    src: `/images/articles/japan-creation-dawn/${file}`,
+    alt: label ? `Article photo: ${label}` : 'Article photo',
+  };
+});
+const photo = (index: number) => articleImages[index];
 
 const toc = [
   { id: 'before-samurai', label: 'Before the samurai story' },
@@ -11,37 +34,6 @@ const toc = [
   { id: 'taika', label: 'Taika and ritsuryo' },
   { id: 'nara-heian', label: 'Nara to Heian' },
   { id: 'warriors', label: 'The road to warriors' },
-];
-
-const sources = [
-  {
-    label: 'NAKATA UNIVERSITY, “Primitive to Heian Period: The Dawn of Japanese Creation and Transformation”',
-    description:
-      'Used as the narrative starting point for this introductory overview. Historical claims are treated as points for source checking, not as final authority.',
-    href: 'https://www.youtube.com/watch?v=pGroc3O2V4Y',
-    type: 'Video reference',
-  },
-  {
-    label: 'Agency for Cultural Affairs, “Monuments”',
-    description:
-      'Official overview of how Japan protects historic sites, including ancient tombs and archaeological sites.',
-    href: 'https://www.bunka.go.jp/english/policy/cultural_properties/introduction/monuments/',
-    type: 'Official reference',
-  },
-  {
-    label: 'UNESCO World Heritage Centre, “Buddhist Monuments in the Horyu-ji Area”',
-    description:
-      'Context for early Buddhist architecture in Japan and the transmission of Buddhism through the Korean peninsula and China.',
-    href: 'https://whc.unesco.org/en/list/660/',
-    type: 'World Heritage reference',
-  },
-  {
-    label: 'Agency for Cultural Affairs, “List of World Heritage sites in Japan”',
-    description:
-      'Official reference for Horyu-ji, Ancient Nara, Ancient Kyoto, and other places linked to this historical arc.',
-    href: 'https://www.bunka.go.jp/english/policy/cultural_properties/introduction/world_heritage/list/',
-    type: 'Official reference',
-  },
 ];
 
 const related = [
@@ -68,15 +60,7 @@ const related = [
   },
 ];
 
-const travelDestinations = [
-  {
-    name: 'Nara',
-    description:
-      'The best practical base for early Buddhism, ancient capitals, Todai-ji, and the political world before Kyoto.',
-    placeHref: googleMapsSearch('Nara Japan ancient history'),
-    stayHref: bookingSearch('Nara, Japan'),
-    activityHref: klookSearch('Nara Japan history tour'),
-  },
+const asukaTravelDestinations = [
   {
     name: 'Asuka',
     description:
@@ -90,6 +74,17 @@ const travelDestinations = [
       'A clear place to connect Buddhism, early architecture, Prince Shotoku memory, and the Asuka-Nara transition.',
     placeHref: googleMapsSearch('Horyu-ji Ikaruga Nara Japan'),
     stayHref: bookingSearch('Ikaruga, Nara, Japan'),
+  },
+];
+
+const capitalTravelDestinations = [
+  {
+    name: 'Nara',
+    description:
+      'The best practical base for early Buddhism, ancient capitals, Todai-ji, and the political world before Kyoto.',
+    placeHref: googleMapsSearch('Nara Japan ancient history'),
+    stayHref: bookingSearch('Nara, Japan'),
+    activityHref: klookSearch('Nara Japan history tour'),
   },
   {
     name: 'Kyoto',
@@ -111,11 +106,7 @@ const travelDestinations = [
   readingTime="11 min read"
   category="Early Japanese history"
   toc={toc}
-  sources={sources}
   related={related}
-  travelDestinations={travelDestinations}
-  travelTitle="Places connected to early Japanese history"
-  travelIntro="These links fit the article naturally: Nara, Asuka, Horyu-ji, and Kyoto are practical places to see the transition from early state formation to classical court culture."
 >
   <h2 id="before-samurai">Before the samurai story</h2>
 
@@ -153,6 +144,12 @@ const travelDestinations = [
     the long process by which Japan began to become Japan.
   </p>
 
+  {photo(0) && (
+    <figure class="article-photo">
+      <img src={photo(0)?.src} alt={photo(0)?.alt} loading="lazy" />
+    </figure>
+  )}
+
   <h2 id="rice">Rice changed society</h2>
 
   <p>
@@ -177,6 +174,12 @@ const travelDestinations = [
     A change in food changed settlement. A change in settlement changed power.
     The path from village to state begins here.
   </p>
+
+  {photo(1) && (
+    <figure class="article-photo">
+      <img src={photo(1)?.src} alt={photo(1)?.alt} loading="lazy" />
+    </figure>
+  )}
 
   <h2 id="himiko">Himiko and Yamatai: the first great mystery</h2>
 
@@ -213,6 +216,12 @@ const travelDestinations = [
     fog. That is part of what makes ancient Japan worth reading.
   </p>
 
+  {photo(2) && (
+    <figure class="article-photo">
+      <img src={photo(2)?.src} alt={photo(2)?.alt} loading="lazy" />
+    </figure>
+  )}
+
   <h2 id="kofun">Kofun and Yamato: power written in tombs</h2>
 
   <p>
@@ -244,6 +253,12 @@ const travelDestinations = [
     Japan's beginning was not a single straight line. It was a gradual process
     in which many powers were pulled into a larger order.
   </p>
+
+  {photo(3) && (
+    <figure class="article-photo">
+      <img src={photo(3)?.src} alt={photo(3)?.alt} loading="lazy" />
+    </figure>
+  )}
 
   <h2 id="buddhism">Buddhism was religion, culture, and statecraft</h2>
 
@@ -285,6 +300,18 @@ const travelDestinations = [
     Ancient history often tells us two stories at once: what may have happened,
     and what later generations needed to remember.
   </p>
+
+  {photo(4) && (
+    <figure class="article-photo">
+      <img src={photo(4)?.src} alt={photo(4)?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={asukaTravelDestinations}
+    title="Visit the places behind early Buddhism"
+    intro="Asuka and Horyu-ji fit this part of the story: early court politics, Buddhist transmission, burial mounds, and the world before Nara became the capital."
+  />
 
   <h2 id="taika">Taika and ritsuryo: trying to become a state</h2>
 
@@ -365,6 +392,18 @@ const travelDestinations = [
     incomplete.
   </p>
 
+  {photo(5) && (
+    <figure class="article-photo">
+      <img src={photo(5)?.src} alt={photo(5)?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={capitalTravelDestinations}
+    title="Follow the capital route from Nara to Kyoto"
+    intro="Nara and Kyoto are the most practical bases for seeing how Buddhist statecraft, court culture, and Heian memory still shape travel routes today."
+  />
+
   <h2 id="warriors">The elegance of Heian, and the road to warriors</h2>
 
   <p>
@@ -408,6 +447,12 @@ const travelDestinations = [
     politics, and the weakening of older systems.
   </p>
 
+  {photo(6) && (
+    <figure class="article-photo">
+      <img src={photo(6)?.src} alt={photo(6)?.alt} loading="lazy" />
+    </figure>
+  )}
+
   <h2 id="japan-took-shape">Japan took shape by changing again and again</h2>
 
   <p>
@@ -435,3 +480,19 @@ const travelDestinations = [
     long, difficult dawn of Japan itself.
   </p>
 </ArticleLayout>
+
+<style>
+  .article-photo {
+    margin: 2rem 0;
+  }
+
+  .article-photo img {
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+</style>
