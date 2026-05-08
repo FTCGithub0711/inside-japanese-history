@@ -13,7 +13,7 @@ interface Props {
   title?: string;
   intro?: string;
   books: BookRecommendation[];
-  lang?: 'en' | 'de';
+  lang?: 'en' | 'de' | 'ja';
 }
 
 const {
@@ -32,6 +32,15 @@ const copy = lang === 'de'
         'Diese Empfehlungen passen zum Thema des Artikels und werden erst nach der Quellenpruefung gesetzt.',
       action: 'Buch ansehen',
     }
+  : lang === 'ja'
+    ? {
+        label: 'Books',
+        title: title ?? 'このテーマに関連する本',
+        intro:
+          intro ??
+          '記事内容に直接関係する本だけを、確認後にここへ入れます。',
+        action: '本を見る',
+      }
   : {
       label: 'Books',
       title: title ?? 'Books connected to this article',

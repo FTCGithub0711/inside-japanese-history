@@ -1,0 +1,440 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import TravelAffiliateBox from '../../../components/TravelAffiliateBox.astro';
+import { bookingSearch, googleMapsSearch, klookSearch } from '../../../data/monetization';
+import { existsSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+const imageDir = resolve(process.cwd(), 'public/images/articles/japan-creation-dawn');
+const imageFiles = existsSync(imageDir)
+  ? readdirSync(imageDir)
+      .filter((file) => /\.(jpe?g|png|webp)$/i.test(file))
+      .sort((a, b) => a.localeCompare(b))
+  : [];
+const articleImages = imageFiles.map((file) => {
+  const label = file
+    .replace(/\.[^.]+$/, '')
+    .replace(/^\d+[-_\s]*/, '')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+
+  return {
+    src: `/images/articles/japan-creation-dawn/${file}`,
+    alt: label ? `記事写真: ${label}` : '記事写真',
+  };
+});
+const extensionPriority = (src: string) => {
+  if (src.endsWith('.webp')) return 0;
+  if (src.endsWith('.jpg')) return 1;
+  if (src.endsWith('.jpeg')) return 2;
+  return 3;
+};
+const photoByKeyword = (...keywords: string[]) =>
+  articleImages
+    .filter((image) => keywords.some((keyword) => image.src.toLowerCase().includes(keyword)))
+    .sort((a, b) => extensionPriority(a.src) - extensionPriority(b.src))[0];
+
+const toc = [
+  { id: 'before-samurai', label: '侍以前の日本' },
+  { id: 'rice', label: '米づくりが社会を変えた' },
+  { id: 'himiko', label: '卑弥呼と邪馬台国' },
+  { id: 'kofun', label: '古墳とヤマト' },
+  { id: 'buddhism', label: '仏教と国家づくり' },
+  { id: 'taika', label: '大化と律令' },
+  { id: 'nara-heian', label: '奈良から平安へ' },
+  { id: 'warriors', label: '武士への道' },
+];
+
+const related = [
+  {
+    title: '原始〜平安',
+    description: '武士の時代より前の日本史を読むためのカテゴリページです。',
+    href: '/ja/ancient-heian/',
+    kicker: '原始〜平安',
+  },
+  {
+    title: '戦国',
+    description: '古代の土台ができた後、戦国の武将・城・統一へ進みます。',
+    href: '/ja/sengoku/',
+    kicker: '戦国',
+  },
+  {
+    title: '歴史旅',
+    description: '定番観光だけでは物足りない人のための歴史スポット案内です。',
+    href: '/ja/hidden-japan/',
+    kicker: '旅',
+  },
+];
+
+const earlyTravelDestinations = [
+  {
+    name: '三内丸山遺跡、青森',
+    description: '稲作以前の縄文の集落世界を、実際の遺跡としてイメージしやすい場所です。',
+    placeHref: googleMapsSearch('三内丸山遺跡 青森'),
+    stayHref: bookingSearch('Aomori, Japan'),
+  },
+  {
+    name: '吉野ヶ里歴史公園、佐賀',
+    description: '弥生時代の集落、環濠、米づくり、階層化を考える入口になります。',
+    placeHref: googleMapsSearch('吉野ヶ里歴史公園 佐賀'),
+    stayHref: bookingSearch('Saga, Japan'),
+  },
+];
+
+const yamataiTravelDestinations = [
+  {
+    name: '吉野ヶ里、佐賀',
+    description: '邪馬台国を九州側から考えるときに、弥生の大規模集落を想像しやすい場所です。',
+    placeHref: googleMapsSearch('吉野ヶ里歴史公園 佐賀'),
+    stayHref: bookingSearch('Saga, Japan'),
+  },
+  {
+    name: '纒向・桜井、奈良',
+    description: '邪馬台国近畿説や初期ヤマトを追う読者にとって重要な地域です。',
+    placeHref: googleMapsSearch('纒向遺跡 桜井 奈良'),
+    stayHref: bookingSearch('Sakurai, Nara, Japan'),
+  },
+];
+
+const kofunTravelDestinations = [
+  {
+    name: '百舌鳥・古市古墳群、大阪',
+    description: '巨大古墳が権力を風景に変えたことを、もっとも直感的に見られる場所です。',
+    placeHref: googleMapsSearch('百舌鳥 古市 古墳群 大阪'),
+    stayHref: bookingSearch('Sakai, Osaka, Japan'),
+  },
+  {
+    name: '飛鳥、奈良',
+    description: '古墳、初期宮廷政治、仏教、奈良以前の国家形成を一続きで見られる地域です。',
+    placeHref: googleMapsSearch('飛鳥 奈良 歴史'),
+    stayHref: bookingSearch('Asuka, Nara, Japan'),
+  },
+];
+
+const asukaTravelDestinations = [
+  {
+    name: '飛鳥',
+    description: '初期宮廷政治、古墳、仏教受容、奈良以前の国家形成が近い距離でつながります。',
+    placeHref: googleMapsSearch('飛鳥 奈良 歴史'),
+    stayHref: bookingSearch('Asuka, Nara, Japan'),
+  },
+  {
+    name: '法隆寺・斑鳩',
+    description: '仏教建築、聖徳太子の記憶、飛鳥から奈良への流れを考える入口です。',
+    placeHref: googleMapsSearch('法隆寺 斑鳩 奈良'),
+    stayHref: bookingSearch('Ikaruga, Nara, Japan'),
+  },
+];
+
+const capitalTravelDestinations = [
+  {
+    name: '奈良',
+    description: '東大寺、平城京、奈良仏教、律令国家の姿を実際にたどりやすい拠点です。',
+    placeHref: googleMapsSearch('奈良 古代史 東大寺 平城宮跡'),
+    stayHref: bookingSearch('Nara, Japan'),
+    activityHref: klookSearch('Nara Japan history tour'),
+  },
+  {
+    name: '京都',
+    description: '平安京、宮廷文化、寺社、文学、後世の貴族文化の記憶をたどる入口です。',
+    placeHref: googleMapsSearch('京都 平安京 歴史'),
+    stayHref: bookingSearch('Kyoto, Japan'),
+    activityHref: klookSearch('Kyoto history tour'),
+  },
+];
+
+const warriorTravelDestinations = [
+  {
+    name: '将門首塚、東京',
+    description: '平将門と、関東に現れた初期武士的な力を考える小さな史跡です。',
+    placeHref: googleMapsSearch('将門首塚 大手町 東京'),
+    stayHref: bookingSearch('Tokyo Station, Tokyo, Japan'),
+  },
+  {
+    name: '鎌倉',
+    description: 'この記事の次に、武家政権が本格的に形になる場所として自然につながります。',
+    placeHref: googleMapsSearch('鎌倉 武士 歴史'),
+    stayHref: bookingSearch('Kamakura, Kanagawa, Japan'),
+    activityHref: klookSearch('Kamakura samurai history tour'),
+  },
+];
+---
+
+<ArticleLayout
+  title="日本創生と変革の夜明け: 侍以前に、国はどう形づくられたのか"
+  description="侍や城の時代より前に、日本がどのように国として形づくられていったのかを、米づくり、卑弥呼、古墳、仏教、律令、平安からたどります。"
+  subtitle="城も武将もまだいない時代に、日本は米、祭祀、墓、仏教、法律、都、そして武士の芽生えによって少しずつ形を変えていった。"
+  kicker="原始〜平安"
+  datePublished="2026-05-08"
+  readingTime="約11分"
+  category="日本古代史"
+  lang="ja-JP"
+  toc={toc}
+  related={related}
+>
+  <h2 id="before-samurai">侍以前の日本</h2>
+
+  <p>
+    海外で日本史というと、まず思い浮かべられやすいのは侍、城、忍者、あるいは京都の古い街並みかもしれない。映画やゲーム、歴史ドラマも、多くは刀を持った武士の時代から日本へ入っていく。
+  </p>
+
+  <p>けれど、日本という国の物語は、そのずっと前から始まっている。</p>
+
+  <p>
+    そもそも「日本」は、最初から現在のような一つの国だったわけではない。北海道から沖縄までが当然のように日本だと考えられるようになるのは、はるか後のことである。古代の列島には、いくつもの集団が暮らし、外から来た文化を受け入れ、ときに争いながら、少しずつ大きな政治秩序を作っていった。
+  </p>
+
+  <div class="article-callout">
+    <p>
+      <strong>この記事の地図:</strong> ここでは、侍が日本史の主役になる前の時代をたどる。米づくり、卑弥呼、古墳、仏教、律令、奈良、平安京、そして武士の芽生えまでである。
+    </p>
+  </div>
+
+  <p>
+    古代日本は、静かな前置きではない。日本が日本になろうとした、最初の大きな変革の時代である。
+  </p>
+
+  <h2 id="rice">米づくりが社会を変えた</h2>
+
+  <p>
+    最初の大きな転換点は、縄文から弥生への変化である。縄文の人びとは、狩猟、採集、漁労を中心に暮らし、土器を使い、集落を作り、豊かな物質文化を残した。
+  </p>
+
+  <p>
+    ただし、縄文社会を「争いのない理想郷」と見るのは単純すぎる。人間が集団で暮らす以上、対立や緊張はあったはずだ。それでも、米を蓄え、水田を管理し、土地と水をめぐる利害が生まれる社会とは、仕組みが大きく違っていた。
+  </p>
+
+  <p>
+    弥生時代に水稲耕作が広がると、社会の性格は変わる。米は蓄えられる。蓄えられるものには差が出る。豊かな土地とそうでない土地、持つ者と持たない者、守る者と奪う者が生まれる。
+  </p>
+
+  <p>食べ方が変わると、暮らし方が変わる。暮らし方が変わると、権力の形が変わる。村が国のようなまとまりへ向かう入口は、ここにある。</p>
+
+  {photoByKeyword('jomon', 'yayoi', 'rice') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('jomon', 'yayoi', 'rice')?.src} alt={photoByKeyword('jomon', 'yayoi', 'rice')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={earlyTravelDestinations}
+    title="縄文から弥生への変化を見る"
+    intro="縄文の集落世界と、弥生の米づくり・環濠集落・階層化を実際の場所でイメージしやすくするための導線です。"
+    lang="ja"
+  />
+
+  <h2 id="himiko">卑弥呼と邪馬台国: 最初の大きな謎</h2>
+
+  <p>
+    3世紀、中国では魏・呉・蜀が争っていた。いわゆる三国志の時代である。その魏の記録に、日本列島の女王として卑弥呼が登場する。
+  </p>
+
+  <p>
+    239年、卑弥呼は魏に使者を送り、「親魏倭王」の称号を受けたとされる。重要なのは、当時の列島側には十分な文字記録が残っていないことである。古代日本の姿は、まず中国側の記録を通して見えてくる。
+  </p>
+
+  <p>
+    卑弥呼は、宗教的・呪術的な力を持つ女王として描かれる。政治と祭祀がまだきれいに分かれていない時代、統治することは、神意や見えない力を読むことでもあった。
+  </p>
+
+  <p>
+    問題は、卑弥呼が治めた邪馬台国がどこにあったのかである。九州だったのか、近畿だったのか。これは単なる場所当てではない。邪馬台国の位置は、日本列島の政治的中心がどこから生まれたのかという問いにつながっている。
+  </p>
+
+  <p>日本史の入口には、きれいな答えではなく、大きな霧がある。その霧こそが、古代史を面白くしている。</p>
+
+  <TravelAffiliateBox
+    destinations={yamataiTravelDestinations}
+    title="邪馬台国論争に関わる場所"
+    intro="邪馬台国の場所は断定できません。ここでは九州側と近畿側の見方を比べるための場所として紹介します。"
+    lang="ja"
+  />
+
+  <h2 id="kofun">古墳とヤマト: 墓が語る権力</h2>
+
+  <p>
+    邪馬台国の後、文字記録は追いにくくなる。だが、別のものが急に大きくなる。古墳である。
+  </p>
+
+  <p>
+    古墳とは、権力者の墓である。とくに前方後円墳と呼ばれる独特の形の巨大な墓は、人を集め、働かせ、技術を動員する力がなければ造れない。古墳は、文字の少ない時代に残された権力の痕跡である。
+  </p>
+
+  <p>
+    同じような墓の形式が広がっていくことは、各地の有力者が一つの政治文化に組み込まれていったことを示している。ここから、ヤマト政権の輪郭が見えてくる。
+  </p>
+
+  <p>
+    ただし、ヤマトを最初から近代国家のように考えるべきではない。最初は、地方の有力者たちが結びつき、競い合い、ときに従いながら形づくられた連合体として見るほうが自然である。
+  </p>
+
+  {photoByKeyword('kofun', 'kohun', 'tomb') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('kofun', 'kohun', 'tomb')?.src} alt={photoByKeyword('kofun', 'kohun', 'tomb')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={kofunTravelDestinations}
+    title="古墳が権力を風景に変える場所"
+    intro="古墳時代は視覚的に理解しやすい時代です。巨大な墓を通じて、地域の有力者とヤマトの広がりを考えられます。"
+    lang="ja"
+  />
+
+  <h2 id="buddhism">仏教は、信仰であり国家づくりの技術でもあった</h2>
+
+  <p>
+    6世紀半ば、百済から仏教が伝わったとされる。仏教公伝の年には538年説と552年説がある。
+  </p>
+
+  <p>
+    現代の感覚では、仏教は寺や信仰の話に見える。しかし古代の支配者にとって、仏教はそれだけではなかった。仏像、経典、寺院建築、学問、暦、文字、制度。大陸の先進文化が、仏教と一緒に入ってくる。
+  </p>
+
+  <p>
+    仏教を受け入れるかどうかは、新しい宗教が好きか嫌いかという問題ではない。大陸型の国家づくりを取り入れるかどうかの問題だった。
+  </p>
+
+  <p>
+    ここで重要になるのが蘇我氏と物部氏の対立である。蘇我氏は仏教受容を進め、物部氏は従来の神々への祭祀や氏族的秩序を重んじたとされる。587年、蘇我馬子が物部守屋を破り、仏教を受け入れる側が勝利する。
+  </p>
+
+  <p>
+    推古天皇、厩戸王、蘇我馬子の時代、日本は大陸と向き合いながら、自分たちの国家の形を整えようとしていく。
+  </p>
+
+  {photoByKeyword('horyuji', 'horyu', 'asuka') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('horyuji', 'horyu', 'asuka')?.src} alt={photoByKeyword('horyuji', 'horyu', 'asuka')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={asukaTravelDestinations}
+    title="仏教伝来の舞台を訪ねる"
+    intro="飛鳥と法隆寺・斑鳩は、初期宮廷政治、仏教伝来、古墳、奈良以前の国家形成をつなげて見るのに適しています。"
+    lang="ja"
+  />
+
+  <h2 id="taika">大化と律令: 国になろうとする試み</h2>
+
+  <p>
+    645年、中大兄皇子と中臣鎌足が蘇我入鹿を倒す。乙巳の変であり、その後の改革を含めて大化の改新と呼ばれる。
+  </p>
+
+  <p>
+    これは単なる宮廷内の権力争いではない。豪族たちの連合に近かった政治を、天皇中心の国家へ変えようとする動きだった。
+  </p>
+
+  <p>
+    「大化」という元号も重要である。元号を立てるとは、時間を誰が決めるのかという問題でもある。東アジアにおいて、暦と元号は政治そのものだった。自分たちの元号を立てることは、この国が自分たちの時間を定めるという宣言でもあった。
+  </p>
+
+  <p>
+    公地公民、律令、戸籍、税、地方支配。日本は、豪族連合から中央集権国家へ進もうとした。しかし国家づくりは一直線には進まない。672年には壬申の乱が起こり、勝利した天武天皇のもとで「日本」という国号や「天皇」という称号が整えられていくとされる。
+  </p>
+
+  <p>新しい国には、法律だけでなく、「自分たちはどこから来たのか」という物語も必要だった。</p>
+
+  {photoByKeyword('asuka', 'fujiwara') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('asuka', 'fujiwara')?.src} alt={photoByKeyword('asuka', 'fujiwara')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <h2 id="nara-heian">奈良から平安へ: 仏教国家の光と影</h2>
+
+  <p>
+    710年、都は平城京へ移る。奈良時代である。律令国家は、役所、地方制度、戸籍、税、そして巨大な仏教施設を通じて、目に見える形を取っていく。
+  </p>
+
+  <p>
+    聖武天皇は仏教によって国を守ろうとし、752年には東大寺大仏の開眼供養が行われる。大仏は単なる宗教的な像ではない。国家の不安を仏教の力で鎮めようとする、古代日本の政治的象徴でもあった。
+  </p>
+
+  <p>
+    しかし仏教が政治に近づきすぎると、国家の中心は揺らぐ。道鏡の台頭は、宗教的権威が天皇の権威に近づきすぎる危うさを示した。
+  </p>
+
+  <p>
+    794年、桓武天皇は都を平安京へ移す。現在の京都につながる都である。これは単なる引っ越しではない。奈良仏教の政治的影響から距離を取り、新しい都で政治を立て直そうとする動きだった。
+  </p>
+
+  <p>
+    平安初期の日本は、まだ現在の日本列島全体を当然のように支配していたわけではない。東北には朝廷に完全には従っていない人びとがいた。坂上田村麻呂と阿弖流為の物語は、古代の「日本」がまだ作られていく途中だったことを教えてくれる。
+  </p>
+
+  {photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo')?.src} alt={photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={capitalTravelDestinations}
+    title="奈良から京都へ、都の流れをたどる"
+    intro="奈良と京都は、仏教国家、宮廷文化、平安の記憶を実際の旅程に落とし込みやすい拠点です。"
+    lang="ja"
+  />
+
+  <h2 id="warriors">平安の優雅さと、武士への道</h2>
+
+  <p>
+    平安時代というと、和歌、官位、儀式、藤原道長、紫式部、『源氏物語』を思い浮かべるかもしれない。そのイメージは間違っていない。だが、それだけではない。
+  </p>
+
+  <p>
+    その下では、土地制度が変わっていた。公地公民の理想は弱まり、荘園が広がる。貴族や寺社が地方に土地を持ち、その土地を守るために武装した人びとが必要になる。ここから、武士の力が少しずつ大きくなっていく。
+  </p>
+
+  <p>
+    939年、関東で平将門の乱が起こる。将門は自らを「新皇」と称し、関東に独自の政治秩序を作ろうとした。反乱は失敗するが、京都から離れた地域で武力を持つ者が別の秩序を想像したという点で、後の時代を先取りしていた。
+  </p>
+
+  <p>
+    11世紀には藤原氏の権力が頂点に達し、1086年からは白河上皇による院政が始まる。その周囲には北面の武士と呼ばれる武装集団も置かれた。12世紀には保元の乱、平治の乱を経て、平清盛が台頭する。
+  </p>
+
+  <p>武士の時代は、突然始まったのではない。平安の土地、地方、武力、宮廷政治の変化の中から育っていた。</p>
+
+  <TravelAffiliateBox
+    destinations={warriorTravelDestinations}
+    title="武士の時代への入口をたどる"
+    intro="記事の終盤では、宮廷文化から武力を持つ地域権力へ視点が移ります。東京と鎌倉は、その流れを旅で追いやすい場所です。"
+    lang="ja"
+  />
+
+  <h2 id="japan-took-shape">日本は、何度も形を変えながら生まれた</h2>
+
+  <p>
+    縄文から平安までの物語は、侍や城の時代への前置きではない。むしろ土台である。
+  </p>
+
+  <p>
+    狩猟採集から米づくりへ。小さな集団から地域権力へ。邪馬台国の謎からヤマトへ。古墳が権力を可視化し、仏教が大陸の制度を運び、律令が土地と人を組織しようとした。奈良は仏教国家を作り、平安は宮廷文化を磨きながら、その下で武士の力を育てていった。
+  </p>
+
+  <p>
+    日本は、完成品として生まれた国ではない。外から来たものを受け入れ、反発し、都を移し、神話を書き、法律を作り、土地をめぐって争い、朝廷の届く範囲を広げながら、何度も姿を変えてきた。
+  </p>
+
+  <p>
+    侍の時代が面白いのは確かである。けれど、日本史の深い入口は、その前にある。刀が日本史の象徴になるずっと前、日本そのものが生まれようとしていた。
+  </p>
+</ArticleLayout>
+
+<style>
+  .article-photo {
+    margin: 2rem 0;
+  }
+
+  .article-photo img {
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+</style>

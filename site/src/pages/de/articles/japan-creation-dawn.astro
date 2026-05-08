@@ -1,0 +1,542 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import TravelAffiliateBox from '../../../components/TravelAffiliateBox.astro';
+import { bookingSearch, googleMapsSearch, klookSearch } from '../../../data/monetization';
+import { existsSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+const imageDir = resolve(process.cwd(), 'public/images/articles/japan-creation-dawn');
+const imageFiles = existsSync(imageDir)
+  ? readdirSync(imageDir)
+      .filter((file) => /\.(jpe?g|png|webp)$/i.test(file))
+      .sort((a, b) => a.localeCompare(b))
+  : [];
+const articleImages = imageFiles.map((file) => {
+  const label = file
+    .replace(/\.[^.]+$/, '')
+    .replace(/^\d+[-_\s]*/, '')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+
+  return {
+    src: `/images/articles/japan-creation-dawn/${file}`,
+    alt: label ? `Artikelfoto: ${label}` : 'Artikelfoto',
+  };
+});
+const extensionPriority = (src: string) => {
+  if (src.endsWith('.webp')) return 0;
+  if (src.endsWith('.jpg')) return 1;
+  if (src.endsWith('.jpeg')) return 2;
+  return 3;
+};
+const photoByKeyword = (...keywords: string[]) =>
+  articleImages
+    .filter((image) => keywords.some((keyword) => image.src.toLowerCase().includes(keyword)))
+    .sort((a, b) => extensionPriority(a.src) - extensionPriority(b.src))[0];
+
+const toc = [
+  { id: 'before-samurai', label: 'Vor der Samurai-Erzaehlung' },
+  { id: 'rice', label: 'Reis veraenderte die Gesellschaft' },
+  { id: 'himiko', label: 'Himiko und Yamatai' },
+  { id: 'kofun', label: 'Kofun und Yamato' },
+  { id: 'buddhism', label: 'Buddhismus und Staat' },
+  { id: 'taika', label: 'Taika und Ritsuryo' },
+  { id: 'nara-heian', label: 'Von Nara nach Heian' },
+  { id: 'warriors', label: 'Der Weg zu den Kriegern' },
+];
+
+const related = [
+  {
+    title: 'Urspruenge bis Heian',
+    description: 'Die Kategorie fuer fruehe japanische Geschichte vor dem Kriegerzeitalter.',
+    href: '/de/ancient-heian/',
+    kicker: 'Urspruenge',
+  },
+  {
+    title: 'Sengoku',
+    description: 'Nach den Grundlagen fuehrt der Weg zu Burgen, Kriegsherren und Einigung.',
+    href: '/de/sengoku/',
+    kicker: 'Kriegerzeit',
+  },
+  {
+    title: 'Hidden Spots',
+    description: 'Historische Orte fuer Reisende, die mehr suchen als die Standardroute.',
+    href: '/de/hidden-japan/',
+    kicker: 'Reise',
+  },
+];
+
+const earlyTravelDestinations = [
+  {
+    name: 'Sannai-Maruyama, Aomori',
+    description: 'Ein guter Ort, um die Siedlungswelt der Jomon-Zeit vor der Ausbreitung des Reisanbaus zu sehen.',
+    placeHref: googleMapsSearch('Sannai Maruyama Site Aomori Japan'),
+    stayHref: bookingSearch('Aomori, Japan'),
+  },
+  {
+    name: 'Yoshinogari Historical Park, Saga',
+    description: 'Ein anschaulicher Ort fuer Yayoi-Siedlungen, Reisanbau, Graeben, Vorratsspeicher und soziale Unterschiede.',
+    placeHref: googleMapsSearch('Yoshinogari Historical Park Saga Japan'),
+    stayHref: bookingSearch('Saga, Japan'),
+  },
+];
+
+const yamataiTravelDestinations = [
+  {
+    name: 'Yoshinogari, Saga',
+    description: 'Hilfreich, um grosse Yayoi-Siedlungen und die Kyushu-Seite der Yamatai-Debatte vor Augen zu haben.',
+    placeHref: googleMapsSearch('Yoshinogari Historical Park Saga Japan'),
+    stayHref: bookingSearch('Saga, Japan'),
+  },
+  {
+    name: 'Makimuku und Sakurai, Nara',
+    description: 'Ein wichtiges Gebiet fuer Leser, die Yamatai und fruehes Yamato aus der Kinai-Perspektive betrachten.',
+    placeHref: googleMapsSearch('Makimuku ruins Sakurai Nara Japan'),
+    stayHref: bookingSearch('Sakurai, Nara, Japan'),
+  },
+];
+
+const kofunTravelDestinations = [
+  {
+    name: 'Mozu-Furuichi Kofun-Gruppe, Osaka',
+    description: 'Der staerkste Reisebezug, wenn man verstehen will, wie riesige Graeber Autoritaet sichtbar machten.',
+    placeHref: googleMapsSearch('Mozu-Furuichi Kofun Group Osaka Japan'),
+    stayHref: bookingSearch('Sakai, Osaka, Japan'),
+  },
+  {
+    name: 'Asuka, Nara',
+    description: 'Eine kompakte Route fuer Graeber, fruehe Hofpolitik, Buddhismus und den Staat vor Nara.',
+    placeHref: googleMapsSearch('Asuka Nara Japan history'),
+    stayHref: bookingSearch('Asuka, Nara, Japan'),
+  },
+];
+
+const asukaTravelDestinations = [
+  {
+    name: 'Asuka',
+    description: 'Fruehe Hofpolitik, Graeber, buddhistische Anfaenge und Staatsbildung liegen hier nah beieinander.',
+    placeHref: googleMapsSearch('Asuka Nara Japan history'),
+    stayHref: bookingSearch('Asuka, Nara, Japan'),
+  },
+  {
+    name: 'Horyu-ji und Ikaruga',
+    description: 'Ein klarer Ort fuer fruehe buddhistische Architektur, Shotoku-Erinnerung und den Uebergang nach Nara.',
+    placeHref: googleMapsSearch('Horyu-ji Ikaruga Nara Japan'),
+    stayHref: bookingSearch('Ikaruga, Nara, Japan'),
+  },
+];
+
+const capitalTravelDestinations = [
+  {
+    name: 'Nara',
+    description: 'Die praktischste Basis fuer Todai-ji, Heijo-kyo, Nara-Buddhismus und den fruehen Rechtsstaat.',
+    placeHref: googleMapsSearch('Nara Japan ancient history'),
+    stayHref: bookingSearch('Nara, Japan'),
+    activityHref: klookSearch('Nara Japan history tour'),
+  },
+  {
+    name: 'Kyoto',
+    description: 'Der natuerliche Einstieg in Heian-kyo, Hofkultur, Literatur, Tempel und spaetere aristokratische Erinnerung.',
+    placeHref: googleMapsSearch('Kyoto Heian history'),
+    stayHref: bookingSearch('Kyoto, Japan'),
+    activityHref: klookSearch('Kyoto history tour'),
+  },
+];
+
+const warriorTravelDestinations = [
+  {
+    name: 'Masakado Kubizuka, Tokio',
+    description: 'Ein kleiner Ort nahe Otemachi fuer Leser, die Taira no Masakado und fruehe regionale Kriegergewalt verfolgen.',
+    placeHref: googleMapsSearch('Taira no Masakado Kubizuka Otemachi Tokyo'),
+    stayHref: bookingSearch('Tokyo Station, Tokyo, Japan'),
+  },
+  {
+    name: 'Kamakura',
+    description: 'Das naechste natuerliche Ziel nach diesem Artikel: Hier wird Kriegerregierung zu einer dauerhaften Ordnung.',
+    placeHref: googleMapsSearch('Kamakura Japan samurai history'),
+    stayHref: bookingSearch('Kamakura, Kanagawa, Japan'),
+    activityHref: klookSearch('Kamakura samurai history tour'),
+  },
+];
+---
+
+<ArticleLayout
+  title="Die Daemmerung Japans: Wie ein Land vor den Samurai Gestalt annahm"
+  description="Eine klare Einfuehrung in die fruehe japanische Geschichte: Reis, Himiko, Kofun, Buddhismus, Recht, Nara, Heian und der Aufstieg der Krieger."
+  subtitle="Vor Burgen, Kriegsherren und dem Samurai-Bild wurde Japan durch Reis, Ritual, Graeber, Buddhismus, Gesetze, Hauptstaedte und entstehende Kriegergewalt geformt."
+  kicker="Urspruenge bis Heian"
+  datePublished="2026-05-08"
+  readingTime="11 Min. Lesezeit"
+  category="Fruehe japanische Geschichte"
+  lang="de-DE"
+  toc={toc}
+  related={related}
+>
+  <h2 id="before-samurai">Vor der Samurai-Erzaehlung</h2>
+
+  <p>
+    Fuer viele internationale Leser beginnt japanische Geschichte mit Samurai,
+    Burgen, Ninja oder den alten Strassen Kyotos. Filme, Spiele und Serien
+    betreten Japan oft durch das Zeitalter der Krieger.
+  </p>
+
+  <p>Doch die Geschichte Japans beginnt viel frueher.</p>
+
+  <p>
+    Japan war nicht immer das eine Land, das man sich heute vorstellt. Die
+    Vorstellung eines selbstverstaendlich zusammenhaengenden Japan von Hokkaido
+    bis Okinawa gehoert in eine viel spaetere historische Welt. In der Antike
+    lebten auf dem Archipel viele Gemeinschaften, regionale Maechte,
+    Ritualzentren und konkurrierende Eliten. Ueber Jahrhunderte nahmen sie
+    Ideen vom asiatischen Kontinent auf, kaempften um Land und Autoritaet,
+    bauten Hauptstaedte, schrieben Ursprungsgeschichten und setzten langsam
+    eine groessere politische Ordnung zusammen.
+  </p>
+
+  <div class="article-callout">
+    <p>
+      <strong>Karte fuer Leser:</strong> Dieser Artikel folgt Japan vor der
+      Samurai-Erzaehlung: vom Reisanbau und Koenigin Himiko ueber Grabhaeufel,
+      Buddhismus, Recht, Nara und Heian-Kyoto bis zu den ersten Zeichen
+      kriegerischer Macht.
+    </p>
+  </div>
+
+  <p>
+    Das alte Japan war kein stilles Vorwort. Es war die erste grosse
+    Verwandlung: der lange Prozess, in dem Japan begann, Japan zu werden.
+  </p>
+
+  <h2 id="rice">Reis veraenderte die Gesellschaft</h2>
+
+  <p>
+    Der erste grosse Wendepunkt war der Uebergang von Jomon zu Yayoi.
+    Jomon-Gemeinschaften lebten von Jagd, Sammeln, Fischfang und Keramik. Sie
+    bildeten Siedlungen und eine reiche materielle Kultur.
+  </p>
+
+  <p>
+    Es waere zu einfach, Jomon als friedliches Paradies zu beschreiben. Wo
+    Menschen zusammenleben, gibt es Spannungen. Aber es war noch keine
+    Reisgesellschaft, die auf gespeicherten Ernten, Bewaesserung und
+    organisierter Hierarchie beruhte.
+  </p>
+
+  <p>
+    Mit Yayoi breitete sich Nassreisanbau aus. Reis braucht Land, Wasser,
+    Timing und Zusammenarbeit. Ein Feld muss verwaltet werden. Wasser muss
+    geteilt oder kontrolliert werden. Ernten koennen gelagert werden. Wo
+    Vorrat entsteht, entstehen Unterschiede: gutes und schlechtes Land,
+    Besitzende und Nichtbesitzende, Schutz und Raub.
+  </p>
+
+  <p>Eine Veraenderung der Nahrung veraenderte die Siedlung. Eine Veraenderung der Siedlung veraenderte Macht. Der Weg vom Dorf zum Staat beginnt hier.</p>
+
+  {photoByKeyword('jomon', 'yayoi', 'rice') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('jomon', 'yayoi', 'rice')?.src} alt={photoByKeyword('jomon', 'yayoi', 'rice')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={earlyTravelDestinations}
+    title="Den Wandel von Jomon zu Yayoi sehen"
+    intro="Diese Orte passen zu diesem Abschnitt: einer zeigt die Jomon-Siedlungswelt, der andere macht Yayoi-Reisanbau und soziale Unterschiede greifbar."
+    lang="de"
+  />
+
+  <h2 id="himiko">Himiko und Yamatai: das erste grosse Raetsel</h2>
+
+  <p>
+    Im dritten Jahrhundert war China zwischen Wei, Wu und Shu geteilt. In
+    chinesischen Quellen dieser Welt erscheint eine Koenigin des japanischen
+    Archipels: Himiko.
+  </p>
+
+  <p>
+    239 soll Himiko Gesandte nach Wei geschickt und den Titel einer mit Wei
+    verbundenen Koenigin von Wa erhalten haben. Entscheidend ist: Das fruehe
+    Japan hinterliess selbst noch keine spaeter uebliche Geschichtsschreibung.
+    Wir sehen es zuerst durch fremde Aufzeichnungen.
+  </p>
+
+  <p>
+    Himiko erscheint als Herrscherin mit religioeser oder schamanischer
+    Autoritaet. In dieser fruehen Welt waren Politik und Ritual nicht sauber
+    getrennt. Regieren bedeutete auch, Zeichen zu deuten und zwischen Menschen
+    und dem Unsichtbaren zu stehen.
+  </p>
+
+  <p>
+    Das grosse Problem ist Yamatai. Lag es in Kyushu, naeher am Kontinent? Oder
+    in der Kinai-Region, nahe dem spaeteren Zentrum der Yamato-Macht? Das ist
+    nicht nur eine Kartenfrage. Die Lage Yamatais veraendert, wie wir den
+    Ursprung politischer Zentralitaet in Japan denken.
+  </p>
+
+  <p>Am Eingang der japanischen Geschichte steht keine saubere Antwort, sondern Nebel. Genau das macht die Antike lesenswert.</p>
+
+  <TravelAffiliateBox
+    destinations={yamataiTravelDestinations}
+    title="Orte der Yamatai-Debatte"
+    intro="Yamatai bleibt umstritten. Diese Links sind keine Antwort, sondern helfen, die Kyushu- und Kinai-Perspektive auf fruehe politische Macht zu vergleichen."
+    lang="de"
+  />
+
+  <h2 id="kofun">Kofun und Yamato: Macht in Grabhaeufeln</h2>
+
+  <p>
+    Nach Yamatai wird die schriftliche Ueberlieferung schwerer fassbar. Doch
+    etwas anderes wird sichtbar: riesige Grabhaeufel.
+  </p>
+
+  <p>
+    Die Kofun-Zeit ist nach diesen Graebern benannt. Besonders bekannt sind
+    schluessellochfoermige Graeber, <em>zenpo-koen-fun</em>. Wer so ein Grab
+    bauen liess, konnte Arbeitskraft, Technik und Autoritaet mobilisieren. Ein
+    Grab dieser Groesse ist nicht nur ein Grab. Es ist eine politische Aussage.
+  </p>
+
+  <p>
+    Wenn aehnliche Grabformen sich ausbreiten, deutet das darauf hin, dass
+    regionale Eliten in eine gemeinsame politische Kultur hineingezogen wurden.
+    Hier wird Yamato deutlicher sichtbar.
+  </p>
+
+  <p>
+    Yamato sollte man aber nicht zu schnell als modernen Zentralstaat denken. Am
+    Anfang steht eher eine Koalition maechtiger Eliten, verbunden durch Rang,
+    Ritual, Ehe, Gewalt und Austausch.
+  </p>
+
+  {photoByKeyword('kofun', 'kohun', 'tomb') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('kofun', 'kohun', 'tomb')?.src} alt={photoByKeyword('kofun', 'kohun', 'tomb')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={kofunTravelDestinations}
+    title="Wo Graeber Macht zur Landschaft machen"
+    intro="Kofun-Geschichte ist ungewoehnlich visuell. Diese Orte verbinden riesige Graeber, regionale Eliten und die Entstehung der Yamato-Autoritaet."
+    lang="de"
+  />
+
+  <h2 id="buddhism">Buddhismus war Religion, Kultur und Staatstechnik</h2>
+
+  <p>
+    In der Mitte des sechsten Jahrhunderts wurde der Buddhismus aus Baekje,
+    einem koreanischen Koenigreich, nach Japan uebermittelt. Traditionelle
+    Berichte nennen 538 oder 552 als offizielles Datum.
+  </p>
+
+  <p>
+    Fuer heutige Leser klingt Buddhismus vielleicht nach Tempeln und Glauben.
+    Fuer antike Herrscher war er mehr: Bilder, Schriften, Tempelbau, Gelehrsamkeit,
+    Kalender, Schrift und Hofkultur kamen als Teil eines groesseren
+    kontinentalen Pakets.
+  </p>
+
+  <p>
+    Buddhismus anzunehmen hiess nicht nur, eine neue Religion zu moegen. Es war
+    mit der Frage verbunden, ob Japan eine kontinentalere Form der Staatsbildung
+    uebernehmen wuerde.
+  </p>
+
+  <p>
+    Deshalb ist der Konflikt zwischen Soga und Mononobe wichtig. Die Soga
+    unterstuetzten den Buddhismus. Die Mononobe werden als Verteidiger aelterer
+    Rituale, lokaler Gottheiten und Clan-Autoritaet erinnert. 587 besiegte Soga
+    no Umako Mononobe no Moriya.
+  </p>
+
+  <p>
+    Die Zeit von Kaiserin Suiko, Prinz Umayado, spaeter als Shotoku erinnert,
+    und Soga no Umako wurde zu einem Moment, in dem Japan dem Kontinent direkt
+    gegenuebertrat.
+  </p>
+
+  {photoByKeyword('horyuji', 'horyu', 'asuka') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('horyuji', 'horyu', 'asuka')?.src} alt={photoByKeyword('horyuji', 'horyu', 'asuka')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={asukaTravelDestinations}
+    title="Orte hinter dem fruehen Buddhismus"
+    intro="Asuka und Horyu-ji passen hier: fruehe Hofpolitik, buddhistische Uebertragung, Graeber und die Welt vor Nara."
+    lang="de"
+  />
+
+  <h2 id="taika">Taika und Ritsuryo: der Versuch, Staat zu werden</h2>
+
+  <p>
+    645 stuerzten Prinz Naka no Oe und Nakatomi no Kamatari Soga no Iruka. Das
+    Ereignis ist als Isshi-Zwischenfall bekannt und oeffnete den Weg zur
+    sogenannten Taika-Reform.
+  </p>
+
+  <p>
+    Das war nicht nur Palastdrama. Es war der Versuch, Macht von dominanten
+    Clan-Eliten wegzuziehen und auf einen staerker kaiserzentrierten Staat
+    auszurichten.
+  </p>
+
+  <p>
+    Der Aera-Name Taika ist wichtig. Einen Aera-Namen zu setzen bedeutet, Autoritaet
+    ueber Zeit zu beanspruchen. In Ostasien waren Kalender und Aera-Namen
+    politisch. Die japanische Hofmacht sagte damit: Diese Ordnung definiert ihre
+    eigene Zeit.
+  </p>
+
+  <p>
+    Spaeteres Ritsuryo-Recht sollte Aemter, Rang, Provinzen, Register, Steuern
+    und Pflichten ordnen. Doch Staatsbildung verlief nicht gerade. 672 brach der
+    Jinshin-Krieg aus. Der Sieger, Kaiser Tenmu, staerkte den Hof und wird mit
+    der Formung der Namen Japan und Kaiser verbunden.
+  </p>
+
+  <p>Ein neuer Staat braucht Gesetze. Er braucht auch eine Geschichte darueber, woher er kommt.</p>
+
+  {photoByKeyword('asuka', 'fujiwara') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('asuka', 'fujiwara')?.src} alt={photoByKeyword('asuka', 'fujiwara')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <h2 id="nara-heian">Von Nara nach Heian: Licht und Schatten buddhistischer Herrschaft</h2>
+
+  <p>
+    710 zog die Hauptstadt nach Heijo-kyo, heute mit Nara verbunden. Hier nahm
+    der Ritsuryo-Staat sichtbare Form an: Aemter, Provinzen, Register, Steuern
+    und grosse buddhistische Institutionen.
+  </p>
+
+  <p>
+    Kaiser Shomu versuchte, das Reich durch Buddhismus zu schuetzen. 752 wurde
+    der Grosse Buddha von Todai-ji geweiht. Die Statue war nicht nur religioes,
+    sondern auch politisch: eine gewaltige Antwort auf Krise durch buddhistische
+    Macht.
+  </p>
+
+  <p>
+    Doch die Naehe von Buddhismus und Regierung schuf ein Problem. Wenn
+    buddhistische Institutionen den Staat schuetzen konnten, konnten buddhistische
+    Figuren dann auch den Staat beherrschen? Der Moench Dokyo wurde im achten
+    Jahrhundert zum Warnzeichen.
+  </p>
+
+  <p>
+    794 verlegte Kaiser Kanmu die Hauptstadt nach Heian-kyo, der spaeteren Stadt
+    Kyoto. Das war nicht nur ein Umzug, sondern ein Versuch, Abstand vom
+    politischen Gewicht des Nara-Buddhismus zu gewinnen.
+  </p>
+
+  <p>
+    Auch an seinen Raendern war Japan noch im Werden. Im Nordosten lebten
+    Menschen, die nicht vollstaendig unter Hofkontrolle standen. Die Kampagnen
+    um Sakanoue no Tamuramaro und den Emishi-Fuehrer Aterui zeigen, dass
+    Autoritaet umstritten und unvollstaendig war.
+  </p>
+
+  {photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo') && (
+    <figure class="article-photo">
+      <img src={photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo')?.src} alt={photoByKeyword('nara', 'todaiji', 'kyoto', 'heiankyo')?.alt} loading="lazy" />
+    </figure>
+  )}
+
+  <TravelAffiliateBox
+    destinations={capitalTravelDestinations}
+    title="Der Hauptstadtroute von Nara nach Kyoto folgen"
+    intro="Nara und Kyoto sind die praktischsten Basen, um buddhistische Staatlichkeit, Hofkultur und Heian-Erinnerung in echte Reiserouten zu uebersetzen."
+    lang="de"
+  />
+
+  <h2 id="warriors">Die Eleganz von Heian und der Weg zu den Kriegern</h2>
+
+  <p>
+    Heian-Japan ist beruehmt fuer Hofeleganz: Poesie, Rang, Zeremonie, Fujiwara
+    no Michinaga, Murasaki Shikibu und <em>Die Geschichte vom Prinzen Genji</em>.
+    Dieses Bild ist richtig, aber nicht vollstaendig.
+  </p>
+
+  <p>
+    Unter der Oberflaeche veraenderte sich das Landsystem. Das Ideal oeffentlichen
+    Landes wurde schwaecher. Private Gueter, <em>shoen</em>, breiteten sich aus.
+    Aristokraten und Tempel besassen Land in den Provinzen, und Land brauchte
+    Schutz. Bewaffnete Maenner gewannen an Bedeutung.
+  </p>
+
+  <p>
+    939 rebellierte Taira no Masakado in der Kanto-Region und nannte sich
+    “neuer Kaiser”. Die Rebellion scheiterte, aber sie zeigte, dass bewaffnete
+    regionale Macht weit von Kyoto eine eigene politische Ordnung denken konnte.
+  </p>
+
+  <p>
+    Im elften Jahrhundert erreichte Fujiwara-Macht einen Hoehepunkt. Ab 1086
+    regierten zurueckgetretene Kaiser wie Shirakawa durch Insei, die
+    Klosterregierung. Um sie standen bewaffnete Waechter wie die Hokumen no Bushi.
+  </p>
+
+  <p>
+    Im zwoelften Jahrhundert waren Kriegerfamilien keine Randfiguren mehr. Die
+    Hogen- und Heiji-Unruhen oeffneten den Weg fuer Taira no Kiyomori, der 1167
+    Grossminister wurde.
+  </p>
+
+  <p>Das Kriegerzeitalter entstand nicht aus dem Nichts. Es wuchs aus der Heian-Welt: Landstreit, Gutsschutz, regionale Gewalt, Hofpolitik und schwaecher werdende Systeme.</p>
+
+  <TravelAffiliateBox
+    destinations={warriorTravelDestinations}
+    title="Den ersten Zeichen kriegerischer Macht folgen"
+    intro="Diese Links gehoeren ans Ende des Artikels, wo sich die Geschichte von Hofkultur zu bewaffneter Regionalmacht und dem Weg nach Kamakura bewegt."
+    lang="de"
+  />
+
+  <h2 id="japan-took-shape">Japan nahm Gestalt an, indem es sich immer wieder veraenderte</h2>
+
+  <p>
+    Die Geschichte von Jomon bis Heian ist kein Vorwort zur “eigentlichen”
+    Geschichte der Samurai und Burgen. Sie ist das Fundament.
+  </p>
+
+  <p>
+    Jagd und Sammeln wichen dem Reisanbau. Kleine Gemeinschaften wurden zu
+    regionalen Maechten. Yamatai fuehrt in das Raetsel von Yamato. Grabhaeufel
+    machten Macht sichtbar. Buddhismus brachte kontinentale Staatstechnik.
+    Ritsuryo-Recht versuchte, Land und Menschen zu ordnen. Nara baute einen
+    buddhistischen Staat. Heian-Kyoto verfeinerte Hofkultur, waehrend Krieger
+    unter der Oberflaeche wuchsen.
+  </p>
+
+  <p>
+    Japan wurde nicht als fertiges Land geboren. Es nahm Gestalt an, indem es
+    fremde Ideen aufnahm, sich gegen sie wehrte, Hauptstaedte verlegte, Mythen
+    schrieb, Gesetze baute, um Land kaempfte und die Reichweite des Hofes
+    ausdehnte.
+  </p>
+
+  <p>
+    Das Samurai-Zeitalter ist faszinierend. Doch der tiefere Eingang zur
+    japanischen Geschichte liegt frueher, bevor das Schwert zum Hauptsymbol
+    wird: in der langen, schwierigen Daemmerung Japans selbst.
+  </p>
+</ArticleLayout>
+
+<style>
+  .article-photo {
+    margin: 2rem 0;
+  }
+
+  .article-photo img {
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+</style>
