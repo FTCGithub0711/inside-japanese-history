@@ -101,27 +101,27 @@ export const siteTemplate = {
         en: 'Inside Japanese History',
         de: 'Deutsch',
       },
-      description: {
-        ja: '日本語の資料と現地に残る手がかりから、日本史と歴史旅を読み直すページです。',
-        en: 'Japanese history and history-led travel, built from Japanese sources, places, and clear editorial storytelling.',
-        de: 'Japanische Geschichte und geschichtsorientierte Reisen, aufgebaut aus japanischen Quellen, Orten und klarer Erzählung.',
+    description: {
+        ja: '日本史の謎、論争、人物、現地に残る手がかりを、日本語の文脈から読み解くページです。',
+        en: 'Japanese history told through mysteries, arguments, people, places, and Japanese context.',
+        de: 'Japanische Geschichte erzählt über Rätsel, Debatten, Menschen, Orte und japanischen Kontext.',
       },
     },
     hero: {
       kicker: {
-        ja: '資料と現地から読む日本史',
-        en: 'Japanese history, read on the ground',
-        de: 'Japanische Geschichte vor Ort gelesen',
+        ja: '謎と現地から読む日本史',
+        en: 'Japanese history, told through its arguments',
+        de: 'Japanische Geschichte über ihre Streitfragen gelesen',
       },
       title: {
-        ja: '写真の奥にある\n日本史を歩く。',
-        en: 'Walk into the history\nbehind the photograph.',
-        de: 'Die Geschichte hinter dem Bild\nvor Ort lesen.',
+        ja: 'その日本史は、\n本当にそうだったのか。',
+        en: 'The familiar story\nis only the entrance.',
+        de: 'Die bekannte Geschichte\nist nur der Eingang.',
       },
       description: {
-        ja: '城、古戦場、城下町、信仰の集落。日本語の資料と現地に残る手がかりから、通り過ぎてしまう日本史を読み直します。',
-        en: 'Castles, battlefields, castle towns, and communities of faith, explained through Japanese sources and the traces still visible on the ground.',
-        de: 'Burgen, Schlachtfelder, Burgstädte und Glaubensgemeinschaften, erklärt aus japanischen Quellen und den Spuren vor Ort.',
+        ja: '卑弥呼、侍、城、幕末、明治、そして知られざる史跡。通説の奥にある謎、対立、現地の痕跡を、日本側の文脈から読み直します。',
+        en: 'Himiko, samurai, castles, Bakumatsu, Meiji, and hidden historic places, read through the mysteries, conflicts, and traces that standard summaries leave behind.',
+        de: 'Himiko, Samurai, Burgen, Bakumatsu, Meiji und verborgene historische Orte, gelesen über Rätsel, Konflikte und Spuren, die kurze Zusammenfassungen auslassen.',
       },
       primaryLabel: {
         ja: 'Substackを見る',
@@ -196,26 +196,26 @@ export const siteTemplate = {
         de: 'Redaktionelle Richtung',
       },
       title: {
-        ja: '入口はわかりやすく。中身は薄めない。',
-        en: 'Start with the question readers already have. Answer it from the Japanese record.',
-        de: 'Wir beginnen mit Fragen, die Leser bereits haben, und antworten aus japanischen Quellen.',
+        ja: '面白い問いから入る。答えは雑にしない。',
+        en: 'Start with the gripping version. Keep the argument honest.',
+        de: 'Mit der fesselnden Version beginnen. Die Einordnung ehrlich halten.',
       },
       text: {
-        ja: '原始から平安、戦国、江戸から幕末、近現代、そして歴史旅を扱います。海外の読者が入りやすい問いから始めながら、日本語で読んでも雑に感じない内容を目指します。',
-        en: 'The site is organized around historical routes: origins to Heian, Sengoku warlords, Edo to Bakumatsu collapse, and modern Japan. The argument is built from Japanese books, articles, places, and historical materials first.',
-        de: 'Die Seite folgt historischen Routen: Ursprünge bis Heian, Sengoku, Edo bis Bakumatsu und modernes Japan.',
+        ja: '原始から平安、戦国、江戸から幕末、近現代、歴史旅を扱います。論争があるところは、読者を引き込む側から入り、最後は資料と現地の手がかりで締めます。',
+        en: 'The site is organized around dramatic historical routes: origins to Heian, Sengoku warlords, Edo to Bakumatsu collapse, modern Japan, and history-led travel. When the record is uncertain, the story leads with the strongest question and then grounds it in Japanese context.',
+        de: 'Die Seite folgt dramatischen historischen Routen: Ursprünge bis Heian, Sengoku, Edo bis Bakumatsu, modernes Japan und Reisen zu historischen Orten. Wo die Quellen unsicher sind, beginnt die Erzählung mit der stärksten Frage und verankert sie dann im japanischen Kontext.',
       },
     },
     topicIntro: {
       heading: {
         ja: 'テーマから読む',
-        en: 'Start anywhere',
+        en: 'Choose the argument',
         de: 'Lesen nach Thema',
       },
       text: {
-        ja: '気になる時代や場所から読めるように、入口をいくつかに分けています。',
-        en: 'You do not need to read Japanese history in strict order. Each section is an entry point.',
-        de: 'Man muss japanische Geschichte nicht streng chronologisch lesen. Jede Rubrik ist ein Einstieg.',
+        ja: '年表順に読む必要はありません。謎、人物、時代、場所から入れるようにしています。',
+        en: 'You do not need to read Japanese history in order. Enter through the mystery, the person, the era, or the place.',
+        de: 'Japanische Geschichte muss man nicht der Reihe nach lesen. Der Einstieg kann ein Rätsel, eine Person, eine Epoche oder ein Ort sein.',
       },
     },
     pillars: [
@@ -227,9 +227,9 @@ export const siteTemplate = {
           de: 'Ursprünge bis Heian',
         },
         text: {
-          ja: '縄文、弥生、古墳、奈良、平安。国家、信仰、都、貴族文化の入口を作ります。',
-          en: 'Jōmon, Yayoi, Kofun, Nara, and Heian: early communities, state formation, belief, capitals, and court culture.',
-          de: 'Jōmon, Yayoi, Kofun, Nara und Heian: frühe Gesellschaften, Staatsbildung, Religion, Hauptstädte und Hofkultur.',
+          ja: '卑弥呼、邪馬台国、巨大古墳、仏教国家、平安貴族、武士の芽生えを読む。',
+          en: 'Himiko, Yamatai, giant tombs, Buddhist statecraft, Heian court culture, and the first conditions for samurai power.',
+          de: 'Himiko, Yamatai, riesige Gräber, buddhistische Staatstechnik, Heian-Hofkultur und die ersten Bedingungen für Samurai-Macht.',
         },
       },
       {

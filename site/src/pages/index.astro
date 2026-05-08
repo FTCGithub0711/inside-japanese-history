@@ -39,27 +39,28 @@ const locale = 'en';
   </div>
 
   <section class="home-intro" aria-label="Editorial introduction">
-    <p class="kicker">For readers who want the story beneath the itinerary</p>
-    <h2>Japan is easy to photograph. It is harder to read.</h2>
+    <p class="kicker">For readers who want more than the usual version</p>
+    <h2>Japanese history is not a timeline. It is a set of arguments.</h2>
     <p>
-      This site follows the places, documents, debates, and local memory that
-      make Japanese history visible: castle towns, battlefields, family lines,
-      political collapse, religious communities, and the stories that travel
-      articles often compress.
+      Who first held power? Why did rice create conflict? Was a queen at the
+      beginning of the Japanese state? Why did monks become politically
+      dangerous? Why did warriors rise from a court famous for poetry? This site
+      starts with the dramatic question, then follows the Japanese sources,
+      places, and debates behind it.
     </p>
   </section>
 
-  <section class="feature-showcase" aria-label="Featured feature">
+  <section class="feature-showcase" aria-label="Featured article">
     <img src={castleImage} alt="Hojō Ujikuni statue beneath cherry blossoms" loading="lazy" />
     <div>
-      <p class="kicker">First feature in progress</p>
-      <h2>Hidden historic places in Japan, chosen for what they reveal.</h2>
+      <p class="kicker">Featured foundation story</p>
+      <h2>Before the samurai, Japan had queens, tombs, monks, coups, and a capital trying to escape itself.</h2>
       <p>
-        Odawara, Sekigahara, Azuchi, Aizu-Wakamatsu, Hagi, Nagasaki, and
-        Hachigata are not just quieter alternatives to the usual route. Each
-        place preserves a turning point you can still walk.
+        The first article is not a dry overview. It follows the violent,
+        sacred, and political dawn before castles and shoguns made Japan easier
+        for the world to recognize.
       </p>
-      <a class="text-link" href={localizedHref('/hidden-japan/', locale)}>Explore history-led travel</a>
+      <a class="text-link" href="/articles/japan-creation-dawn/">Read how Japan became Japan</a>
     </div>
   </section>
 
@@ -73,15 +74,15 @@ const locale = 'en';
 
   <section class="home-section" aria-labelledby="starting-points">
     <div class="section-heading">
-      <p class="kicker">Start with a question</p>
-      <h2 id="starting-points">Popular entry points, rebuilt from Japanese context.</h2>
+      <p class="kicker">Start with tension</p>
+      <h2 id="starting-points">The best entry points are the ones people already argue about.</h2>
     </div>
     <div class="feature-grid elevated">
       <article class="feature-card">
       <img src={armorImage} alt="Samurai armor displayed at the British Museum" loading="lazy" />
       <div class="body">
         <p class="label">Samurai Myths</p>
-        <h3>The samurai stories English pop culture keeps simplifying</h3>
+        <h3>The samurai stories pop culture keeps making too clean</h3>
         <p>
           Weapons, bushido, seppuku, loyalty, firearms, and the gap between
           battlefield history and later romantic images.
@@ -93,19 +94,49 @@ const locale = 'en';
         <img src={ieyasuImage} alt="Portrait of Tokugawa Ieyasu" loading="lazy" />
         <div>
           <p class="label">Shōgun & Real History</p>
-          <h3>The real politics behind Toranaga</h3>
-          <p>Tokugawa Ieyasu, Sekigahara, and what drama compresses.</p>
+          <h3>What the drama gets right by changing names</h3>
+          <p>Tokugawa Ieyasu, Sekigahara, William Adams, and the politics behind prestige TV.</p>
         </div>
       </article>
       <article class="mini-feature">
         <img src={waveImage} alt="The Great Wave off Kanagawa" loading="lazy" />
         <div>
-          <p class="label">Modern Japan</p>
-          <h3>How Japan changed without becoming simple</h3>
-          <p>Meiji, empire, defeat, recovery, memory, and everyday modernity.</p>
+          <p class="label">Ancient Mystery</p>
+          <h3>Was Japan's first famous ruler a shaman queen?</h3>
+          <p>Himiko, Yamatai, Chinese records, and the argument at the entrance to Japanese history.</p>
         </div>
       </article>
     </div>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="story-engine">
+    <div class="section-heading">
+      <p class="kicker">How stories are built here</p>
+      <h2 id="story-engine">Readable first. Responsible underneath.</h2>
+      <p>
+        When the record is uncertain, this site does not hide the uncertainty.
+        It uses it. The article chooses the most compelling route through the
+        evidence, then makes clear where the ground is solid and where the
+        argument begins.
+      </p>
+    </div>
+    <div class="question-grid">
+      <article class="question-card">
+        <p class="label">Mystery</p>
+        <h3>Lead with the question readers feel.</h3>
+        <p>Himiko, Yamatai, ninja, bushidō, Shōgun, hidden castles, and places where the familiar story breaks.</p>
+      </article>
+      <article class="question-card">
+        <p class="label">Drama</p>
+        <h3>Show the stakes, not only the dates.</h3>
+        <p>Rice creates surplus. Tombs advertise power. Buddhism becomes state technology. Capitals move because politics gets dangerous.</p>
+      </article>
+      <article class="question-card">
+        <p class="label">Travel</p>
+        <h3>Turn the argument into a route.</h3>
+        <p>After the story earns attention, the article points to places where readers can stand inside the history.</p>
+      </article>
     </div>
   </section>
 

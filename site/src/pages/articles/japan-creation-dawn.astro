@@ -35,14 +35,14 @@ const photoByKeyword = (...keywords: string[]) =>
     .sort((a, b) => extensionPriority(a.src) - extensionPriority(b.src))[0];
 
 const toc = [
-  { id: 'before-samurai', label: 'Before the samurai story' },
-  { id: 'rice', label: 'Rice changed society' },
-  { id: 'himiko', label: 'Himiko and Yamatai' },
-  { id: 'kofun', label: 'Kofun and Yamato' },
-  { id: 'buddhism', label: 'Buddhism and statecraft' },
-  { id: 'taika', label: 'Taika and ritsuryo' },
-  { id: 'nara-heian', label: 'Nara to Heian' },
-  { id: 'warriors', label: 'The road to warriors' },
+  { id: 'before-samurai', label: 'The Japan before Japan' },
+  { id: 'rice', label: 'Rice, surplus, and conflict' },
+  { id: 'himiko', label: 'Himiko, queen of the fog' },
+  { id: 'kofun', label: 'Tombs as political theater' },
+  { id: 'buddhism', label: 'Buddhism as state technology' },
+  { id: 'taika', label: 'The coup that tried to remake time' },
+  { id: 'nara-heian', label: 'Capitals, monks, and danger' },
+  { id: 'warriors', label: 'How samurai became possible' },
 ];
 
 const related = [
@@ -176,9 +176,9 @@ const capitalTravelDestinations = [
 ---
 
 <ArticleLayout
-  title="The Dawn of Japan: How a Country Took Shape Before the Samurai"
-  description="A clear guide to early Japanese history for readers who know samurai and castles, but not how Japan first became a state."
-  subtitle="Before castles, warlords, and the samurai image, Japan was shaped by rice, ritual, tombs, Buddhism, law, capitals, and the slow rise of warrior power."
+  title="How Japan Became Japan: Before the Samurai"
+  description="A dramatic, beginner-friendly guide to early Japanese history: rice, Himiko, Yamatai, kofun, Buddhism, Nara, Heian, and the road to samurai power."
+  subtitle="Before castles and sword-bearing heroes, Japan was a harder, stranger story: rice made wealth visible, queens ruled from the fog of Chinese records, tombs advertised power, and monks helped build the state."
   kicker="Origins to Heian"
   datePublished="2026-05-08"
   readingTime="11 min read"
@@ -186,65 +186,68 @@ const capitalTravelDestinations = [
   toc={toc}
   related={related}
 >
-  <h2 id="before-samurai">Before the samurai story</h2>
+  <h2 id="before-samurai">The Japan before Japan</h2>
 
   <p>
-    For many international readers, Japanese history begins with samurai,
-    castles, ninja, or the old streets of Kyoto. Films, games, and historical
-    dramas often enter Japan through the age of warriors.
+    Most people meet Japanese history too late. They arrive with samurai,
+    castles, ninja, tea rooms, and the polished streets of Kyoto already in
+    place, as if Japan had been waiting there fully formed.
   </p>
 
   <p>
-    But the story of Japan begins much earlier.
+    It had not.
   </p>
 
   <p>
-    Japan was not always the single country people imagine today. The idea of a
-    Japan stretching naturally from Hokkaido to Okinawa belongs to a much later
-    historical world. In ancient times, the archipelago was home to many
-    communities, regional powers, ritual centers, and competing elites. Over
-    centuries, they absorbed ideas from the Asian continent, fought over land
-    and authority, built capitals, wrote origin stories, and slowly assembled a
-    larger political order.
+    The more interesting story begins before the country knows exactly what it
+    is. The archipelago was not a neat nation stretching naturally from Hokkaido
+    to Okinawa. It was a chain of communities, ritual centers, ambitious
+    families, regional powers, and frontier zones. Some looked across the sea to
+    China and Korea. Some fought over land and water. Some built graves so large
+    they still bend the map today.
   </p>
 
   <div class="article-callout">
     <p>
-      <strong>Reader's map:</strong> This article follows Japan before the
-      samurai became the main historical image: from rice farming and Queen
-      Himiko to burial mounds, Buddhism, law, Nara, Heian Kyoto, and the first
-      signs of warrior power.
+      <strong>How this site reads the period:</strong> where scholars disagree,
+      we do not flatten the story into a safe textbook paragraph. We show the
+      uncertainty, then follow the version that best explains why the question
+      still matters.
     </p>
   </div>
 
   <p>
-    Ancient Japan was not a quiet preface. It was the first great transformation:
-    the long process by which Japan began to become Japan.
+    Ancient Japan is not a quiet preface to the samurai age. It is the first
+    great drama: how a scattered archipelago began to imagine itself as a
+    country.
   </p>
 
-  <h2 id="rice">Rice changed society</h2>
+  <h2 id="rice">Rice, surplus, and conflict</h2>
 
   <p>
-    The first major turning point was the shift from Jomon to Yayoi. Jomon
-    communities lived through hunting, gathering, fishing, and the use of
-    pottery. They formed settlements and developed a rich material culture.
-    It is too simple to call Jomon society a peaceful paradise, but it was not
-    yet a rice-based political world built around stored harvests, irrigation,
-    and organized hierarchy.
+    The first great turn in this story is not a battle. It is a field.
   </p>
 
   <p>
-    Yayoi society changed that. Wet-rice agriculture spread, and rice required
-    land, water, timing, and cooperation. A field had to be managed. Water had
-    to be shared or controlled. Harvests could be stored. Once something can be
-    stored, differences appear: rich land and poor land, those who hold surplus
-    and those who do not, those who protect stores and those who try to take
-    them.
+    Jomon communities hunted, gathered, fished, made pottery, and built
+    settlements with a culture far richer than the old image of "primitive"
+    life suggests. But they were not yet living in a rice world: a world of
+    managed water, stored harvests, defended surplus, and leaders who could turn
+    food into authority.
   </p>
 
   <p>
-    A change in food changed settlement. A change in settlement changed power.
-    The path from village to state begins here.
+    Yayoi society changed the stakes. Wet-rice agriculture demanded timing,
+    labor, land, and water control. Once rice could be stored, inequality had a
+    physical shape. Some places had better fields. Some families held more
+    grain. Someone had to organize irrigation. Someone had to guard the store.
+    Someone else might decide to steal it.
+  </p>
+
+  <p>
+    Rice did not simply feed Japan. In the dramatic reading, rice invented
+    Japanese politics: surplus, hierarchy, defense, and the first hard steps
+    from village to state.
   </p>
 
   {photoByKeyword('jomon', 'yayoi', 'rice') && (
@@ -263,39 +266,40 @@ const capitalTravelDestinations = [
     intro="These places fit this section naturally: one shows the Jomon settlement world, the other makes Yayoi rice agriculture and social hierarchy easier to picture."
   />
 
-  <h2 id="himiko">Himiko and Yamatai: the first great mystery</h2>
+  <h2 id="himiko">Himiko, queen of the fog</h2>
+
+  <p>
+    Then, out of the fog, a woman appears.
+  </p>
 
   <p>
     In the third century, China was divided among Wei, Wu, and Shu, the world
-    later remembered through the <em>Romance of the Three Kingdoms</em>. In
-    Chinese records from that world, a queen appears in the Japanese
-    archipelago: Himiko.
+    later romanticized in the <em>Romance of the Three Kingdoms</em>. In records
+    from that world, the Japanese archipelago enters written history through a
+    ruler named Himiko. In 239, she is said to have sent envoys to Wei and
+    received the title "Queen of Wa friendly to Wei."
   </p>
 
   <p>
-    In 239, Himiko is said to have sent envoys to Wei and received the title
-    “Queen of Wa friendly to Wei.” The important point is not only her name.
-    It is that early Japan is first seen through outside records. The
-    archipelago itself did not yet leave the kind of written historical record
-    that later states would produce.
+    That single detail changes the atmosphere of the whole period. Japan first
+    appears not through its own official history, but through a foreign court's
+    report. And the first unforgettable political figure is not a warrior king
+    but a queen whose authority seems to have been ritual, shamanic, and
+    political at once.
   </p>
 
   <p>
-    Himiko is described as a ruler with religious or shamanic authority. In this
-    early world, politics and ritual were not cleanly separated. To govern was
-    also to read signs, perform rites, and stand between people and the unseen.
+    The argument that refuses to die is Yamatai, the polity Himiko ruled. Was it
+    in Kyushu, closer to the continent? Or in the Kinai region, near the later
+    heart of Yamato power? On paper this sounds like a location dispute. In
+    reality, it is a fight over the opening scene of Japanese state formation.
   </p>
 
   <p>
-    The major problem is Yamatai, the polity Himiko ruled. Was it in Kyushu, in
-    western Japan closer to the continent? Or was it in the Kinai region, near
-    the later center of Yamato power? This is not just a map puzzle. The location
-    of Yamatai changes how we imagine the birth of political centrality in Japan.
-  </p>
-
-  <p>
-    At the entrance to Japanese history, there is not a neat answer. There is a
-    fog. That is part of what makes ancient Japan worth reading.
+    The more dramatic version places Himiko close to the later Yamato world,
+    making her not a side character but a possible shadow at the beginning of
+    the imperial story. It is not proven. That is exactly why it keeps pulling
+    readers back.
   </p>
 
   {photoByKeyword('himiko', 'yamatai', 'yoshinogari') && (
@@ -314,36 +318,37 @@ const capitalTravelDestinations = [
     intro="Yamatai is still debated, so these links are not presented as answers. They help readers compare the Kyushu and Kinai ways of imagining early political power."
   />
 
-  <h2 id="kofun">Kofun and Yamato: power written in tombs</h2>
+  <h2 id="kofun">Tombs as political theater</h2>
 
   <p>
-    After Yamatai, the written record becomes harder to follow. But something
-    else becomes visible: huge burial mounds.
+    After Himiko, the written trail thins. But the land starts speaking.
   </p>
 
   <p>
-    The Kofun period is named for these tombs. The most famous form is the
-    keyhole-shaped mound, or <em>zenpo-koen-fun</em>. To build one required labor,
-    planning, tools, and authority. A tomb of that scale is not only a grave. It
-    is a statement that someone had the power to mobilize a community.
+    The Kofun period is named for the huge burial mounds that spread across the
+    landscape. The most famous form is the keyhole-shaped tomb, or
+    <em>zenpo-koen-fun</em>. To build one required workers, tools, planning,
+    food, and obedience. A tomb of that scale is not only a grave. It is a
+    billboard for power.
   </p>
 
   <p>
-    As similar tomb forms spread, they suggest that regional elites were being
-    drawn into a shared political culture. This is where the outline of the
-    Yamato polity becomes clearer.
+    This is where ancient Japan becomes visual. Before chronicles tell the
+    story clearly, tombs reveal that certain elites could command enormous
+    labor and imitate a shared political style. The spread of similar tomb forms
+    suggests that regional leaders were being drawn into a larger order.
   </p>
 
   <p>
-    But Yamato should not be imagined too quickly as a modern-style state. It
-    was not born as a fully centralized government ruling the entire archipelago
-    from day one. It is better to begin with a coalition of powerful elites:
-    local leaders bound together by rank, ritual, marriage, force, and exchange.
+    Call it Yamato, but do not imagine a modern state too soon. It was more
+    likely a coalition of powerful houses, held together by ritual, marriage,
+    rank, tribute, coercion, and prestige. In other words: not a country yet,
+    but a machine for turning local power into something larger.
   </p>
 
   <p>
-    Japan's beginning was not a single straight line. It was a gradual process
-    in which many powers were pulled into a larger order.
+    Japan's beginning was not a straight line. It was a negotiation backed by
+    graves big enough to intimidate the living.
   </p>
 
   {photoByKeyword('kofun', 'kohun', 'tomb') && (
@@ -362,32 +367,34 @@ const capitalTravelDestinations = [
     intro="Kofun history is unusually visual. These places help readers connect giant tombs, regional elites, and the emergence of Yamato authority."
   />
 
-  <h2 id="buddhism">Buddhism was religion, culture, and statecraft</h2>
+  <h2 id="buddhism">Buddhism as state technology</h2>
 
   <p>
-    In the mid-sixth century, Buddhism was transmitted to Japan from Baekje, one
-    of the Korean kingdoms. Traditional accounts give 538 or 552 as the date of
-    its official introduction.
+    Buddhism did not arrive in Japan only as a religion. It arrived as a
+    civilizational upgrade.
   </p>
 
   <p>
-    To modern readers, Buddhism may sound like a question of temples and belief.
-    For ancient rulers, it was much more. Buddhist images, scriptures, temple
-    architecture, scholarship, calendars, writing, and court culture arrived as
-    part of a wider continental package.
+    In the mid-sixth century, Buddhism was transmitted from Baekje, one of the
+    Korean kingdoms. Traditional accounts give 538 or 552 as the date of its
+    official introduction. For modern readers, that may sound like a matter of
+    temples and belief. For ancient rulers, it was much more: images, scriptures,
+    architecture, literacy, calendars, scholarship, diplomacy, and the prestige
+    of continental civilization.
   </p>
 
   <p>
-    Accepting Buddhism was not simply a matter of liking a new religion. It was
-    tied to the question of whether Japan would adopt a more continental style
-    of state formation.
+    Accepting Buddhism meant asking what kind of country Japan wanted to become.
+    Would power remain centered on older clan rites and local deities? Or would
+    the court adopt the tools of the great states across the sea?
   </p>
 
   <p>
-    This is why the conflict between the Soga and Mononobe clans matters. The
+    That is why the conflict between the Soga and Mononobe clans matters. The
     Soga supported Buddhism. The Mononobe are remembered as defenders of older
     ritual practices tied to native deities and clan authority. In 587, Soga no
-    Umako defeated Mononobe no Moriya, and the Buddhist side won.
+    Umako defeated Mononobe no Moriya. The Buddhist side won, and with it came a
+    new political imagination.
   </p>
 
   <p>
@@ -398,9 +405,10 @@ const capitalTravelDestinations = [
   </p>
 
   <p>
-    This does not mean every later legend about Shotoku should be read literally.
-    Ancient history often tells us two stories at once: what may have happened,
-    and what later generations needed to remember.
+    This does not mean every later legend about Shotoku should be read
+    literally. But legends also matter. They show how later Japan wanted to
+    remember the moment when the archipelago turned toward the continent and
+    started speaking the language of statecraft.
   </p>
 
   {photoByKeyword('horyuji', 'horyu', 'asuka') && (
@@ -419,21 +427,22 @@ const capitalTravelDestinations = [
     intro="Asuka and Horyu-ji fit this part of the story: early court politics, Buddhist transmission, burial mounds, and the world before Nara became the capital."
   />
 
-  <h2 id="taika">Taika and ritsuryo: trying to become a state</h2>
+  <h2 id="taika">The coup that tried to remake time</h2>
+
+  <p>
+    Then came blood inside the palace.
+  </p>
 
   <p>
     In 645, Prince Naka no Oe and Nakatomi no Kamatari overthrew Soga no Iruka.
     The event is known as the Isshi Incident, and it opened the way to what is
-    traditionally called the Taika Reform.
+    traditionally called the Taika Reform. It was not just palace drama. It was
+    an attempt to break the grip of dominant clan elites and pull authority
+    toward an emperor-centered state.
   </p>
 
   <p>
-    This was not just palace drama. It was an attempt to pull power away from
-    dominant clan elites and move toward a more emperor-centered state.
-  </p>
-
-  <p>
-    The era name “Taika” matters. To create an era name is to claim authority
+    The era name "Taika" matters. To create an era name is to claim authority
     over time itself. In East Asia, calendars and era names were political. They
     showed who defined the order of the world. By setting its own era name, the
     Japanese court was making a statement: this polity would define its own
@@ -457,7 +466,9 @@ const capitalTravelDestinations = [
   </p>
 
   <p>
-    A new state needs laws. It also needs a story about where it came from.
+    A new state needs laws. It also needs a story about where it came from. That
+    is why bureaucracy and myth grow together in this period. One organizes the
+    living. The other recruits the past.
   </p>
 
   {photoByKeyword('asuka', 'fujiwara') && (
@@ -470,12 +481,13 @@ const capitalTravelDestinations = [
     </figure>
   )}
 
-  <h2 id="nara-heian">From Nara to Heian: the light and shadow of Buddhist rule</h2>
+  <h2 id="nara-heian">Capitals, monks, and danger</h2>
 
   <p>
-    In 710, the capital moved to Heijo-kyo, today associated with Nara. This was
-    the age in which the ritsuryo state took visible form: offices, provinces,
-    registers, taxes, and great Buddhist institutions.
+    In 710, the capital moved to Heijo-kyo, today associated with Nara. Here the
+    ritsuryo state became visible: offices, provinces, registers, taxes, and
+    great Buddhist institutions. The court was no longer only an alliance of
+    powerful houses. It was trying to look like a state.
   </p>
 
   <p>
@@ -486,7 +498,7 @@ const capitalTravelDestinations = [
   </p>
 
   <p>
-    Yet Buddhism's closeness to government created a problem. If Buddhist
+    Yet Buddhism's closeness to government created a dangerous question. If Buddhist
     institutions could protect the state, could Buddhist figures also dominate
     the state? The monk Dokyo, favored by Empress Shotoku in the eighth century,
     became the clearest warning sign. His rise suggested that religious
@@ -495,9 +507,9 @@ const capitalTravelDestinations = [
 
   <p>
     In 794, Emperor Kanmu moved the capital to Heian-kyo, the city later known
-    as Kyoto. This was not just a change of address. It was an attempt to step
-    away from the political weight of Nara Buddhism and renew court rule in a
-    new capital.
+    as Kyoto. This was not just a change of address. It was an escape from the
+    political gravity of Nara Buddhism and a bet that a new capital could reset
+    the rules.
   </p>
 
   <p>
@@ -524,7 +536,7 @@ const capitalTravelDestinations = [
     intro="Nara and Kyoto are the most practical bases for seeing how Buddhist statecraft, court culture, and Heian memory still shape travel routes today."
   />
 
-  <h2 id="warriors">The elegance of Heian, and the road to warriors</h2>
+  <h2 id="warriors">How samurai became possible</h2>
 
   <p>
     Heian Japan is famous for courtly elegance: poetry, rank, ceremony, Fujiwara
@@ -533,7 +545,9 @@ const capitalTravelDestinations = [
   </p>
 
   <p>
-    Under the surface, the land system was changing. The ideal of public land
+    Under the surface, the land system was changing. This is the part of Heian
+    history that deserves to feel less like court literature and more like a
+    slow political thriller. The ideal of public land
     weakened. Private estates, known as <em>shoen</em>, expanded. Aristocrats and
     temples held land in the provinces, and land needed protection. Armed men
     who guarded estates gradually gained importance. These men were part of the
@@ -562,9 +576,10 @@ const capitalTravelDestinations = [
   </p>
 
   <p>
-    The age of warriors did not appear from nowhere. It grew out of the Heian
-    world: land disputes, estate protection, regional military power, court
-    politics, and the weakening of older systems.
+    The age of warriors did not appear from nowhere. It grew inside the elegant
+    Heian world: land disputes, estate protection, regional military power,
+    court politics, and the weakening of older systems. The sword became
+    important because the paperwork stopped being enough.
   </p>
 
   {photoByKeyword('masakado', 'samurai', 'warrior') && (
@@ -583,10 +598,10 @@ const capitalTravelDestinations = [
     intro="These links belong near the end of the article, where the story turns from court culture toward armed regional power and the road to Kamakura."
   />
 
-  <h2 id="japan-took-shape">Japan took shape by changing again and again</h2>
+  <h2 id="japan-took-shape">Japan was made by crisis</h2>
 
   <p>
-    The story from Jomon to Heian is not a preface to the “real” history of
+    The story from Jomon to Heian is not a preface to the "real" history of
     samurai and castles. It is the foundation.
   </p>
 
@@ -599,15 +614,16 @@ const capitalTravelDestinations = [
   </p>
 
   <p>
-    Japan was not born as a finished country. It took shape by absorbing outside
-    ideas, resisting them, moving capitals, writing myths, building laws,
-    fighting over land, and expanding the reach of the court.
+    Japan was not born as a finished country. It was made through crisis:
+    absorbing outside ideas, resisting them, moving capitals, writing myths,
+    building laws, fighting over land, and expanding the reach of the court.
   </p>
 
   <p>
-    The samurai age is fascinating. But the deepest entrance to Japanese history
-    lies earlier, before the sword becomes the main symbol. It begins with the
-    long, difficult dawn of Japan itself.
+    The samurai age is fascinating because it looks dramatic. But the deeper
+    drama comes earlier, before the sword becomes the main symbol. It begins
+    with rice, queens, tombs, monks, laws, capitals, and the long, difficult
+    invention of Japan itself.
   </p>
 </ArticleLayout>
 
