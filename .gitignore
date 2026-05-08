@@ -1,5 +1,7 @@
 .DS_Store
 **/.DS_Store
+~$*.docx
+**/~$*.docx
 
 # Local app dependencies and build output
 site/node_modules/
