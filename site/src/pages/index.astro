@@ -11,6 +11,7 @@ import { localizedHref, siteTemplate, t } from '../copy/siteTemplate';
 const armorImage = 'https://commons.wikimedia.org/wiki/Special:FilePath/SamuraiArmor.jpg?width=900';
 const ieyasuImage = 'https://commons.wikimedia.org/wiki/Special:FilePath/Tokugawa%20Ieyasu.jpg?width=900';
 const castleImage = SITE.heroImages[0].src;
+const waveImage = SITE.heroImages[3].src;
 const locale = 'en';
 ---
 
@@ -37,15 +38,32 @@ const locale = 'en';
     ))}
   </div>
 
-  <section class="authority-note" aria-label="Editorial authority">
-    <p class="kicker">{t(siteTemplate.home.authority.kicker, locale)}</p>
-    <h2>{t(siteTemplate.home.authority.title, locale)}</h2>
-    <p>{t(siteTemplate.home.authority.text, locale)}</p>
+  <section class="home-intro" aria-label="Editorial introduction">
+    <p class="kicker">For readers who want the story beneath the itinerary</p>
+    <h2>Japan is easy to photograph. It is harder to read.</h2>
+    <p>
+      This site follows the places, documents, debates, and local memory that
+      make Japanese history visible: castle towns, battlefields, family lines,
+      political collapse, religious communities, and the stories that travel
+      articles often compress.
+    </p>
   </section>
 
-  <NewsletterCTA variant="compact" />
+  <section class="feature-showcase" aria-label="Featured feature">
+    <img src={castleImage} alt="Hojō Ujikuni statue beneath cherry blossoms" loading="lazy" />
+    <div>
+      <p class="kicker">First feature in progress</p>
+      <h2>Hidden historic places in Japan, chosen for what they reveal.</h2>
+      <p>
+        Odawara, Sekigahara, Azuchi, Aizu-Wakamatsu, Hagi, Nagasaki, and
+        Hachigata are not just quieter alternatives to the usual route. Each
+        place preserves a turning point you can still walk.
+      </p>
+      <a class="text-link" href={localizedHref('/hidden-japan/', locale)}>Explore history-led travel</a>
+    </div>
+  </section>
 
-  <section class="editorial-map">
+  <section class="editorial-map refined">
     <div>
       <p class="kicker">{t(siteTemplate.home.direction.kicker, locale)}</p>
       <h2>{t(siteTemplate.home.direction.title, locale)}</h2>
@@ -53,16 +71,20 @@ const locale = 'en';
     <p>{t(siteTemplate.home.direction.text, locale)}</p>
   </section>
 
-  <h2>Featured starting points</h2>
-  <div class="feature-grid">
-    <article class="feature-card">
+  <section class="home-section" aria-labelledby="starting-points">
+    <div class="section-heading">
+      <p class="kicker">Start with a question</p>
+      <h2 id="starting-points">Popular entry points, rebuilt from Japanese context.</h2>
+    </div>
+    <div class="feature-grid elevated">
+      <article class="feature-card">
       <img src={armorImage} alt="Samurai armor displayed at the British Museum" loading="lazy" />
       <div class="body">
         <p class="label">Samurai Myths</p>
-        <h3>Did samurai really live by the myths English pop culture repeats?</h3>
+        <h3>The samurai stories English pop culture keeps simplifying</h3>
         <p>
-          Start with weapons, bushido, seppuku, and the gap between battlefield
-          history and later romantic images.
+          Weapons, bushido, seppuku, loyalty, firearms, and the gap between
+          battlefield history and later romantic images.
         </p>
       </div>
     </article>
@@ -76,77 +98,67 @@ const locale = 'en';
         </div>
       </article>
       <article class="mini-feature">
-        <img src={castleImage} alt="Himeji Castle keep seen from the grounds" loading="lazy" />
+        <img src={waveImage} alt="The Great Wave off Kanagawa" loading="lazy" />
         <div>
-          <p class="label">Castles & Battlefields</p>
-          <h3>How terrain shaped Japanese warfare</h3>
-          <p>Castles, sieges, river valleys, and what survives today.</p>
+          <p class="label">Modern Japan</p>
+          <h3>How Japan changed without becoming simple</h3>
+          <p>Meiji, empire, defeat, recovery, memory, and everyday modernity.</p>
         </div>
       </article>
     </div>
-  </div>
+    </div>
+  </section>
 
-  <h2 id="topics">{t(siteTemplate.home.topicIntro.heading, locale)}</h2>
-  <p>{t(siteTemplate.home.topicIntro.text, locale)}</p>
-  <div class="pillar-grid">
-    {siteTemplate.home.pillars.map((pillar) => (
+  <section class="home-section" id="topics" aria-labelledby="topic-heading">
+    <div class="section-heading">
+      <p class="kicker">Read by route</p>
+      <h2 id="topic-heading">{t(siteTemplate.home.topicIntro.heading, locale)}</h2>
+      <p>{t(siteTemplate.home.topicIntro.text, locale)}</p>
+    </div>
+    <div class="pillar-grid polished">
+      {siteTemplate.home.pillars.map((pillar) => (
+        <div class="pillar-card">
+          <h3><a href={localizedHref(pillar.href, locale)}>{t(pillar.title, locale)}</a></h3>
+          <p>{t(pillar.text, locale)}</p>
+        </div>
+      ))}
       <div class="pillar-card">
-        <h3><a href={localizedHref(pillar.href, locale)}>{t(pillar.title, locale)}</a></h3>
-        <p>{t(pillar.text, locale)}</p>
+        <h3>Shōgun & Real History</h3>
+        <p>Character inspirations, historical accuracy, Tokugawa politics, and what drama compresses.</p>
       </div>
-    ))}
-    <div class="pillar-card">
-      <h3>Shōgun & Real History</h3>
-      <p>Character inspirations, historical accuracy, Tokugawa politics, and what the drama simplifies.</p>
+      <div class="pillar-card">
+        <h3>Samurai Myths</h3>
+        <p>Katana myths, bushido, seppuku, firearms, ninja, and the stories English pop culture repeats.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>Castles & Battlefields</h3>
+        <p>Odawara, Sekigahara, Himeji, Azuchi, terrain, siege warfare, and what survives on the ground.</p>
+      </div>
     </div>
-    <div class="pillar-card">
-      <h3>Samurai Myths</h3>
-      <p>Katana myths, bushido, seppuku, firearms, ninja, and the stories English pop culture repeats.</p>
-    </div>
-    <div class="pillar-card">
-      <h3>Castles & Battlefields</h3>
-      <p>Odawara, Sekigahara, Himeji, Azuchi, terrain, siege warfare, and what survives on the ground.</p>
-    </div>
-  </div>
+  </section>
 
-  <h2>Editorial tracks</h2>
-  <div class="topic-rank">
+  <section class="editorial-principles" aria-label="Editorial principles">
     <div>
-      <p class="label">Track 1</p>
-      <h3>High-demand gateways</h3>
-      <p>Is Shōgun a true story? Were ninja real? Did samurai use guns? These are the questions that bring readers in.</p>
+      <p class="kicker">Editorial standard</p>
+      <h2>Clear enough to enter. Serious enough to trust.</h2>
     </div>
-    <div>
-      <p class="label">Track 2</p>
-      <h3>Japanese source depth</h3>
-      <p>Each piece is checked against Japanese-language historians, source collections, and period-specific debates.</p>
-    </div>
-    <div>
-      <p class="label">Track 3</p>
-      <h3>Hidden Japan travel</h3>
-      <p>Lesser-known castles, battlefield geography, local museums, and quieter routes where affiliate links can be useful after the context is clear.</p>
-    </div>
-  </div>
+    <ol>
+      <li>
+        <strong>Begin with the question readers already have.</strong>
+        <span>Shōgun, samurai, castles, ninja, Meiji, travel, and the familiar myths that bring people in.</span>
+      </li>
+      <li>
+        <strong>Return to Japanese sources and places.</strong>
+        <span>Books, museums, local records, official materials, maps, and what remains on the ground.</span>
+      </li>
+      <li>
+        <strong>Turn the context into a readable journey.</strong>
+        <span>No mystery for mystery’s sake. No shallow checklist. Just the story made visible.</span>
+      </li>
+    </ol>
+  </section>
 
-  <h2>Why this exists</h2>
-  <p>
-    Japanese history online is often filtered through outside summaries, pop
-    culture, and familiar Western categories. That can make the story easy to
-    enter, but it also flattens the Japanese context.
-  </p>
-  <p>
-    This project adds another angle: <strong>Japanese historical judgment,
-    edited into clear prose.</strong> The point is not to make Japan seem
-    mysterious. The point is to make the context visible.
-  </p>
-
-  <div class="note-box">
-    <p>
-      The site can move from Sengoku to Bakumatsu to modern Japan because each
-      section answers a different reader question. The connection is not strict
-      chronology; it is how Japan's past still shapes what readers notice today.
-    </p>
-  </div>
+  <NewsletterCTA variant="compact" />
 
   <SocialLinks />
 </BaseLayout>

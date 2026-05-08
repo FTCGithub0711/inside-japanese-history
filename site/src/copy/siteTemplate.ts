@@ -96,26 +96,26 @@ export const siteTemplate = {
         de: 'Deutsch',
       },
       description: {
-        ja: '日本語の資料と現地の視点から、日本史と歴史旅を読み直すページです。',
-        en: 'Japanese history and historically grounded travel ideas, built from Japanese sources and clear editorial storytelling.',
-        de: 'Japanische Geschichte und geschichtsorientierte Reiseideen: Samurai, Burgen, Shōgun, Bakumatsu, modernes Japan und Orte vor Ort.',
+        ja: '日本語の資料と現地に残る手がかりから、日本史と歴史旅を読み直すページです。',
+        en: 'Japanese history and history-led travel, built from Japanese sources, places, and clear editorial storytelling.',
+        de: 'Japanische Geschichte und geschichtsorientierte Reisen, aufgebaut aus japanischen Quellen, Orten und klarer Erzählung.',
       },
     },
     hero: {
       kicker: {
-        ja: '日本語で読み直す日本史',
-        en: 'Japanese history from Japanese sources',
-        de: 'Japanische Geschichte aus japanischen Quellen',
+        ja: '資料と現地から読む日本史',
+        en: 'Japanese history, read on the ground',
+        de: 'Japanische Geschichte vor Ort gelesen',
       },
       title: {
-        ja: '知っているようで\nまだ読めていない日本史。',
-        en: 'Japanese history\nread from the inside.',
-        de: 'Japanische Geschichte\nvon innen gelesen.',
+        ja: '写真の奥にある\n日本史を歩く。',
+        en: 'Walk into the history\nbehind the photograph.',
+        de: 'Die Geschichte hinter dem Bild\nvor Ort lesen.',
       },
       description: {
-        ja: '城、合戦、人物、町の記憶。日本語の資料と現地に残る手がかりから、日本史をもう一度たどります。',
-        en: 'Essays and historically grounded travel ideas built from Japanese-language scholarship, primary sources, places, and memory.',
-        de: 'Essays und geschichtsorientierte Reiseideen, aufgebaut aus japanischer Forschung, Quellen, Orten und Erinnerung.',
+        ja: '城、古戦場、城下町、信仰の集落。日本語の資料と現地に残る手がかりから、通り過ぎてしまう日本史を読み直します。',
+        en: 'Castles, battlefields, castle towns, and communities of faith, explained through Japanese sources and the traces still visible on the ground.',
+        de: 'Burgen, Schlachtfelder, Burgstädte und Glaubensgemeinschaften, erklärt aus japanischen Quellen und den Spuren vor Ort.',
       },
       primaryLabel: {
         ja: 'Substackを見る',
