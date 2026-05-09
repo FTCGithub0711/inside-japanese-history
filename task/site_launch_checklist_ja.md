@@ -83,10 +83,15 @@ npm run preview
 - `/`
 - `/sengoku/`
 - `/bakumatsu/`
-- `/modern/`
 - `/hidden-japan/`
 - `/de/`
+- `/de/sengoku/`
+- `/de/bakumatsu/`
 - `/de/hidden-japan/`
+- `/ja/`
+- `/ja/sengoku/`
+- `/ja/bakumatsu/`
+- `/ja/hidden-japan/`
 - `/about/`
 - `/contact/`
 - `/privacy/`

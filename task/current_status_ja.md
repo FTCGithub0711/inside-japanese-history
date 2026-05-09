@@ -1,6 +1,6 @@
 # 現在地メモ
 
-更新日: 2026-05-08
+更新日: 2026-05-09
 
 ## 現在の状態
 
@@ -23,6 +23,7 @@
 - 記事内に写真フォルダから自動で画像を差し込む仕組みを実装。
 - 記事内の文脈に合わせて旅行アフィリエイト導線を配置。
 - 直近で、サイト文言を「論争」ではなく「面白い筋から入る歴史読み物」へ修正。
+- 公開カテゴリを `Sengoku`、`Bakumatsu`、`Hidden Places` の3つに絞る方針へ変更。
 
 ## 直近の編集方針
 
@@ -36,24 +37,22 @@
 
 ## 次にやる候補
 
-1. 1本目の記事の日本語版・ドイツ語版も、英語版と同じ読み物調へ揃える。
-2. 1本目の記事に内部リンク予定地を追加する。
-   - Himiko / Yamatai
-   - Kofun
-   - Buddhism and Soga
-   - Nara to Heian
-   - Rise of samurai
-3. `Origins to Heian` の個別記事を1本選んで作る。
-4. `Hidden Japan Travel` の親記事を再開する。
-5. 旅行アフィリエイトの本登録・リンク置換を進める。
+1. `task/affiliate_partner_application_steps_ja.md` を見ながら、Booking.com、GetYourGuide、Klook、Amazon Associates に申請する。
+2. 発行されたIDを `task/affiliate_link_inventory_ja.md` に記録する。
+3. アフィリエイトID発行後、`site/src/data/monetization.ts` または Cloudflare の環境変数に反映する。
+4. `Sengoku`、`Bakumatsu`、`Hidden Places` の3カテゴリで、記事候補と内部リンクを整理する。
+5. `Hidden Japan Travel` の親記事を再開する。
+6. 既存の古代記事は、当面「背景記事」として残し、主導線からは外す。
 
 ## 再開時に見るファイル
 
 - 文書全体の索引: `DOCUMENT_INDEX.md`
-- 原始〜平安シリーズ: `article-workspace/origins-to-heian/README.md`
+- 3カテゴリ方針: `site/src/copy/siteTemplate.ts`
 - 人気記事10本: `article-workspace/top-topics/topic_index.md`
 - サイト設計: `seo-research/16_site_and_content_blueprint_ja.md`
 - 競合文体調査: `seo-research/17_overseas_japan_blog_top10_style_research_ja.md`
+- アフィリエイト登録手順: `task/affiliate_partner_application_steps_ja.md`
+- アフィリエイトID台帳: `task/affiliate_link_inventory_ja.md`
 - 公開記事: `site/src/pages/articles/japan-creation-dawn.astro`
 
 ## 注意

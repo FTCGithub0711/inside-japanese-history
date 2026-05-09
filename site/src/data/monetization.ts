@@ -14,22 +14,31 @@ export interface BookRecommendation {
   label?: string;
 }
 
+const env = import.meta.env;
+const trimValue = (value: string | undefined) => value?.trim() ?? '';
+
 export const AFFILIATE = {
-  bookingAid: '',
-  amazonTag: '',
-  klookPartnerId: '',
-  viatorPartnerId: '',
+  bookingAid: trimValue(env.PUBLIC_BOOKING_AID),
+  bookingLabel: trimValue(env.PUBLIC_BOOKING_LABEL) || 'inside-japanese-history',
+  amazonTag: trimValue(env.PUBLIC_AMAZON_TAG),
+  klookPartnerId: trimValue(env.PUBLIC_KLOOK_PARTNER_ID),
+  getYourGuidePartnerId: trimValue(env.PUBLIC_GETYOURGUIDE_PARTNER_ID),
+  viatorPartnerId: trimValue(env.PUBLIC_VIATOR_PARTNER_ID),
 } as const;
 
 export function googleMapsSearch(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
-export function bookingSearch(destination: string) {
+export function bookingSearch(destination: string, campaign?: string) {
   const params = new URLSearchParams({ ss: destination });
 
   if (AFFILIATE.bookingAid) {
     params.set('aid', AFFILIATE.bookingAid);
+  }
+
+  if (AFFILIATE.bookingLabel) {
+    params.set('label', campaign ? `${AFFILIATE.bookingLabel}-${campaign}` : AFFILIATE.bookingLabel);
   }
 
   return `https://www.booking.com/searchresults.html?${params.toString()}`;
@@ -48,14 +57,32 @@ export function amazonSearch(query: string) {
   return `https://www.amazon.com/s?${params.toString()}`;
 }
 
-export function klookSearch(query: string) {
+export function klookSearch(query: string, campaign?: string) {
   const params = new URLSearchParams({ query });
 
   if (AFFILIATE.klookPartnerId) {
     params.set('aid', AFFILIATE.klookPartnerId);
   }
 
+  if (campaign) {
+    params.set('utm_campaign', campaign);
+  }
+
   return `https://www.klook.com/search/result/?${params.toString()}`;
+}
+
+export function getYourGuideSearch(query: string, campaign?: string) {
+  const params = new URLSearchParams({ q: query });
+
+  if (AFFILIATE.getYourGuidePartnerId) {
+    params.set('partner_id', AFFILIATE.getYourGuidePartnerId);
+  }
+
+  if (campaign) {
+    params.set('cmp', campaign);
+  }
+
+  return `https://www.getyourguide.com/s/?${params.toString()}`;
 }
 
 export const affiliateDisclosure = {

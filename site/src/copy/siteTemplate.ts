@@ -15,21 +15,12 @@ export function localeFromLang(lang: string): SiteLocale {
   3. `en` と `de` は、日本語のニュアンスを保った翻訳として更新する。
   4. 公開文には「父チェック」「AI」「同期」など制作側の言葉を出さない。
 
-  例:
-  header.nav.ancientHeian.ja = '原始〜平安'
-  header.nav.ancientHeian.en = 'Origins to Heian'
-  header.nav.ancientHeian.de = 'Ursprünge bis Heian'
+  現在の公開カテゴリは `Sengoku`, `Bakumatsu`, `Hidden Places` の3つに絞る。
 */
 
 export const siteTemplate = {
   header: {
     nav: {
-      ancientHeian: {
-        href: '/ancient-heian/',
-        ja: '原始〜平安',
-        en: 'Origins to Heian',
-        de: 'Ursprünge bis Heian',
-      },
       sengoku: {
         href: '/sengoku/',
         ja: '戦国',
@@ -38,21 +29,15 @@ export const siteTemplate = {
       },
       bakumatsu: {
         href: '/bakumatsu/',
-        ja: '江戸〜幕末',
-        en: 'Edo to Bakumatsu',
-        de: 'Edo bis Bakumatsu',
-      },
-      modern: {
-        href: '/modern/',
-        ja: '近現代',
-        en: 'Modern Japan',
-        de: 'Modernes Japan',
+        ja: '幕末',
+        en: 'Bakumatsu',
+        de: 'Bakumatsu',
       },
       hiddenJapan: {
         href: '/hidden-japan/',
         ja: '歴史旅',
-        en: 'Hidden Spots',
-        de: 'Hidden Spots',
+        en: 'Hidden Places',
+        de: 'Hidden Places',
       },
       about: {
         href: '/about/',
@@ -102,26 +87,26 @@ export const siteTemplate = {
         de: 'Deutsch',
       },
       description: {
-        ja: '日本史の謎、人物、事件、現地に残る手がかりを、日本語の文脈から読み解くページです。',
-        en: 'Japanese history told through mysteries, people, turning points, places, and Japanese context.',
-        de: 'Japanische Geschichte erzählt über Rätsel, Menschen, Wendepunkte, Orte und japanischen Kontext.',
+        ja: '戦国、幕末、知られざる歴史旅に絞って、日本史を物語と現地の手がかりから読むページです。',
+        en: 'Japanese history focused on Sengoku, Bakumatsu, and hidden historic places, told through story and traces on the ground.',
+        de: 'Japanische Geschichte mit Fokus auf Sengoku, Bakumatsu und verborgene historische Orte, erzählt über Geschichten und Spuren vor Ort.',
       },
     },
     hero: {
       kicker: {
-        ja: '謎と現地から読む日本史',
-        en: 'Japanese history, told as a story',
-        de: 'Japanische Geschichte als erzählte Geschichte',
+        ja: '戦国・幕末・知られざる歴史旅',
+        en: 'Sengoku, Bakumatsu, Hidden Places',
+        de: 'Sengoku, Bakumatsu, Hidden Places',
       },
       title: {
-        ja: 'その日本史は、\n本当にそうだったのか。',
-        en: 'The familiar story\nis only the entrance.',
-        de: 'Die bekannte Geschichte\nist nur der Eingang.',
+        ja: '日本史は、\n現地にまだ残っている。',
+        en: 'Japanese history\nstill has places to stand.',
+        de: 'Japanische Geschichte\nhat noch Orte zum Stehen.',
       },
       description: {
-        ja: '卑弥呼、侍、城、幕末、明治、そして知られざる史跡。通説の奥にある謎、対立、現地の痕跡を、日本側の文脈から読み直します。',
-        en: 'Himiko, samurai, castles, Bakumatsu, Meiji, and hidden historic places, read through the mysteries, conflicts, and traces that standard summaries leave behind.',
-        de: 'Himiko, Samurai, Burgen, Bakumatsu, Meiji und verborgene historische Orte, gelesen über Rätsel, Konflikte und Spuren, die kurze Zusammenfassungen auslassen.',
+        ja: 'まずは戦国、幕末、そして外国人がまだ見つけきれていない歴史の場所に集中します。人物、事件、城、古戦場、城下町を、物語と旅の両方から読み直します。',
+        en: 'The site now focuses on three routes: Sengoku warlords and castles, the Bakumatsu collapse, and historic places foreign travelers often miss.',
+        de: 'Die Seite konzentriert sich auf drei Routen: Sengoku-Kriegsherren und Burgen, den Zusammenbruch der Bakumatsu-Zeit und historische Orte, die viele Reisende übersehen.',
       },
       primaryLabel: {
         ja: 'Substackを見る',
@@ -137,38 +122,38 @@ export const siteTemplate = {
     trustStrip: [
       {
         strong: {
-          ja: '資料を読む',
-          en: 'Japanese sources',
-          de: 'Japanische Quellen',
+          ja: '戦国',
+          en: 'Sengoku',
+          de: 'Sengoku',
         },
         text: {
-          ja: '日本語の本、史料、現地情報を確認',
-          en: 'Research starts from Japanese scholarship',
-          de: 'Forschung beginnt bei japanischen Arbeiten',
+          ja: '武将、城、合戦、地形を読む',
+          en: 'Warlords, castles, battles, terrain',
+          de: 'Kriegsherren, Burgen, Schlachten, Gelände',
         },
       },
       {
         strong: {
-          ja: '現地を見る',
-          en: 'Popular questions',
-          de: 'Gefragte Fragen',
+          ja: '幕末',
+          en: 'Bakumatsu',
+          de: 'Bakumatsu',
         },
         text: {
-          ja: '城跡、古戦場、城下町、資料館を歩く',
-          en: 'Shōgun, samurai, castles, Bakumatsu, travel',
-          de: 'Shōgun, Samurai, Burgen, Bakumatsu, Reisen',
+          ja: '黒船、新選組、内戦、維新を読む',
+          en: 'Black ships, Shinsengumi, civil war, Restoration',
+          de: 'Schwarze Schiffe, Shinsengumi, Bürgerkrieg, Restauration',
         },
       },
       {
         strong: {
-          ja: '話をほどく',
-          en: 'Clear judgment',
-          de: 'Klare Einordnung',
+          ja: '歴史旅',
+          en: 'Hidden places',
+          de: 'Hidden Places',
         },
         text: {
-          ja: '伝説、ドラマ、史実を分けて考える',
-          en: 'Myths, drama, and history kept separate',
-          de: 'Mythos, Drama und Geschichte getrennt',
+          ja: '定番の外側にある史跡へ行く',
+          en: 'Historic routes beyond the usual itinerary',
+          de: 'Historische Routen jenseits der Standardreise',
         },
       },
     ],
@@ -179,14 +164,14 @@ export const siteTemplate = {
         de: 'Redaktioneller Ansatz',
       },
       title: {
-        ja: '派手な物語にする前に、資料と場所に戻る。',
-        en: 'Japanese-led history, shaped for international readers.',
-        de: 'Japanisch geführte Geschichte, für internationale Leser aufbereitet.',
+        ja: '広く浅くではなく、勝てる三つに絞る。',
+        en: 'Narrower focus. Stronger routes.',
+        de: 'Engerer Fokus. Stärkere Routen.',
       },
       text: {
-        ja: '海外でよく読まれている日本史は、わかりやすい一方で、細かな文脈が落ちてしまうことがあります。このサイトでは、まず日本語の資料と現地の見え方を確認し、そこから読者に届く形へ整えます。',
-        en: 'This project begins with Japanese books, source materials, historical debates, and places on the ground, then turns that work into clear prose for readers abroad.',
-        de: 'Dieses Projekt beginnt mit japanischen Büchern, Quellen, Fachdiskussionen und Orten vor Ort und bereitet diese Arbeit klar für Leser außerhalb Japans auf.',
+        ja: '海外読者が入りやすく、旅行・書籍・有料購読にもつなげやすい領域だけを先に伸ばします。戦国、幕末、歴史旅。この三つを柱にします。',
+        en: 'The site prioritizes the areas that readers already search for and that can naturally connect to books, travel, and paid subscriptions: Sengoku, Bakumatsu, and hidden historic places.',
+        de: 'Die Seite priorisiert die Bereiche, nach denen Leser bereits suchen und die sich natürlich mit Büchern, Reisen und Abos verbinden lassen: Sengoku, Bakumatsu und verborgene historische Orte.',
       },
     },
     direction: {
@@ -201,9 +186,9 @@ export const siteTemplate = {
         de: 'Mit der fesselnden Version beginnen. Historisch geerdet bleiben.',
       },
       text: {
-        ja: '原始から平安、戦国、江戸から幕末、近現代、歴史旅を扱います。複数の見方があるところでは、読者を引き込む筋を選び、最後は資料と現地の手がかりで支えます。',
-        en: 'The site follows dramatic historical routes: origins to Heian, Sengoku warlords, Edo to Bakumatsu collapse, modern Japan, and history-led travel. When several readings are possible, the article chooses the most compelling path and keeps it anchored in Japanese context.',
-        de: 'Die Seite folgt dramatischen historischen Routen: Ursprünge bis Heian, Sengoku, Edo bis Bakumatsu, modernes Japan und Reisen zu historischen Orten. Wenn mehrere Lesarten möglich sind, wählt der Artikel den fesselndsten Weg und verankert ihn im japanischen Kontext.',
+        ja: '戦国は武将・城・合戦。幕末は黒船・新選組・内戦・維新。歴史旅は、外国人がまだ知らない場所を深く案内する。記事は面白い筋から入り、最後は資料と現地の手がかりで支えます。',
+        en: 'Sengoku covers warlords, castles, and battles. Bakumatsu covers black ships, Shinsengumi, civil war, and Restoration. Hidden Places turns lesser-known historic sites into travel routes with real context.',
+        de: 'Sengoku behandelt Kriegsherren, Burgen und Schlachten. Bakumatsu behandelt Schwarze Schiffe, Shinsengumi, Bürgerkrieg und Restauration. Hidden Places macht weniger bekannte historische Orte zu Reiserouten mit Kontext.',
       },
     },
     topicIntro: {
@@ -213,25 +198,12 @@ export const siteTemplate = {
         de: 'Lesen nach Thema',
       },
       text: {
-        ja: '年表順に読む必要はありません。謎、人物、時代、場所から入れるようにしています。',
-        en: 'You do not need to read Japanese history in order. Enter through the mystery, the person, the era, or the place.',
-        de: 'Japanische Geschichte muss man nicht der Reihe nach lesen. Der Einstieg kann ein Rätsel, eine Person, eine Epoche oder ein Ort sein.',
+        ja: 'まずは三つだけ。戦国、幕末、歴史旅。この三本を太くしてから広げます。',
+        en: 'Start with three routes only: Sengoku, Bakumatsu, and Hidden Places. Make these strong before expanding.',
+        de: 'Zuerst nur drei Routen: Sengoku, Bakumatsu und Hidden Places. Erst diese stark machen, dann erweitern.',
       },
     },
     pillars: [
-      {
-        href: '/ancient-heian/',
-        title: {
-          ja: '原始〜平安',
-          en: 'Origins to Heian',
-          de: 'Ursprünge bis Heian',
-        },
-        text: {
-          ja: '卑弥呼、邪馬台国、巨大古墳、仏教国家、平安貴族、武士の芽生えを読む。',
-          en: 'Himiko, Yamatai, giant tombs, Buddhist statecraft, Heian court culture, and the first conditions for samurai power.',
-          de: 'Himiko, Yamatai, riesige Gräber, buddhistische Staatstechnik, Heian-Hofkultur und die ersten Bedingungen für Samurai-Macht.',
-        },
-      },
       {
         href: '/sengoku/',
         title: {
@@ -248,27 +220,27 @@ export const siteTemplate = {
       {
         href: '/bakumatsu/',
         title: {
-          ja: '江戸〜幕末',
-          en: 'Edo to Bakumatsu',
-          de: 'Edo bis Bakumatsu',
+          ja: '幕末',
+          en: 'Bakumatsu',
+          de: 'Bakumatsu',
         },
         text: {
-          ja: '江戸の秩序、町人文化、開国、新選組、内戦、明治維新への流れを追います。',
-          en: 'Tokugawa order, Edo urban culture, foreign pressure, Shinsengumi, civil war, and the Restoration.',
-          de: 'Tokugawa-Ordnung, Edo-Stadtkultur, Außenpolitik, Shinsengumi, Bürgerkrieg und Restauration.',
+          ja: '黒船、開国、新選組、薩長、会津、内戦、明治維新を、勝者の物語だけにしない。',
+          en: 'Black ships, opening, Shinsengumi, Satsuma-Chōshū, Aizu, civil war, and Restoration without flattening the losing side.',
+          de: 'Schwarze Schiffe, Öffnung, Shinsengumi, Satsuma-Chōshū, Aizu, Bürgerkrieg und Restauration ohne die Verliererseite zu glätten.',
         },
       },
       {
-        href: '/modern/',
+        href: '/hidden-japan/',
         title: {
-          ja: '近代・現代',
-          en: 'Modern Japan',
-          de: 'Modernes Japan',
+          ja: '歴史旅',
+          en: 'Hidden Places',
+          de: 'Hidden Places',
         },
         text: {
-          ja: '明治以降の国家づくり、戦争、占領、経済成長、暮らしの変化を扱います。',
-          en: 'Meiji to today: modernization, empire, defeat, occupation, economic growth, and social habits.',
-          de: 'Meiji, Kaiserreich, Krieg, Besatzung, Wirtschaftswachstum und gesellschaftliche Gewohnheiten.',
+          ja: '有名観光地では物足りない人へ。城跡、古戦場、城下町、資料館を物語として歩く。',
+          en: 'For travelers who want more than famous sights: castle ruins, battlefields, old towns, museums, and routes with a story.',
+          de: 'Für Reisende, denen berühmte Orte nicht reichen: Burgruinen, Schlachtfelder, alte Städte, Museen und Routen mit Geschichte.',
         },
       },
     ],

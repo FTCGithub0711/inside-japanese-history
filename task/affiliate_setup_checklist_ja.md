@@ -1,6 +1,7 @@
 # アフィリエイト導入チェックリスト
 
 作成日: 2026-05-04
+更新日: 2026-05-08
 
 記事本文は後回しでも、収益化の受け皿は先に整える。リンクは記事の前に置かず、本文で場所・本・体験に触れた後、自然な導線として置く。
 
@@ -14,8 +15,8 @@
 2. Amazon Associates  
    書籍リンク用。日本史の英語書籍、日本語書籍、翻訳書の導線に使う。
 
-3. Klook / GetYourGuide / Viator  
-   ツアー、体験、博物館、城、地域観光の導線に使う。
+3. GetYourGuide / Klook / Viator  
+   ツアー、体験、博物館、城、地域観光の導線に使う。英語・ドイツ語読者には GetYourGuide、日本旅行導線には Klook を優先する。
 
 4. Google AdSense  
    記事数とアクセスが増えてから検討。初期は優先しない。
@@ -27,11 +28,22 @@
 `site/src/data/monetization.ts`
 
 - `bookingAid`
+- `bookingLabel`
 - `amazonTag`
 - `klookPartnerId`
+- `getYourGuidePartnerId`
 - `viatorPartnerId`
 
 IDを入れれば、共通関数で作ったリンクに自動反映される。
+
+Cloudflareで環境変数を使える場合は、以下を使う。
+
+- `PUBLIC_BOOKING_AID`
+- `PUBLIC_BOOKING_LABEL`
+- `PUBLIC_AMAZON_TAG`
+- `PUBLIC_KLOOK_PARTNER_ID`
+- `PUBLIC_GETYOURGUIDE_PARTNER_ID`
+- `PUBLIC_VIATOR_PARTNER_ID`
 
 ## 3. 記事ごとの設置ルール
 
@@ -61,8 +73,9 @@ IDを入れれば、共通関数で作ったリンクに自動反映される。
 
 ## 5. 次にやること
 
-1. Booking.com Partner Programに登録する。
-2. Amazon Associatesに登録する。
-3. IDを `monetization.ts` に入れる。
-4. 最初の記事で、関連史跡2件、書籍2冊だけ入れてテストする。
-5. クリック率を見て、記事前半ではなく本文後半の自然導線を改善する。
+1. `task/affiliate_partner_application_steps_ja.md` を見ながら Booking.com に登録する。
+2. GetYourGuide、Klook、Amazon Associates の順に登録する。
+3. 発行されたIDを `task/affiliate_link_inventory_ja.md` に記録する。
+4. IDを `site/src/data/monetization.ts` または Cloudflare 環境変数に入れる。
+5. 最初の記事で、関連史跡2〜4件、書籍2冊だけ入れてテストする。
+6. クリック率を見て、記事前半ではなく本文中盤以降の自然導線を改善する。

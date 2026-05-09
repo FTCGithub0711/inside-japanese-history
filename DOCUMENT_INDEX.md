@@ -30,6 +30,17 @@
 | `task/` | 実行用チェックリスト | `article_creation_schedule_ja.md`, `affiliate_setup_checklist_ja.md` |
 | `exports/` | 共有・保存用docx | `exports/docx/` |
 
+## アフィリエイト準備で見る場所
+
+- `task/affiliate_partner_application_steps_ja.md`  
+  Booking.com、GetYourGuide、Klook、Amazon Associates の登録手順。
+
+- `task/affiliate_link_inventory_ja.md`  
+  発行されたID、リンク形式、記事別の反映状況を管理する台帳。
+
+- `task/affiliate_setup_checklist_ja.md`  
+  アフィリエイト設置ルールと実装済みパーツ。
+
 ## 記事制作で見る場所
 
 ### 1本目の公開記事
@@ -43,7 +54,7 @@
 
 ### 今後の記事候補
 
-- 原始〜平安シリーズ: `article-workspace/origins-to-heian/README.md`
+- 3カテゴリ方針: `site/src/copy/siteTemplate.ts`
 - 人気SEO記事10本: `article-workspace/top-topics/topic_index.md`
 - 歴史旅・穴場史跡: `article-workspace/hidden-japan-travel/README.md`
 
