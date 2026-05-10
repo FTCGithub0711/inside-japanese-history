@@ -59,6 +59,39 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
   href: link.href,
   label: t(link, locale),
 }));
+
+const controlCopy = isJapanese
+  ? {
+      modeGroup: '表示モード',
+      modeLabel: '表示',
+      light: '明',
+      dark: '暗',
+      sizeGroup: '文字サイズ',
+      sizeLabel: '文字',
+      medium: '中',
+      large: '大',
+    }
+  : isGerman
+    ? {
+        modeGroup: 'Anzeigemodus',
+        modeLabel: 'Modus',
+        light: 'Hell',
+        dark: 'Dunkel',
+        sizeGroup: 'Textgroesse',
+        sizeLabel: 'Text',
+        medium: 'M',
+        large: 'G',
+      }
+    : {
+        modeGroup: 'Display mode',
+        modeLabel: 'Mode',
+        light: 'Light',
+        dark: 'Dark',
+        sizeGroup: 'Text size',
+        sizeLabel: 'Text',
+        medium: 'M',
+        large: 'L',
+      };
 ---
 
 <!doctype html>
@@ -104,6 +137,18 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
 
     <slot name="head" />
     <Analytics />
+    <script is:inline>
+      (() => {
+        try {
+          const themeKey = 'inside-japanese-history-theme-mode';
+          const hour = new Date().getHours();
+          const autoTheme = hour >= 18 || hour < 6 ? 'dark' : 'light';
+          const theme = localStorage.getItem(themeKey) || autoTheme;
+          document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+          document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+        } catch (_) {}
+      })();
+    </script>
 
     <style is:global>
       :root {
@@ -119,6 +164,7 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
         --color-border: #ded3c4;
       }
       html { font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif; color: var(--color-ink); background: var(--color-paper); }
+      html.theme-dark { background: #101010; }
       html[lang="ja"] { font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif; }
       html[lang="ja"] h1,
       html[lang="ja"] h2,
@@ -147,6 +193,15 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
       header.site .language-switcher a { align-items: center; border: 1px solid transparent; border-radius: 999px; display: inline-flex; font-size: 1.05rem; justify-content: center; line-height: 1; min-height: 2rem; min-width: 2rem; text-decoration: none; }
       header.site .language-switcher a:hover,
       header.site .language-switcher a.active { background: var(--color-surface); border-color: var(--color-border); color: var(--color-accent); }
+      .display-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; border-left: 1px solid var(--color-border); margin-left: 0.15rem; padding-left: 0.65rem; }
+      .theme-controls,
+      .reader-controls { display: inline-flex; align-items: center; gap: 0.15rem; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); padding: 0.15rem; }
+      .theme-controls span,
+      .reader-controls span { color: var(--color-muted); font-family: Arial, sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0; padding: 0 0.25rem; text-transform: none; }
+      .theme-controls button,
+      .reader-controls button { appearance: none; border: 0; border-radius: 3px; background: transparent; color: var(--color-ink); cursor: pointer; font-family: Arial, sans-serif; font-size: 0.78rem; font-weight: 700; line-height: 1; padding: 0.42rem 0.5rem; }
+      .theme-controls button[aria-pressed='true'],
+      .reader-controls button[aria-pressed='true'] { background: var(--color-ink); color: var(--color-paper); }
       .sr-only { border: 0; clip: rect(0, 0, 0, 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px; }
       footer.site { background: var(--color-indigo); color: #f8f1e6; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif; font-size: 0.9rem; }
       footer.site .footer-inner { max-width: var(--wide-width); margin: 0 auto; padding: 2rem 1.25rem; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr); }
@@ -261,7 +316,62 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
       .question-card h3 { font-size: 1.08rem; margin: 0 0 0.45rem; }
       .question-card p { color: var(--color-muted); font-size: 0.94rem; margin: 0; }
       .category-note { border-left: 4px solid var(--color-gold); color: var(--color-muted); margin: 2.5rem 0; padding: 0.2rem 0 0.2rem 1rem; }
+      html.theme-dark body {
+        --color-paper: #101010;
+        --color-surface: #181818;
+        --color-ink: #ffffff;
+        --color-muted: #d8d8d8;
+        --color-accent: #ff6b5d;
+        --color-indigo: #050505;
+        --color-gold: #e1b95f;
+        --color-border: #303030;
+        background: var(--color-paper);
+        color: var(--color-ink);
+      }
+      html.theme-dark body::before { background: #000000; border-bottom-color: var(--color-gold); }
+      html.theme-dark body header.site { background: rgba(16, 16, 16, 0.96); }
+      html.theme-dark body p,
+      html.theme-dark body li,
+      html.theme-dark body .article-body p,
+      html.theme-dark body .article-body li { color: var(--color-ink); }
+      html.theme-dark body .dek,
+      html.theme-dark body .meta,
+      html.theme-dark body .eyebrow,
+      html.theme-dark body .brand small,
+      html.theme-dark body footer.site,
+      html.theme-dark body footer.site a { color: var(--color-muted); }
+      html.theme-dark body .pillar-card,
+      html.theme-dark body .feature-card,
+      html.theme-dark body .mini-feature,
+      html.theme-dark body .question-card,
+      html.theme-dark body .note-box,
+      html.theme-dark body .language-box,
+      html.theme-dark body .article-toc,
+      html.theme-dark body .book-affiliate,
+      html.theme-dark body .travel-affiliate,
+      html.theme-dark body .related-articles article,
+      html.theme-dark body .share-buttons a,
+      html.theme-dark body .social-links a,
+      html.theme-dark body .category-feature,
+      html.theme-dark body .feature-showcase,
+      html.theme-dark body .editorial-map { background: var(--color-surface); border-color: var(--color-border); color: var(--color-ink); }
+      html.theme-dark body .visual-hero,
+      html.theme-dark body footer.site { background: #000000; }
+      html.theme-dark body img { filter: brightness(0.92); }
+      body.reader-large { font-size: 19px; }
+      body.reader-large p,
+      body.reader-large li,
+      body.reader-large .article-body p,
+      body.reader-large .article-body li { font-size: 1.16rem; line-height: 1.86; }
+      body.reader-large .dek { font-size: 1.28rem; }
+
       @media (max-width: 700px) {
+        header.site .links { width: 100%; }
+        .display-controls { border-left: 0; padding-left: 0; width: 100%; }
+        .theme-controls,
+        .reader-controls { flex: 1 1 9rem; }
+        .theme-controls button,
+        .reader-controls button { flex: 1; }
         h1 { font-size: 2rem; }
         .visual-hero { min-height: 430px; }
         .visual-hero::before { background: linear-gradient(180deg, rgba(18, 25, 30, 0.86), rgba(18, 25, 30, 0.54)); }
@@ -309,6 +419,18 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
         <div class="links">
           {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
           <a class="subscribe-link" href={SITE.substackUrl}>{subscribeLabel}</a>
+          <div class="display-controls" aria-label={controlCopy.modeGroup}>
+            <div class="theme-controls" role="group" aria-label={controlCopy.modeGroup}>
+              <span>{controlCopy.modeLabel}</span>
+              <button type="button" data-theme-mode="light" aria-pressed="false">{controlCopy.light}</button>
+              <button type="button" data-theme-mode="dark" aria-pressed="false">{controlCopy.dark}</button>
+            </div>
+            <div class="reader-controls" role="group" aria-label={controlCopy.sizeGroup}>
+              <span>{controlCopy.sizeLabel}</span>
+              <button type="button" data-reader-size="medium" aria-pressed="false">{controlCopy.medium}</button>
+              <button type="button" data-reader-size="large" aria-pressed="false">{controlCopy.large}</button>
+            </div>
+          </div>
           <div class="language-switcher" aria-label="Language">
             {languageLinks.map((link) => (
               <a class:list={[{ active: link.active }]} href={link.href} aria-label={link.label} title={link.label}>
@@ -334,5 +456,50 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
         </div>
       </div>
     </footer>
+    <script>
+      (() => {
+        const themeKey = 'inside-japanese-history-theme-mode';
+        const sizeKey = 'inside-japanese-history-reader-size';
+        const hour = new Date().getHours();
+        const autoTheme = hour >= 18 || hour < 6 ? 'dark' : 'light';
+        const savedTheme = localStorage.getItem(themeKey) || autoTheme;
+        const savedSize = localStorage.getItem(sizeKey) || 'medium';
+
+        const setTheme = (mode) => {
+          document.body.classList.toggle('theme-dark', mode === 'dark');
+          document.documentElement.classList.toggle('theme-dark', mode === 'dark');
+          document.documentElement.style.colorScheme = mode === 'dark' ? 'dark' : 'light';
+          document.querySelectorAll('[data-theme-mode]').forEach((button) => {
+            button.setAttribute('aria-pressed', button.dataset.themeMode === mode ? 'true' : 'false');
+          });
+        };
+
+        const setSize = (size) => {
+          document.body.classList.toggle('reader-large', size === 'large');
+          document.querySelectorAll('[data-reader-size]').forEach((button) => {
+            button.setAttribute('aria-pressed', button.dataset.readerSize === size ? 'true' : 'false');
+          });
+        };
+
+        document.querySelectorAll('[data-theme-mode]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const mode = button.dataset.themeMode || autoTheme;
+            localStorage.setItem(themeKey, mode);
+            setTheme(mode);
+          });
+        });
+
+        document.querySelectorAll('[data-reader-size]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const size = button.dataset.readerSize || 'medium';
+            localStorage.setItem(sizeKey, size);
+            setSize(size);
+          });
+        });
+
+        setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+        setSize(savedSize === 'large' ? 'large' : 'medium');
+      })();
+    </script>
   </body>
 </html>
