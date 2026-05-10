@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PersonSchema from '../components/PersonSchema.astro';
+import PodcastSchema from '../components/PodcastSchema.astro';
+import { SITE } from '../consts';
+import type { SiteLocale } from '../copy/siteTemplate';
+import { articleReferences, articlesForCategory, categories, categoryPath, localizedPath, text } from '../data/siteStructure';
+
+interface Props { locale: SiteLocale; }
+const { locale } = Astro.props;
+const lang = locale === 'ja' ? 'ja-JP' : locale === 'de' ? 'de-DE' : 'en-US';
+const c = {
+  en: {
+    eventStrong: 'Start here', eventText: 'Read Japanese history through six entrances: beginner, history, people, perspective, on site, and events.',
+    leadKicker: 'Beginner', leadTitle: 'How Japan Became Japan: before the samurai, castles, and shoguns.',
+    leadText: 'Rice made wealth visible. Queens ruled from the fog of Chinese records. Tombs advertised power. Buddhism helped build the state. This is the clean starting point for the whole site.',
+    readMore: 'Read the first article', next: 'Next to read', most: 'Most useful routes', latest: 'Latest', latestTitle: 'Recently published', categoriesLabel: 'Six Categories', categoriesTitle: 'Six entrances into Japanese history.', readings: 'Reading paths', readingsTitle: 'Follow the story by period, person, and place.', field: 'On site', fieldTitle: 'Turn the history into places you can stand.', archive: 'Read by theme', archiveTitle: 'Inside Japanese History articles', aboutKicker: 'About', aboutTitle: 'A focused journal for readable, source-aware Japanese history.', aboutText: 'Inside Japanese History is built for international readers who want story, context, and places without losing the historical ground underneath.', aboutLink: 'About this site',
+  },
+  ja: {
+    eventStrong: 'ここから読む', eventText: '入門、歴史、人物、視点、現地、イベントの6つの入口から日本史を読みます。',
+    leadKicker: '入門', leadTitle: '日本はいかに日本になったのか。侍、城、将軍より前の物語。',
+    leadText: '稲作が富を見えるものにし、卑弥呼が霧の中から現れ、古墳が権力を示し、仏教が国家を支えた。サイト全体の入口になる記事です。',
+    readMore: '最初の記事を読む', next: '次に読む', most: 'よく使う入口', latest: '新着', latestTitle: '最近公開した記事', categoriesLabel: '6つのカテゴリ', categoriesTitle: '日本史を読む6つの入口。', readings: '読み方', readingsTitle: '時代、人物、場所から物語を追う。', field: '現地へ', fieldTitle: '歴史を、実際に立てる場所へつなげる。', archive: 'テーマ別に読む', archiveTitle: 'Inside Japanese Historyの記事', aboutKicker: 'About', aboutTitle: '読みやすく、史実の足場を残す日本史ジャーナル。', aboutText: 'Inside Japanese Historyは、海外読者にも届く物語性と、日本語資料・現地の文脈を両立するためのサイトです。', aboutLink: 'このサイトについて',
+  },
+  de: {
+    eventStrong: 'Hier beginnen', eventText: 'Japanische Geschichte durch sechs Eingaenge lesen: Einstieg, Geschichte, Menschen, Perspektive, vor Ort und Ereignisse.',
+    leadKicker: 'Einstieg', leadTitle: 'Wie Japan zu Japan wurde: vor Samurai, Burgen und Shogunen.',
+    leadText: 'Reis machte Reichtum sichtbar. Koeniginnen tauchen in chinesischen Quellen auf. Grabhuegel zeigten Macht. Buddhismus half beim Staatsbau. Das ist der klare Einstieg in die Seite.',
+    readMore: 'Ersten Artikel lesen', next: 'Als Naechstes', most: 'Nuetzliche Routen', latest: 'Neu', latestTitle: 'Zuletzt veroeffentlicht', categoriesLabel: 'Sechs Kategorien', categoriesTitle: 'Sechs Eingaenge in japanische Geschichte.', readings: 'Lesepfade', readingsTitle: 'Der Geschichte nach Zeit, Person und Ort folgen.', field: 'Vor Ort', fieldTitle: 'Geschichte in Orte uebersetzen, an denen man stehen kann.', archive: 'Nach Thema lesen', archiveTitle: 'Artikel von Inside Japanese History', aboutKicker: 'About', aboutTitle: 'Ein fokussiertes Journal fuer lesbare, quellennahe japanische Geschichte.', aboutText: 'Inside Japanese History ist fuer internationale Leser gebaut, die Geschichte, Kontext und Orte suchen, ohne den historischen Boden zu verlieren.', aboutLink: 'Ueber diese Seite',
+  },
+}[locale];
+const leadHref = localizedPath('/articles/japan-creation-dawn/', locale);
+const imageBase = locale === 'en' ? '' : '/' + locale;
+const dateFormatter = new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : locale === 'de' ? 'de-DE' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const latest = articleReferences;
+const topRoutes = [
+  { href: localizedPath('/categories/people/', locale), kicker: text(categories[2].title, locale), title: text(articleReferences[1].title, locale), image: '/images/hero/Tokugawa_Ieyasu.jpg' },
+  { href: localizedPath('/categories/events/', locale), kicker: text(categories[5].title, locale), title: text(articleReferences[2].title, locale), image: '/images/hero/The_Great_Wave_off_Kanagawa.jpg' },
+  { href: localizedPath('/categories/onsite/', locale), kicker: text(categories[4].title, locale), title: text(articleReferences[3].title, locale), image: '/images/hero/ujikuni_sakura_day.jpg' },
+];
+---
+
+<BaseLayout title={SITE.name} description={SITE.description} lang={lang}>
+  <PersonSchema slot="head" person="both" />
+  <PodcastSchema slot="head" />
+
+  <section class="event-callout" aria-label="Site notice"><strong>{c.eventStrong}</strong><span>{c.eventText}</span></section>
+
+  <section class="lead-grid" aria-labelledby="lead-title">
+    <div class="lead-column">
+      <article class="lead-story">
+        <a class="lead-link" href={leadHref}>
+          <div class="story-text">
+            <p class="kicker">{c.leadKicker}</p>
+            <h1 id="lead-title">{c.leadTitle}</h1>
+            <p>{c.leadText}</p>
+            <span class="read-more">{c.readMore}</span>
+          </div>
+          <figure class="story-art">
+            <img src="/images/articles/japan-creation-dawn/01-jomon.jpg" width="1200" height="800" alt="Jomon period reference image" />
+            <figcaption>{text(articleReferences[0].description, locale)}</figcaption>
+          </figure>
+        </a>
+      </article>
+    </div>
+    <aside class="right-rail" aria-label={c.next}>
+      <section class="rail-block" aria-labelledby="next-title">
+        <h2 class="section-label" id="next-title">{c.next}</h2>
+        {topRoutes.map((route) => (
+          <article class="rail-card"><a href={route.href}><img src={route.image} width="100" height="100" alt="" loading="lazy" /><div><p class="kicker">{route.kicker}</p><h3>{route.title}</h3></div></a></article>
+        ))}
+      </section>
+      <section class="most-read" aria-labelledby="most-read-title">
+        <h2 class="section-label" id="most-read-title">{c.most}</h2>
+        <ol>{categories.slice(0, 3).map((category) => <li><a href={categoryPath(category.slug, locale)}>{text(category.title, locale)}: {text(category.description, locale)}</a></li>)}</ol>
+      </section>
+    </aside>
+  </section>
+
+  <section class="new-articles" id="latest" aria-labelledby="latest-title">
+    <div class="section-heading"><p class="section-label">{c.latest}</p><h2 id="latest-title">{c.latestTitle}</h2></div>
+    <ol class="new-articles-list">
+      {latest.map((article) => (
+        <li><a href={localizedPath(article.href, locale)}><time datetime={article.date}>{dateFormatter.format(new Date(article.date))}</time><p class="kicker">{text(categories.find((category) => category.slug === article.category)?.title ?? categories[1].title, locale)}</p><h3>{text(article.title, locale)}</h3><p>{text(article.description, locale)}</p></a></li>
+      ))}
+    </ol>
+    <a class="text-link" href={categoryPath('history', locale)}>{c.archiveTitle}</a>
+  </section>
+
+  <section class="start-paths" id="themes" aria-labelledby="theme-title">
+    <div class="section-heading"><p class="section-label">{c.categoriesLabel}</p><h2 id="theme-title">{c.categoriesTitle}</h2></div>
+    <div class="path-grid path-grid--6">
+      {categories.map((category) => (
+        <a href={categoryPath(category.slug, locale)}><span>{category.number}</span><strong>{text(category.title, locale)}</strong><p>{text(category.description, locale)}</p></a>
+      ))}
+    </div>
+  </section>
+
+  <section class="two-column" id="readings" aria-labelledby="readings-title">
+    <div class="section-heading"><p class="section-label">{c.readings}</p><h2 id="readings-title">{c.readingsTitle}</h2></div>
+    <div class="article-stack">
+      {topRoutes.map((route) => (
+        <article><a href={route.href}><img src={route.image} width="1000" height="667" alt="" loading="lazy" /><div><p class="kicker">{route.kicker}</p><h3>{route.title}</h3><p>{c.fieldTitle}</p><p class="byline">{SITE.name}</p></div></a></article>
+      ))}
+    </div>
+  </section>
+
+  <section class="news-band" id="travel" aria-labelledby="field-title">
+    <div class="section-heading"><p class="section-label">{c.field}</p><h2 id="field-title">{c.fieldTitle}</h2></div>
+    <div class="field-grid">
+      {topRoutes.map((route) => (
+        <article><a href={route.href}><img src={route.image} width="1000" height="667" alt="" loading="lazy" /><p class="kicker">{route.kicker}</p><h3>{route.title}</h3><p>{text(categories.find((category) => categoryPath(category.slug, locale) === route.href)?.intro ?? categories[4].intro, locale)}</p></a></article>
+      ))}
+    </div>
+  </section>
+
+  <section class="all-news" id="archive" aria-labelledby="archive-title">
+    <p class="section-label">{c.archive}</p><h2 id="archive-title">{c.archiveTitle}</h2>
+    <div class="all-news-grid all-news-grid--6">
+      {categories.map((category) => (
+        <section><h3><a href={categoryPath(category.slug, locale)}>{text(category.title, locale)}</a></h3>{articlesForCategory(category.slug).slice(0, 3).map((article) => <a href={localizedPath(article.href, locale)}>{text(article.title, locale)}</a>)}</section>
+      ))}
+    </div>
+  </section>
+
+  <section class="people-section" id="about" aria-labelledby="about-title">
+    <article><p class="section-label">{c.aboutKicker}</p><h2 id="about-title">{c.aboutTitle}</h2><p>{c.aboutText}</p><a class="text-link" href={localizedPath('/about/', locale)}>{c.aboutLink}</a></article>
+    <img src="/images/hero/ujikuni_sakura_night.jpg" width="1200" height="800" alt="Hojō Ujikuni statue at night" loading="lazy" />
+  </section>
+</BaseLayout>
