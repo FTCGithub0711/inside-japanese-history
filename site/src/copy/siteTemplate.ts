@@ -21,29 +21,41 @@ export function localeFromLang(lang: string): SiteLocale {
 export const siteTemplate = {
   header: {
     nav: {
-      sengoku: {
-        href: '/sengoku/',
-        ja: '戦国',
-        en: 'Sengoku',
-        de: 'Sengoku',
+      beginner: {
+        href: '/categories/beginner/',
+        ja: '入門',
+        en: 'Beginner',
+        de: 'Einstieg',
       },
-      bakumatsu: {
-        href: '/bakumatsu/',
-        ja: '幕末',
-        en: 'Bakumatsu',
-        de: 'Bakumatsu',
+      history: {
+        href: '/categories/history/',
+        ja: '歴史',
+        en: 'History',
+        de: 'Geschichte',
       },
-      hiddenJapan: {
-        href: '/hidden-japan/',
-        ja: '歴史旅',
-        en: 'Hidden Places',
-        de: 'Hidden Places',
+      people: {
+        href: '/categories/people/',
+        ja: '人物',
+        en: 'People',
+        de: 'Menschen',
       },
-      about: {
-        href: '/about/',
-        ja: 'About',
-        en: 'About',
-        de: 'About',
+      perspective: {
+        href: '/categories/perspective/',
+        ja: '視点',
+        en: 'Perspective',
+        de: 'Perspektive',
+      },
+      onsite: {
+        href: '/categories/onsite/',
+        ja: '現地',
+        en: 'On Site',
+        de: 'Vor Ort',
+      },
+      events: {
+        href: '/categories/events/',
+        ja: 'イベント',
+        en: 'Events',
+        de: 'Ereignisse',
       },
     },
     subscribe: {

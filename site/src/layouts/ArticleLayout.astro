@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import ArticleSchema from '../components/ArticleSchema.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
 import ArticleTableOfContents from '../components/ArticleTableOfContents.astro';
 import BookAffiliateBox from '../components/BookAffiliateBox.astro';
 import NewsletterCTA from '../components/NewsletterCTA.astro';
@@ -111,6 +112,9 @@ const displayDate = new Intl.DateTimeFormat(
 const travelLang = lang.startsWith('de') ? 'de' : lang.startsWith('ja') ? 'ja' : 'en';
 const tocTitle = lang.startsWith('de') ? 'In diesem Artikel' : lang.startsWith('ja') ? 'この記事の内容' : 'In this article';
 const hasAside = toc.length > 0 || translations.length > 0;
+const homeHref = lang.startsWith('de') ? '/de/' : lang.startsWith('ja') ? '/ja/' : '/';
+const homeLabel = lang.startsWith('de') ? 'Startseite' : lang.startsWith('ja') ? 'ホーム' : 'Home';
+const articlesLabel = lang.startsWith('de') ? 'Artikel' : lang.startsWith('ja') ? '記事' : 'Articles';
 ---
 
 <BaseLayout
@@ -128,6 +132,14 @@ const hasAside = toc.length > 0 || translations.length > 0;
     dateModified={dateModified}
     image={image}
     inLanguage={lang}
+  />
+  <BreadcrumbSchema
+    slot="head"
+    items={[
+      { name: homeLabel, href: homeHref },
+      { name: articlesLabel, href: homeHref },
+      { name: title, href: Astro.url.pathname },
+    ]}
   />
 
   <article class="article-page">

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
+import type { SiteLocale } from '../copy/siteTemplate';
+import { articlesForCategory, categoryPath, text, type CategoryDefinition } from '../data/siteStructure';
+import { SITE } from '../consts';
+
+interface Props {
+  category: CategoryDefinition;
+  locale: SiteLocale;
+}
+
+const { category, locale } = Astro.props;
+const lang = locale === 'ja' ? 'ja-JP' : locale === 'de' ? 'de-DE' : 'en-US';
+const title = text(category.title, locale);
+const description = text(category.description, locale);
+const intro = text(category.intro, locale);
+const articles = articlesForCategory(category.slug);
+const homeHref = locale === 'en' ? '/' : '/' + locale + '/';
+const currentHref = categoryPath(category.slug, locale);
+const homeLabel = locale === 'ja' ? 'ホーム' : locale === 'de' ? 'Startseite' : 'Home';
+const dateFormatter = new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : locale === 'de' ? 'de-DE' : 'en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description} lang={lang} canonical={new URL(currentHref, SITE.url).toString()}>
+  <BreadcrumbSchema slot="head" items={[{ name: homeLabel, href: homeHref }, { name: title, href: currentHref }]} />
+
+  <section class="category-hero seo-category-hero">
+    <p class="kicker">{locale === 'ja' ? 'カテゴリ' : locale === 'de' ? 'Kategorie' : 'Category'}</p>
+    <h1>{title}</h1>
+    <p class="dek">{intro}</p>
+  </section>
+
+  <section class="seo-category-list" aria-labelledby="category-articles">
+    <div class="section-heading">
+      <p class="kicker">{category.number}</p>
+      <h2 id="category-articles">{locale === 'ja' ? 'この記事から読む' : locale === 'de' ? 'Artikel in dieser Kategorie' : 'Articles in this category'}</h2>
+    </div>
+    <ol>
+      {articles.map((article) => (
+        <li>
+          <a href={locale === 'en' ? article.href : '/' + locale + article.href}>
+            <time datetime={article.date}>{dateFormatter.format(new Date(article.date))}</time>
+            <p class="kicker">{title}</p>
+            <h3>{text(article.title, locale)}</h3>
+            <p>{text(article.description, locale)}</p>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .seo-category-hero {
+    margin: 0 calc(50% - min(50vw, var(--wide-width) / 2)) 2.5rem;
+    padding: 3rem 1.25rem 2.4rem;
+  }
+
+  .seo-category-hero h1 {
+    font-size: 3.4rem;
+    max-width: 900px;
+  }
+
+  .seo-category-hero .dek {
+    max-width: 820px;
+  }
+
+  .seo-category-list {
+    margin: 0 calc(50% - min(50vw, var(--wide-width) / 2));
+    padding: 0 1.25rem 3.6rem;
+  }
+
+  .seo-category-list ol {
+    display: grid;
+    gap: 0 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+  }
+
+  .seo-category-list li {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .seo-category-list a {
+    color: inherit;
+    display: block;
+    padding: 1.25rem 0;
+    text-decoration: none;
+  }
+
+  .seo-category-list time {
+    color: var(--color-muted);
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .seo-category-list h3 {
+    font-size: 1.35rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .seo-category-list p:not(.kicker) {
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .seo-category-hero,
+    .seo-category-list {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .seo-category-hero h1 {
+      font-size: 2.3rem;
+    }
+
+    .seo-category-list ol {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

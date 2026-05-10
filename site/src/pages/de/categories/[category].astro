@@ -1,0 +1,15 @@
+---
+import CategoryPage from '../../../templates/CategoryPage.astro';
+import { categories } from '../../../data/siteStructure';
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+---
+
+<CategoryPage category={category} locale="de" />

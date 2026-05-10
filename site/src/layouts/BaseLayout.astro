@@ -38,6 +38,12 @@ const localizedPaths = new Set([
   '/bakumatsu/',
   '/hidden-japan/',
   '/articles/japan-creation-dawn/',
+  '/categories/beginner/',
+  '/categories/history/',
+  '/categories/people/',
+  '/categories/perspective/',
+  '/categories/onsite/',
+  '/categories/events/',
 ]);
 const withLocale = (prefix: '' | '/de' | '/ja') => {
   const targetPath = localizedPaths.has(basePath) ? basePath : '/';
@@ -59,6 +65,33 @@ const legalLinks = Object.values(siteTemplate.footer.legal).map((link) => ({
   href: link.href,
   label: t(link, locale),
 }));
+
+const siteGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': new URL('/#organization', Astro.site).toString(),
+      name: SITE.name,
+      url: SITE.url,
+      logo: new URL('/og-default.png', Astro.site).toString(),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': new URL('/#website', Astro.site).toString(),
+      name: SITE.name,
+      alternateName: SITE.tagline,
+      url: SITE.url,
+      inLanguage: SITE.language,
+      publisher: { '@id': new URL('/#organization', Astro.site).toString() },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: new URL('/?q={search_term_string}', Astro.site).toString(),
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
+};
 
 const controlCopy = isJapanese
   ? {
@@ -101,6 +134,7 @@ const controlCopy = isJapanese
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
@@ -136,6 +170,7 @@ const controlCopy = isJapanese
     <link rel="alternate" hreflang="x-default" href={new URL(withLocale(''), Astro.site).toString()} />
 
     <slot name="head" />
+    <script type="application/ld+json" set:html={JSON.stringify(siteGraph)} />
     <Analytics />
     <script is:inline>
       (() => {

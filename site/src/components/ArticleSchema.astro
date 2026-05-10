@@ -37,6 +37,10 @@ const json = {
     '@type': 'Organization',
     name: SITE.name,
     url: SITE.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/og-default.png', SITE.url).toString(),
+    },
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
